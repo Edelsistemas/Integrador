@@ -1,0 +1,31 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  batch:
+    job:
+      enabled: false
+sap:
+  edelflex:
+    url: https://10.250.2.10:50000/b1s/v1/
+    credentials:
+      user: gregorio.hakimian
+      password: 1234
+      company: TEST_EDELFLEX
+
+sqlserver:
+  jdbcUrl: jdbc:sqlserver://localhost:1433;encrypt=true;trustServerCertificate=true;databaseName=master
+  username: sa
+  password: LongPassword123
+  driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+team-center:
+  querys:
+    get-inter-calor-products: SELECT * FROM EdelflexDos.dbo.ITEMS
+
+batch-process:
+  sync-business-partners: 1800000
+
+bitone:
+  integration:
+    api-key: "d896c408-9f6c-45b7-8ef1-59c323dd67f8"
+    url: "http://localhost:8095/services/api/external-batch-process/register"
