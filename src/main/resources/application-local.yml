@@ -1,0 +1,15 @@
+spring:
+  data:
+    mongodb:
+      database: edelflex-dev
+      authentication-database: admin
+      host: 66.97.43.117
+      port: 9001
+      username: root
+      password: C1gr4.2o2l.Qa
+
+#SACARLOOOO
+bitone:
+  integration:
+    api-key: "d896c408-9f6c-45b7-8ef1-59c323dd67f8"
+    url: "https://bit-one-tools.ar/services/api/external-batch-process/register"
