@@ -16,7 +16,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 @Slf4j
 @Profile("sync-bp-batch")
-public abstract class GetBaseProductReader<T> implements ItemReader<T> {
+public abstract class SyncBaseProductReader<T> implements ItemReader<T> {
 
   private final Iterator<T> data;
   private int totalItems;
@@ -27,7 +27,7 @@ public abstract class GetBaseProductReader<T> implements ItemReader<T> {
     SyncItemsMetrics.registerReader(processInfo, totalItems);
   }
 
-  public GetBaseProductReader(
+  public SyncBaseProductReader(
       @Qualifier("jdbcTemplateSQLServer") JdbcTemplate jdbcTemplate,
       RowMapper<T> rowMapper,
       String query) {

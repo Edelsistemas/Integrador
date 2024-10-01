@@ -1,6 +1,6 @@
 package com.edelflex.app.batch.sync_items.step.product_type_inter_calor;
 
-import com.edelflex.app.batch.sync_items.step.product_type.GetBaseProductReader;
+import com.edelflex.app.batch.sync_items.step.product_type.SyncBaseProductReader;
 import com.edelflex.app.model.product.InterCalorProduct;
 import com.edelflex.app.model.product.Product;
 import lombok.extern.slf4j.Slf4j;
@@ -15,9 +15,9 @@ import org.springframework.stereotype.Component;
 @StepScope
 @Slf4j
 @Profile("sync-items-batch")
-public class GetInterCalorProductReader extends GetBaseProductReader<InterCalorProduct> {
+public class SyncInterCalorProductReader extends SyncBaseProductReader<InterCalorProduct> {
 
-  public GetInterCalorProductReader(
+  public SyncInterCalorProductReader(
       @Qualifier("jdbcTemplateSQLServer") JdbcTemplate jdbcTemplate,
       @Value("${team-center.querys.get-inter-calor-products}") String query) {
     super(

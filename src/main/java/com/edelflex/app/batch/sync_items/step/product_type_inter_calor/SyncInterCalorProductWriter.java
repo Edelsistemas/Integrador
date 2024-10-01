@@ -1,6 +1,6 @@
 package com.edelflex.app.batch.sync_items.step.product_type_inter_calor;
 
-import com.edelflex.app.batch.sync_items.step.product_type.GetBaseProductWriter;
+import com.edelflex.app.batch.sync_items.step.product_type.SyncBaseProductWriter;
 import com.edelflex.app.model.ProductProcessInfo;
 
 import java.util.List;
@@ -15,9 +15,9 @@ import org.springframework.stereotype.Component;
 @StepScope
 @Slf4j
 @Profile("sync-items-batch")
-public class GetInterCalorProductWriter extends GetBaseProductWriter {
+public class SyncInterCalorProductWriter extends SyncBaseProductWriter {
 
-  public GetInterCalorProductWriter(MongoTemplate mongoTemplate) {
+  public SyncInterCalorProductWriter(MongoTemplate mongoTemplate) {
     super(mongoTemplate);
   }
 

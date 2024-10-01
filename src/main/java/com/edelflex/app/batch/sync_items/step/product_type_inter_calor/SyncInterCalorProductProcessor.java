@@ -1,7 +1,7 @@
 package com.edelflex.app.batch.sync_items.step.product_type_inter_calor;
 
 import com.edelflex.app.batch.sync_items.SyncItemsMetrics;
-import com.edelflex.app.batch.sync_items.step.product_type.GetBaseProductProcessor;
+import com.edelflex.app.batch.sync_items.step.product_type.SyncBaseProductProcessor;
 import com.edelflex.app.model.ProductProcessInfo;
 import com.edelflex.app.model.product.InterCalorProduct;
 import com.edelflex.app.model.product.Product;
@@ -17,9 +17,9 @@ import org.springframework.stereotype.Component;
 @StepScope
 @Slf4j
 @Profile("sync-items-batch")
-public class GetInterCalorProductProcessor extends GetBaseProductProcessor<InterCalorProduct> {
+public class SyncInterCalorProductProcessor extends SyncBaseProductProcessor<InterCalorProduct> {
 
-  public GetInterCalorProductProcessor(SapItemService sapItemService) {
+  public SyncInterCalorProductProcessor(SapItemService sapItemService) {
     super(sapItemService);
   }
 

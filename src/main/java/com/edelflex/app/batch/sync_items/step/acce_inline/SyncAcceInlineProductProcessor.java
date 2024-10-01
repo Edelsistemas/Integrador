@@ -1,13 +1,12 @@
-package com.edelflex.app.batch.sync_items.step.product_type_inter_calor;
+package com.edelflex.app.batch.sync_items.step.acce_inline;
 
 import com.edelflex.app.batch.sync_items.SyncItemsMetrics;
-import com.edelflex.app.batch.sync_items.step.product_type.GetBaseProductProcessor;
+import com.edelflex.app.batch.sync_items.step.product_type.SyncBaseProductProcessor;
 import com.edelflex.app.model.ProductProcessInfo;
 import com.edelflex.app.model.product.InterCalorProduct;
 import com.edelflex.app.model.product.Product;
 import com.edelflex.app.services.integration.SapItemService;
 import java.util.Map;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.context.annotation.Profile;
@@ -17,9 +16,9 @@ import org.springframework.stereotype.Component;
 @StepScope
 @Slf4j
 @Profile("sync-items-batch")
-public class GetInterCalorProductProcessor extends GetBaseProductProcessor<InterCalorProduct> {
+public class SyncAcceInlineProductProcessor extends SyncBaseProductProcessor<InterCalorProduct> {
 
-  public GetInterCalorProductProcessor(SapItemService sapItemService) {
+  public SyncAcceInlineProductProcessor(SapItemService sapItemService) {
     super(sapItemService);
   }
 

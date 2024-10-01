@@ -12,11 +12,11 @@ import org.springframework.context.annotation.Profile;
 
 @Slf4j
 @Profile("sync-bp-batch")
-public abstract class GetBaseProductProcessor<T> implements ItemProcessor<T, ProductProcessInfo> {
+public abstract class SyncBaseProductProcessor<T> implements ItemProcessor<T, ProductProcessInfo> {
 
   protected final SapItemService sapItemService;
 
-  public GetBaseProductProcessor(SapItemService sapItemService) {
+  public SyncBaseProductProcessor(SapItemService sapItemService) {
     this.sapItemService = sapItemService;
   }
 

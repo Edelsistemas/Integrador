@@ -15,14 +15,14 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @Profile("sync-items-batch")
-public class GetInterCalorProductStep {
+public class SyncInterCalorProductStep {
 
   @Bean("getInterCalorProductStepDefinition")
   public Step getInterCalorProductStep(
       StepBuilderFactory stepBuilderFactory,
-      GetInterCalorProductReader getInterCalorProductReader,
-      GetInterCalorProductWriter getInterCalorProductWriter,
-      GetInterCalorProductProcessor getInterCalorProductProcessor) {
+      SyncInterCalorProductReader getInterCalorProductReader,
+      SyncInterCalorProductWriter getInterCalorProductWriter,
+      SyncInterCalorProductProcessor getInterCalorProductProcessor) {
     return stepBuilderFactory
         .get("GetInterCalorProductStep")
         .<InterCalorProduct, ProductProcessInfo>chunk(100)

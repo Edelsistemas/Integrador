@@ -1,46 +1,52 @@
 package com.edelflex.app.model.product;
 
 import com.edelflex.app.model.ProductProcessInfo;
+import java.util.HashMap;
+import java.util.Map;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class InterCalorProduct extends Product {
+public class AcceInlineProduct extends Product {
 
+  private String id;
   private String name;
   private String product;
   private String revision;
-  private String subtype;
-  private String cantidadDePlacas;
-  private String cantidadDeSecciones;
-  private String codigoERPViejo;
-  private String codigoFabricante;
-  private String corrugacion;
-  private String diametroDeConexionLadoProducto;
-  private String diametroDeConexionLadoServicio;
-  private String fabricable;
-  private String importado;
-  private String espesorPlacas;
-  private String longitudEquipo;
-  private String materialBastidor;
-  private String materialJuntas;
-  private String materialPlacas;
-  private String modeloBastidor;
-  private String normaConexionLadoProducto;
-  private String normaConexionLadoServicio;
-  private String tamanio;
-  private String tipoJunta;
-  private String tipoConexionLadoProducto;
-  private String tipoConexionLadoServicio;
-  private String ubicacionConexiones;
+
+  private String codigoEdelflex; // U_SEIDORAR_ARTICULO_EDE_2
+  private String codigoProveedor; // U_SEI_ITEMPROV
+  private String itemMarca; // U_SEI_Marca
+  private String itemTipo; // U_SEI_Tipo
+  private String itemEquipo; // U_SEI_Equipo
+
+  /*
+    U_SEIDORAR_ARTICULO_EDE_2	Código Edelflex
+  U_SEI_ITEMPROV	Código proveedor
+  U_SEI_Marca	Marca
+  U_SEI_Tipo	Tipo
+  U_SEI_Modelo	Modelo
+  U_SEI_Equipo	Equipo
+  U_SEI_Variable	Variable
+  U_SEI_Tamanho	Tamaño
+  U_SEI_ModBas	Modelo Bastidor
+  U_SEI_Corruga	Corrugación
+  U_SEI_MatPlac	Material placas
+  U_SEI_MatJun	Material juntas
+  U_SEI_CanSec	Cant. Secciones
+  U_SEI_Diametro	Diámetro
+  U_SEI_Actuacion	Actuación
+  U_SEI_Familia	Familia
+  U_SEI_DiamSup	Diámetro superior
+  U_SEI_DiamInf	Diámetro inferior
+  U_SEI_Cuerpo	Cuerpo
+  U_SEI_Conex	Conexiones
+   */
 
   @Override
   public ProductProcessInfo getProcessInfo() {

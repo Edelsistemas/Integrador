@@ -1,8 +1,7 @@
-package com.edelflex.app.batch.sync_items.step.product_type_inter_calor;
+package com.edelflex.app.batch.sync_items.step.acce_inline;
 
 import com.edelflex.app.batch.sync_items.SyncItemsExecutionListener;
 import com.edelflex.app.exceptions.SapCallException;
-
 import com.edelflex.app.model.ProductProcessInfo;
 import com.edelflex.app.model.product.InterCalorProduct;
 import lombok.extern.slf4j.Slf4j;
@@ -15,16 +14,16 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @Profile("sync-items-batch")
-public class GetInterCalorProductStep {
+public class SyncAcceInlineProductStep {
 
-  @Bean("getInterCalorProductStepDefinition")
+  @Bean("syncAcceInlineProductStepDefinition")
   public Step getInterCalorProductStep(
       StepBuilderFactory stepBuilderFactory,
-      GetInterCalorProductReader getInterCalorProductReader,
-      GetInterCalorProductWriter getInterCalorProductWriter,
-      GetInterCalorProductProcessor getInterCalorProductProcessor) {
+      SyncAcceInlineProductReader getInterCalorProductReader,
+      SyncAcceInlineProductWriter getInterCalorProductWriter,
+      SyncAcceInlineProductProcessor getInterCalorProductProcessor) {
     return stepBuilderFactory
-        .get("GetInterCalorProductStep")
+        .get("SyncAcceInlineProductStep")
         .<InterCalorProduct, ProductProcessInfo>chunk(100)
         .reader(getInterCalorProductReader)
         .processor(getInterCalorProductProcessor)

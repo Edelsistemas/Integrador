@@ -15,11 +15,11 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 @Slf4j
 @Profile("sync-bp-batch")
-public abstract class GetBaseProductWriter implements ItemWriter<ProductProcessInfo> {
+public abstract class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
 
   protected final MongoTemplate mongoTemplate;
 
-  public GetBaseProductWriter(MongoTemplate mongoTemplate) {
+  public SyncBaseProductWriter(MongoTemplate mongoTemplate) {
     this.mongoTemplate = mongoTemplate;
   }
 
