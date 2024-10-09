@@ -3,7 +3,6 @@ package com.edelflex.app.batch.sync_items;
 import com.edelflex.app.batch.BatchExecutionListener;
 import com.edelflex.app.services.integration.ProcessService;
 import java.util.Date;
-
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.batch.core.Job;
@@ -78,47 +77,139 @@ public class SyncBusinessPartnerConfig {
   }
 
   @Bean
-  public Flow splitFlow(Flow getInterCalorProductStepFlow) {
+  public Flow splitFlow(
+      Flow syncAcceInlineProductStepFlow,
+      Flow syncBomDesPosProductStepFlow,
+      Flow syncBombaCenProductStepFlow,
+      Flow syncDispLimpiProductStepFlow,
+      Flow syncHomogenProductStepFlow,
+      Flow syncInstrIndProductStepFlow,
+      Flow syncInstrumenProductStepFlow,
+      Flow syncInterCalorProductStepFlow,
+      Flow syncMatPriProductStepFlow,
+      Flow syncOtrasBomProductStepFlow,
+      Flow syncOtrasValProductStepFlow,
+      Flow syncOtrosCompProductStepFlow,
+      Flow syncPiezaProductStepFlow,
+      Flow syncRepuestosProductStepFlow) {
     return new FlowBuilder<SimpleFlow>("getFlow")
         .split(getFlowTaskExecutor())
         .add(
-            getInterCalorProductStepFlow
-            // getDataCigraCamposStepFlow,
-            //    getDataMedanoStepFlow,
-            //    getCigraGroupMappingStepFlow
-            )
+            syncAcceInlineProductStepFlow,
+            syncBomDesPosProductStepFlow,
+            syncBombaCenProductStepFlow,
+            syncDispLimpiProductStepFlow,
+            syncHomogenProductStepFlow,
+            syncInstrIndProductStepFlow,
+            syncInstrumenProductStepFlow,
+            syncInterCalorProductStepFlow,
+            syncMatPriProductStepFlow,
+            syncOtrasBomProductStepFlow,
+            syncOtrasValProductStepFlow,
+            syncOtrosCompProductStepFlow,
+            syncPiezaProductStepFlow,
+            syncRepuestosProductStepFlow)
         .build();
   }
 
   @Bean
-  public Flow getInterCalorProductStepFlow(Step getInterCalorProductStepDefinition) {
-    return new FlowBuilder<SimpleFlow>("getInterCalorProductStepFlow")
-        .start(getInterCalorProductStepDefinition)
+  public Flow syncAcceInlineProductStepFlow(Step syncAcceInlineProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncAcceInlineProductStepFlow")
+        .start(syncAcceInlineProductStepDefinition)
         .build();
   }
 
-  /*
-    @Bean
-    public Flow getDataCigraCamposStepFlow(Step getDataCigraCamposStepDefinition) {
-      return new FlowBuilder<SimpleFlow>("getDataCigraCamposStepFlow")
-          .start(getDataCigraCamposStepDefinition)
-          .build();
-    }
+  @Bean
+  public Flow syncBomDesPosProductStepFlow(Step syncBomDesPosProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncBomDesPosProductStepFlow")
+        .start(syncBomDesPosProductStepDefinition)
+        .build();
+  }
 
-    @Bean
-    public Flow getDataMedanoStepFlow(Step getDataMedanoStepDefinition) {
-      return new FlowBuilder<SimpleFlow>("getDataMedanoStepFlow")
-          .start(getDataMedanoStepDefinition)
-          .build();
-    }
+  @Bean
+  public Flow syncBombaCenProductStepFlow(Step syncBombaCenProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncBombaCenProductStepFlow")
+        .start(syncBombaCenProductStepDefinition)
+        .build();
+  }
 
-    @Bean
-    public Flow getCigraGroupMappingStepFlow(Step getCigraGroupMappingStepDefinition) {
-      return new FlowBuilder<SimpleFlow>("getCigraGroupMappingStepFlow")
-          .start(getCigraGroupMappingStepDefinition)
-          .build();
-    }
-  */
+  @Bean
+  public Flow syncDispLimpiProductStepFlow(Step syncDispLimpiProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncDispLimpiProductStepFlow")
+        .start(syncDispLimpiProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncHomogenProductStepFlow(Step syncHomogenProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncHomogenProductStepFlow")
+        .start(syncHomogenProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncInstrIndProductStepFlow(Step syncInstrIndProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncInstrIndProductStepFlow")
+        .start(syncInstrIndProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncInstrumenProductStepFlow(Step syncInstrumenProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncInstrumenProductStepFlow")
+        .start(syncInstrumenProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncInterCalorProductStepFlow(Step syncInterCalorProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncInterCalorProductStepFlow")
+        .start(syncInterCalorProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncMatPriProductStepFlow(Step syncMatPriProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncMatPriProductStepFlow")
+        .start(syncMatPriProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncOtrasBomProductStepFlow(Step syncOtrasBomProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncOtrasBomProductStepFlow")
+        .start(syncOtrasBomProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncOtrasValProductStepFlow(Step syncOtrasValProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncOtrasValProductStepFlow")
+        .start(syncOtrasValProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncOtrosCompProductStepFlow(Step syncOtrosCompProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncOtrosCompProductStepFlow")
+        .start(syncOtrosCompProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncPiezaProductStepFlow(Step syncPiezaProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncPiezaProductStepFlow")
+        .start(syncPiezaProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncRepuestosProductStepFlow(Step syncRepuestosProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncRepuestosProductStepFlow")
+        .start(syncRepuestosProductStepDefinition)
+        .build();
+  }
+
   @Bean
   public TaskExecutor getFlowTaskExecutor() {
     return new SimpleAsyncTaskExecutor("GetFlowTaskExecutor");

@@ -8,8 +8,17 @@ spring:
       username: root
       password: C1gr4.2o2l.Qa
 
+sqlserver:
+  jdbcUrl: jdbc:sqlserver://192.168.54.13:1433;encrypt=true;trustServerCertificate=true;databaseName=master
+  username: 4points
+  password: ConectorSAP_24
+  driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
 #SACARLOOOO
 bitone:
   integration:
     api-key: "d896c408-9f6c-45b7-8ef1-59c323dd67f8"
     url: "https://bit-one-tools.ar/services/api/external-batch-process/register"
+
+
+# jdbc:sqlserver://;serverName=192.168.54.13;

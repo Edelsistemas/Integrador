@@ -14,17 +14,13 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class InterCalorProduct extends Product {
+public class BombaCenProduct extends Product {
 
   private String codigoEdelflex; // U_SEIDORAR_ARTICULO_EDE_2
   private String codigoProveedor; // U_SEI_ITEMPROV
+  private String itemMarca; // U_SEI_Marca
   private String itemTipo; // U_SEI_Tipo
-  private String materialPlacas; // U_SEI_MatPlac
-  private String materialJuntas; // U_SEI_MatJun
-  private String cantSecciones; // U_SEI_CanSec
-  private String corrugacion; // U_SEI_Corruga
-  private String modeloBastidor; // U_SEI_ModBas
-  private String itemTamano; // U_SEI_Tamanho
+  private String itemModelo; // U_SEI_Modelo
 
   @Override
   public ProductProcessInfo getProcessInfo() {
@@ -42,15 +38,11 @@ public class InterCalorProduct extends Product {
     request.put("ItemsGroupCode", "TODO");
     request.put("U_SEIDORAR_REVISION", getRevision());
     request.put("U_SEIDORAR_ESTADO", "TODO");
+    request.put("U_SEI_Modelo", itemModelo);
+    request.put("U_SEI_Marca", itemMarca);
+    request.put("U_SEI_Tipo", itemTipo);
     request.put("U_SEIDORAR_ARTICULO_EDE_2", codigoEdelflex);
     request.put("U_SEI_ITEMPROV", codigoProveedor);
-    request.put("U_SEI_Tipo", itemTipo);
-    request.put("U_SEI_MatPlac", materialPlacas);
-    request.put("U_SEI_MatJun", materialJuntas);
-    request.put("U_SEI_CanSec", cantSecciones);
-    request.put("U_SEI_Corruga", corrugacion);
-    request.put("U_SEI_ModBas", modeloBastidor);
-    request.put("U_SEI_Tamanho", itemTamano);
     return request;
   }
 
@@ -62,33 +54,25 @@ public class InterCalorProduct extends Product {
     request.put("ItemsGroupCode", "TODO");
     request.put("U_SEIDORAR_REVISION", getRevision());
     request.put("U_SEIDORAR_ESTADO", "TODO");
+    request.put("U_SEI_Modelo", itemModelo);
+    request.put("U_SEI_Marca", itemMarca);
+    request.put("U_SEI_Tipo", itemTipo);
     request.put("U_SEIDORAR_ARTICULO_EDE_2", codigoEdelflex);
     request.put("U_SEI_ITEMPROV", codigoProveedor);
-    request.put("U_SEI_Tipo", itemTipo);
-    request.put("U_SEI_MatPlac", materialPlacas);
-    request.put("U_SEI_MatJun", materialJuntas);
-    request.put("U_SEI_CanSec", cantSecciones);
-    request.put("U_SEI_Corruga", corrugacion);
-    request.put("U_SEI_ModBas", modeloBastidor);
-    request.put("U_SEI_Tamanho", itemTamano);
     return request;
   }
 
-  public static InterCalorProduct create(ResultSet rs) throws SQLException {
-    return InterCalorProduct.builder()
+  public static BombaCenProduct create(ResultSet rs) throws SQLException {
+    return BombaCenProduct.builder()
         .id(rs.getLong("id"))
         .name(rs.getString("Name"))
         .product(rs.getString("Product"))
         .revision(rs.getString("Revision"))
         .codigoEdelflex(rs.getString("Codigo Edelflex"))
         .codigoProveedor(rs.getString("Codigo Proveedor"))
+        .itemModelo(rs.getString("Item_Modelo"))
+        .itemMarca(rs.getString("Item_Marca"))
         .itemTipo(rs.getString("Item_Tipo"))
-        .itemTamano(rs.getString("Item_Tamano"))
-        .corrugacion(rs.getString("Corrugacion"))
-        .cantSecciones(rs.getString("Cantidad Secciones"))
-        .materialJuntas(rs.getString("Material juntas"))
-        .materialPlacas(rs.getString("Material Placas"))
-        .modeloBastidor(rs.getString("Modelo Bastidor"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
   }

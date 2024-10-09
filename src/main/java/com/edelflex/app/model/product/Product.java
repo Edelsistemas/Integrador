@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 
 @Data
@@ -13,6 +16,12 @@ import java.util.Map;
 @NoArgsConstructor
 @SuperBuilder
 public abstract class Product {
+
+  private long id;
+  private String name; // NAME
+  private String product; // CODE
+  private String revision; // REVISION
+  private Action action;
 
   public enum Action {
     CREATE("Crear"),
@@ -31,7 +40,17 @@ public abstract class Product {
 
   public abstract ProductProcessInfo getProcessInfo();
 
-  public abstract Map<String, Object> createRequest();
 
-  private Action action;
+  public Map<String, Object> createRequest() {
+    // CREATE
+    if (getRevision().equals("A")) {
+      return getCreateRequest();
+    } else { // UPDATE
+      return getUpdateRequest();
+    }
+  }
+
+  protected abstract Map<String, Object> getUpdateRequest();
+
+  protected abstract Map<String, Object> getCreateRequest();
 }

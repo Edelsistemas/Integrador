@@ -17,7 +17,8 @@ public class ProductProcessInfo {
   public enum Status {
     OK, ERROR
   }
-  
+
+  private long id;
   private String response;
   private Status status;
   private String errorMessage;

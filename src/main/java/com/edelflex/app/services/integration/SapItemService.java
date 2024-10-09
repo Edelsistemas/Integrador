@@ -19,7 +19,9 @@ public class SapItemService {
     this.sapApiService = sapApiService;
   }
 
-  public ProductProcessInfo create(Map requestData) {
+  public ProductProcessInfo create(long id, String code, Map requestData) {
+    log.info("CREATE");
+    log.info(requestData.toString());
     /*
     try {
       HttpHeaders headers = sapApiService.getHeaders();
@@ -53,11 +55,14 @@ public class SapItemService {
         .response("")
         .status(ProductProcessInfo.Status.OK)
         .action(Product.Action.CREATE)
+        .code(code)
+        .id(id)
         .build();
   }
 
-  public ProductProcessInfo update(String code, Map requestData) {
-
+  public ProductProcessInfo update(long id, String code, Map requestData) {
+    log.info("UPDATE: " + code);
+    log.info(requestData.toString());
     /*
     try {
 
@@ -88,6 +93,8 @@ public class SapItemService {
         .response("")
         .status(ProductProcessInfo.Status.OK)
         .action(Product.Action.UPDATE)
+        .code(code)
+        .id(id)
         .build();
   }
 

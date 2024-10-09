@@ -10,17 +10,23 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.annotation.BeforeStep;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 @Slf4j
-@Profile("sync-bp-batch")
-public abstract class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
+public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
 
   protected final MongoTemplate mongoTemplate;
+  private final JdbcTemplate jdbcTemplate;
+  private final String updateQuery;
 
-  public SyncBaseProductWriter(MongoTemplate mongoTemplate) {
+  public SyncBaseProductWriter(
+      MongoTemplate mongoTemplate, JdbcTemplate jdbcTemplate, String updateQuery) {
     this.mongoTemplate = mongoTemplate;
+    this.jdbcTemplate = jdbcTemplate;
+    this.updateQuery = updateQuery;
   }
 
   protected ProcessInfo processInfo;
@@ -54,5 +60,9 @@ public abstract class SyncBaseProductWriter implements ItemWriter<ProductProcess
     SyncItemsMetrics.registerWriter(processInfo, createCount, updateCount, errorCount);
   }
 
-  protected abstract void process(List<? extends ProductProcessInfo> list);
+  private void process(List<? extends ProductProcessInfo> list) {
+
+    // TODO: UPDATE
+
+  }
 }

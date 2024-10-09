@@ -20,7 +20,49 @@ sqlserver:
 
 team-center:
   querys:
-    get-inter-calor-products: SELECT * FROM EdelflexDos.dbo.ITEMS
+    schema: DB_Edelflex_SAP
+    acce-inline:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.AcceInline
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.AcceInline
+    bom-des-pos:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.BomDesPos
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.BomDesPos
+    bomba-cen:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.BombaCen
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.BombaCen
+    disp-limpi:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.DispLimpi
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.DispLimpi
+    homogen:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Homogen
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.Homogen
+    instr-ind:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.InstrInd
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.InstrInd
+    instrumen:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Instrumen
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.Instrumen
+    inter-calor:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Inter_Calor
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.Inter_Calor
+    mat-pri:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.MatPri
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.MatPri
+    otras-bom:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.OtrasBom
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.OtrasBom
+    otras-val:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.OtrasVal
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.OtrasVal
+    otros-comp:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.OtrosComp
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.OtrosComp
+    pieza:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Pieza
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.Pieza
+    repuestos:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Repuestos
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.Repuestos
 
 batch-process:
   sync-business-partners: 1800000
