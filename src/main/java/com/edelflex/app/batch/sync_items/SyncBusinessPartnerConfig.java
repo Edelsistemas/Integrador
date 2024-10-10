@@ -91,7 +91,10 @@ public class SyncBusinessPartnerConfig {
       Flow syncOtrasValProductStepFlow,
       Flow syncOtrosCompProductStepFlow,
       Flow syncPiezaProductStepFlow,
-      Flow syncRepuestosProductStepFlow) {
+      Flow syncRepuestosProductStepFlow,
+      Flow syncRestoInterProductStepFlow,
+      Flow syncSemielaboProductStepFlow,
+      Flow syncSisCalEHProductStepFlow) {
     return new FlowBuilder<SimpleFlow>("getFlow")
         .split(getFlowTaskExecutor())
         .add(
@@ -108,7 +111,10 @@ public class SyncBusinessPartnerConfig {
             syncOtrasValProductStepFlow,
             syncOtrosCompProductStepFlow,
             syncPiezaProductStepFlow,
-            syncRepuestosProductStepFlow)
+            syncRepuestosProductStepFlow,
+            syncRestoInterProductStepFlow,
+            syncSemielaboProductStepFlow,
+            syncSisCalEHProductStepFlow)
         .build();
   }
 
@@ -207,6 +213,27 @@ public class SyncBusinessPartnerConfig {
   public Flow syncRepuestosProductStepFlow(Step syncRepuestosProductStepDefinition) {
     return new FlowBuilder<SimpleFlow>("syncRepuestosProductStepFlow")
         .start(syncRepuestosProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncRestoInterProductStepFlow(Step syncRestoInterProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncRestoInterProductStepFlow")
+        .start(syncRestoInterProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncSemielaboProductStepFlow(Step syncSemielaboProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncSemielaboProductStepFlow")
+        .start(syncSemielaboProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncSisCalEHProductStepFlow(Step syncSisCalEHProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncSisCalEHProductStepFlow")
+        .start(syncSisCalEHProductStepDefinition)
         .build();
   }
 

@@ -63,6 +63,17 @@ team-center:
     repuestos:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.Repuestos
       update: UPDATE FROM ${team-center.querys.schema}.dbo.Repuestos
+    resto-inter:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.RestoInter
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.RestoInter
+    semielabo:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Semielabo
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.Semielabo
+    sis-cal-eh:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.SisCalEH
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.SisCalEH
+
+
 
 batch-process:
   sync-business-partners: 1800000
