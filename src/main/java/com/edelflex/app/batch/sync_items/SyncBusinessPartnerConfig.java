@@ -94,7 +94,20 @@ public class SyncBusinessPartnerConfig {
       Flow syncRepuestosProductStepFlow,
       Flow syncRestoInterProductStepFlow,
       Flow syncSemielaboProductStepFlow,
-      Flow syncSisCalEHProductStepFlow) {
+      Flow syncSisCalEHProductStepFlow,
+      Flow syncSisLimECProductStepFlow,
+      Flow syncSisMezEMProductStepFlow,
+      Flow syncSisRecProdProductStepFlow,
+      Flow syncSistemasProductStepFlow,
+      Flow syncTanquesProductStepFlow,
+      Flow syncValAliSegProductStepFlow,
+      Flow syncValAsientoProductStepFlow,
+      Flow syncValControlProductStepFlow,
+      Flow syncValDiaProductStepFlow,
+      Flow syncValFuelleProductStepFlow,
+      Flow syncValRetenProductStepFlow,
+      Flow syncValvulasProductStepFlow,
+      Flow syncENAProductStepFlow) {
     return new FlowBuilder<SimpleFlow>("getFlow")
         .split(getFlowTaskExecutor())
         .add(
@@ -114,7 +127,20 @@ public class SyncBusinessPartnerConfig {
             syncRepuestosProductStepFlow,
             syncRestoInterProductStepFlow,
             syncSemielaboProductStepFlow,
-            syncSisCalEHProductStepFlow)
+            syncSisCalEHProductStepFlow,
+            syncSisLimECProductStepFlow,
+            syncSisMezEMProductStepFlow,
+            syncSisRecProdProductStepFlow,
+            syncSistemasProductStepFlow,
+            syncTanquesProductStepFlow,
+            syncValAliSegProductStepFlow,
+            syncValAsientoProductStepFlow,
+            syncValControlProductStepFlow,
+            syncValDiaProductStepFlow,
+            syncValFuelleProductStepFlow,
+            syncValRetenProductStepFlow,
+            syncValvulasProductStepFlow,
+            syncENAProductStepFlow)
         .build();
   }
 
@@ -234,6 +260,97 @@ public class SyncBusinessPartnerConfig {
   public Flow syncSisCalEHProductStepFlow(Step syncSisCalEHProductStepDefinition) {
     return new FlowBuilder<SimpleFlow>("syncSisCalEHProductStepFlow")
         .start(syncSisCalEHProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncSisLimECProductStepFlow(Step syncSisLimECProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncSisLimECProductStepFlow")
+        .start(syncSisLimECProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncSisMezEMProductStepFlow(Step syncSisMezEMProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncSisMezEMProductStepFlow")
+        .start(syncSisMezEMProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncSisRecProdProductStepFlow(Step syncSisRecProdProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncSisRecProdProductStepFlow")
+        .start(syncSisRecProdProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncSistemasProductStepFlow(Step syncSistemasProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncSistemasProductStepFlow")
+        .start(syncSistemasProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncTanquesProductStepFlow(Step syncTanquesProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncTanquesProductStepFlow")
+        .start(syncTanquesProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncValAliSegProductStepFlow(Step syncValAliSegProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncValAliSegProductStepFlow")
+        .start(syncValAliSegProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncValAsientoProductStepFlow(Step syncValAsientoProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncValAsientoProductStepFlow")
+        .start(syncValAsientoProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncValControlProductStepFlow(Step syncValControlProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncValControlProductStepFlow")
+        .start(syncValControlProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncValDiaProductStepFlow(Step syncValDiaProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncValDiaProductStepFlow")
+        .start(syncValDiaProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncValFuelleProductStepFlow(Step syncValFuelleProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncValFuelleProductStepFlow")
+        .start(syncValFuelleProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncValRetenProductStepFlow(Step syncValRetenProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncValRetenProductStepFlow")
+        .start(syncValRetenProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncValvulasProductStepFlow(Step syncValvulasProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncValvulasProductStepFlow")
+        .start(syncValvulasProductStepDefinition)
+        .build();
+  }
+
+  @Bean
+  public Flow syncENAProductStepFlow(Step syncENAProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncENAProductStepFlow")
+        .start(syncENAProductStepDefinition)
         .build();
   }
 

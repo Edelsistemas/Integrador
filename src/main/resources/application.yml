@@ -72,7 +72,45 @@ team-center:
     sis-cal-eh:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.SisCalEH
       update: UPDATE FROM ${team-center.querys.schema}.dbo.SisCalEH
-
+    sis-lim-ec:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.SisLimEC
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.SisLimEC
+    sis-mez-em:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.SisMezEM
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.SisMezEM
+    sis-rec-prod:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.SisRecProd
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.SisRecProd
+    sistemas:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Sistemas
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.Sistemas
+    subcon:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Subcon
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.Subcon
+    tanques:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Tanques
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.Tanques
+    val-ali-seg:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValAliSeg
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.ValAliSeg
+    val-asiento:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValAsiento
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.ValAsiento
+    val-control:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValControl
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.ValControl
+    val-dia:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValDia
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.ValDia
+    val-fuelle:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValFuelle
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.ValFuelle
+    val-reten:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValReten
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.ValReten
+    valvulas:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Valvulas
+      update: UPDATE FROM ${team-center.querys.schema}.dbo.Valvulas
 
 
 batch-process:

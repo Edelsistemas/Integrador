@@ -6,8 +6,8 @@ import com.edelflex.app.batch.sync_items.step.product_type.SyncBaseProductReader
 import com.edelflex.app.batch.sync_items.step.product_type.SyncBaseProductWriter;
 import com.edelflex.app.exceptions.SapCallException;
 import com.edelflex.app.model.ProductProcessInfo;
-import com.edelflex.app.model.product.SemielaboProduct;
-import com.edelflex.app.model.product.SisCalEHProduct;
+import com.edelflex.app.model.product.ValDiaProduct;
+import com.edelflex.app.model.product.ValFuelleProduct;
 import com.edelflex.app.services.integration.SapItemService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.*;
@@ -23,17 +23,17 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @Profile("sync-items-batch")
-public class SyncSysCalEHProductStep {
+public class SyncValFuelleProductStep {
 
-  @Bean("syncSisCalEHProductStepDefinition")
-  public Step syncSisCalEHProductStep(
-      StepBuilderFactory stepBuilderFactory,
-      @Qualifier("sisCalEHReader") SyncBaseProductReader<SisCalEHProduct> reader,
-      @Qualifier("sisCalEHProcessor") SyncBaseProductProcessor<SisCalEHProduct> processor,
-      @Qualifier("sisCalEHWriter") SyncBaseProductWriter writer) {
+  @Bean("syncValFuelleProductStepDefinition")
+  public Step syncValFuelleProductStep(
+          StepBuilderFactory stepBuilderFactory,
+          @Qualifier("valFuelleReader") SyncBaseProductReader<ValFuelleProduct> reader,
+          @Qualifier("valFuelleProcessor") SyncBaseProductProcessor<ValFuelleProduct> processor,
+          @Qualifier("valFuelleWriter") SyncBaseProductWriter writer) {
     return stepBuilderFactory
-        .get("Sync SisCalEH Step")
-        .<SisCalEHProduct, ProductProcessInfo>chunk(100)
+        .get("Sync ValFuelle Step")
+        .<ValFuelleProduct, ProductProcessInfo>chunk(100)
         .reader(reader)
         .processor(processor)
         .writer(writer)
@@ -44,23 +44,23 @@ public class SyncSysCalEHProductStep {
         .build();
   }
 
-  @Bean("sisCalEHReader")
-  public SyncBaseProductReader<SisCalEHProduct> reader(
+  @Bean("valFuelleReader")
+  public SyncBaseProductReader<ValFuelleProduct> reader(
       @Qualifier("jdbcTemplateSQLServer") JdbcTemplate jdbcTemplate,
-      @Value("${team-center.querys.sis-cal-eh..get}") String query) {
-    return new SyncBaseProductReader<>(jdbcTemplate, query, SisCalEHProduct.class);
+      @Value("${team-center.querys.val-fuelle.get}") String query) {
+    return new SyncBaseProductReader<>(jdbcTemplate, query, ValFuelleProduct.class);
   }
 
-  @Bean("sisCalEHProcessor")
-  public SyncBaseProductProcessor<SisCalEHProduct> processor(SapItemService sapItemService) {
+  @Bean("valFuelleProcessor")
+  public SyncBaseProductProcessor<ValFuelleProduct> processor(SapItemService sapItemService) {
     return new SyncBaseProductProcessor<>(sapItemService);
   }
 
-  @Bean("sisCalEHWriter")
+  @Bean("valFuelleWriter")
   public SyncBaseProductWriter writer(
       MongoTemplate mongoTemplate,
       @Qualifier("jdbcTemplateSQLServer") JdbcTemplate jdbcTemplate,
-      @Value("${team-center.querys.sis-cal-eh.update}") String updateQuery) {
+      @Value("${team-center.querys.val-fuelle.update}") String updateQuery) {
     return new SyncBaseProductWriter(mongoTemplate, jdbcTemplate, updateQuery);
   }
 }
