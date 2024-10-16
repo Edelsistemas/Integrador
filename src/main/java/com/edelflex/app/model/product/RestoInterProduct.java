@@ -17,6 +17,7 @@ import java.util.Map;
 @SuperBuilder
 public class RestoInterProduct extends Product {
 
+  private final int GROUP_CODE = 1;
   private String codigoEdelflex; // U_SEIDORAR_ARTICULO_EDE_2
   private String codigoProveedor; // U_SEI_ITEMPROV
   private String itemTipo; // U_SEI_Tipo
@@ -36,11 +37,10 @@ public class RestoInterProduct extends Product {
     Map<String, Object> request = new HashMap<>();
     // request.put("ItemCode", product);
     request.put("ItemName", getName());
-    request.put("ItemsGroupCode", "TODO");
     request.put("U_SEIDORAR_REVISION", getRevision());
-    request.put("U_SEIDORAR_ESTADO", "TODO");
+    request.put("U_SEIDORAR_ESTADO", "60");
     request.put("U_SEIDORAR_ARTICULO_EDE_2", codigoEdelflex);
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+    //request.put("U_SEI_ITEMPROV", codigoProveedor); TODO: NO ESTA EN LA INSTANCIA
     request.put("U_SEI_Tipo", itemTipo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Modelo", itemModelo);
@@ -52,11 +52,11 @@ public class RestoInterProduct extends Product {
     Map<String, Object> request = new HashMap<>();
     request.put("ItemCode", getProduct());
     request.put("ItemName", getName());
-    request.put("ItemsGroupCode", "TODO");
+    request.put("ItemsGroupCode", GROUP_CODE);
     request.put("U_SEIDORAR_REVISION", getRevision());
-    request.put("U_SEIDORAR_ESTADO", "TODO");
+    request.put("U_SEIDORAR_ESTADO", "60"); // TODO:
     request.put("U_SEIDORAR_ARTICULO_EDE_2", codigoEdelflex);
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+    //request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_Tipo", itemTipo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Modelo", itemModelo);
