@@ -23,94 +23,98 @@ team-center:
     schema: DB_Edelflex_SAP
     acce-inline:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.AcceInline
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.AcceInline
+      update: UPDATE ${team-center.querys.schema}.dbo.AcceInline SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     bom-des-pos:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.BomDesPos
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.BomDesPos
+      update: UPDATE ${team-center.querys.schema}.dbo.BomDesPos SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     bomba-cen:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.BombaCen
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.BombaCen
+      update: UPDATE ${team-center.querys.schema}.dbo.BombaCen SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     disp-limpi:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.DispLimpi
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.DispLimpi
+      update: UPDATE ${team-center.querys.schema}.dbo.DispLimpi SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
+    ena:
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.ENA
+      update: UPDATE ${team-center.querys.schema}.dbo.ENA SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     homogen:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.Homogen
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.Homogen
+      update: UPDATE ${team-center.querys.schema}.dbo.Homogen SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     instr-ind:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.InstrInd
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.InstrInd
+      update: UPDATE ${team-center.querys.schema}.dbo.InstrInd SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     instrumen:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.Instrumen
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.Instrumen
+      update: UPDATE ${team-center.querys.schema}.dbo.Instrumen SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     inter-calor:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.Inter_Calor
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.Inter_Calor
+      update: UPDATE ${team-center.querys.schema}.dbo.Inter_Calor SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     mat-pri:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.MatPri
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.MatPri
+      update: UPDATE ${team-center.querys.schema}.dbo.MatPri SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     otras-bom:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.OtrasBom
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.OtrasBom
+      update: UPDATE ${team-center.querys.schema}.dbo.OtrasBom SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     otras-val:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.OtrasVal
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.OtrasVal
+      update: UPDATE ${team-center.querys.schema}.dbo.OtrasVal SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     otros-comp:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.OtrosComp
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.OtrosComp
+      update: UPDATE ${team-center.querys.schema}.dbo.OtrosComp SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     pieza:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.Pieza
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.Pieza
+      update: UPDATE ${team-center.querys.schema}.dbo.Pieza SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     repuestos:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.Repuestos
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.Repuestos
+      update: UPDATE ${team-center.querys.schema}.dbo.Repuestos SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     resto-inter:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.RestoInter
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.RestoInter
+      update: UPDATE ${team-center.querys.schema}.dbo.RestoInter SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     semielabo:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.Semielabo
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.Semielabo
+      update: UPDATE ${team-center.querys.schema}.dbo.Semielabo SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     sis-cal-eh:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.SisCalEH
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.SisCalEH
+      update: UPDATE ${team-center.querys.schema}.dbo.SisCalEH SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     sis-lim-ec:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.SisLimEC
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.SisLimEC
+      update: UPDATE ${team-center.querys.schema}.dbo.SisLimEC SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     sis-mez-em:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.SisMezEM
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.SisMezEM
+      update: UPDATE ${team-center.querys.schema}.dbo.SisMezEM SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     sis-rec-prod:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.SisRecProd
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.SisRecProd
+      update: UPDATE ${team-center.querys.schema}.dbo.SisRecProd SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     sistemas:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.Sistemas
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.Sistemas
+      update: UPDATE ${team-center.querys.schema}.dbo.Sistemas SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     subcon:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.Subcon
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.Subcon
+      update: UPDATE ${team-center.querys.schema}.dbo.Subcon SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     tanques:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.Tanques
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.Tanques
+      update: UPDATE ${team-center.querys.schema}.dbo.Tanques SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     val-ali-seg:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.ValAliSeg
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.ValAliSeg
+      update: UPDATE ${team-center.querys.schema}.dbo.ValAliSeg SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     val-asiento:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.ValAsiento
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.ValAsiento
+      update: UPDATE ${team-center.querys.schema}.dbo.ValAsiento SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     val-control:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.ValControl
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.ValControl
+      update: UPDATE ${team-center.querys.schema}.dbo.ValControl SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     val-dia:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.ValDia
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.ValDia
+      update: UPDATE ${team-center.querys.schema}.dbo.ValDia SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     val-fuelle:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.ValFuelle
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.ValFuelle
+      update: UPDATE ${team-center.querys.schema}.dbo.ValFuelle SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     val-reten:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.ValReten
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.ValReten
+      update: UPDATE ${team-center.querys.schema}.dbo.ValReten SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     valvulas:
       get: SELECT * FROM ${team-center.querys.schema}.dbo.Valvulas
-      update: UPDATE FROM ${team-center.querys.schema}.dbo.Valvulas
+      update: UPDATE ${team-center.querys.schema}.dbo.Valvulas SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
+
 
 
 batch-process:

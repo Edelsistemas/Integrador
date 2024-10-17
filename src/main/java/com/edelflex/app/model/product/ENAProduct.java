@@ -63,7 +63,7 @@ public class ENAProduct extends Product {
         .product(rs.getString("Product"))
         .revision(rs.getString("Revision"))
         .codigoEdelflex(rs.getString("Codigo Edelflex"))
-        .codigoProveedor(rs.getString("Codigo Proveedor"))
+      //  .codigoProveedor(rs.getString("Codigo Proveedor")) TODO:
         .itemTipo(rs.getString("Item_Tipo"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();

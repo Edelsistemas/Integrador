@@ -1,6 +1,7 @@
 package com.edelflex.app.model.product;
 
 import com.edelflex.app.model.ProductProcessInfo;
+import com.edelflex.app.utils.Utils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,14 +41,32 @@ public abstract class Product {
 
   public abstract ProductProcessInfo getProcessInfo();
 
-
   public Map<String, Object> createRequest() {
+    Map<String, Object> request;
     // CREATE
     if (getRevision().equals("A")) {
-      return getCreateRequest();
+      request = getCreateRequest();
     } else { // UPDATE
-      return getUpdateRequest();
+      request = getUpdateRequest();
     }
+    return clearEmptyValues(request);
+  }
+
+  private Map<String, Object> clearEmptyValues(Map<String, Object> request) {
+    Map<String, Object> results = new HashMap<>();
+    request.forEach(
+        (key, value) -> {
+          if (value != null) {
+            if (value instanceof String) {
+              if (Utils.isNotEmpty(value.toString())) {
+                results.put(key, value);
+              }
+            } else {
+              results.put(key, value);
+            }
+          }
+        });
+    return results;
   }
 
   protected abstract Map<String, Object> getUpdateRequest();

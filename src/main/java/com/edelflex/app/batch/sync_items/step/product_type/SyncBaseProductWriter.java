@@ -1,11 +1,16 @@
 package com.edelflex.app.batch.sync_items.step.product_type;
 
+import com.edelflex.app.batch.sync_items.SyncBusinessPartnerConfig;
 import com.edelflex.app.batch.sync_items.SyncItemsMetrics;
 import com.edelflex.app.model.ProductProcessInfo;
 import com.edelflex.app.model.product.Product;
 import com.edelflex.app.utils.ProcessInfo;
+
+import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.annotation.BeforeStep;
@@ -21,6 +26,7 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
   protected final MongoTemplate mongoTemplate;
   private final JdbcTemplate jdbcTemplate;
   private final String updateQuery;
+  private String jobId;
 
   public SyncBaseProductWriter(
       MongoTemplate mongoTemplate, JdbcTemplate jdbcTemplate, String updateQuery) {
@@ -34,6 +40,10 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
   @BeforeStep
   public void beforeStep(StepExecution stepExecution) {
     this.processInfo = SyncItemsMetrics.getProcessInfo(stepExecution);
+    this.jobId =
+        stepExecution
+            .getJobParameters()
+            .getString(SyncBusinessPartnerConfig.PARAM_PROCESS_IDENTIFIER);
   }
 
   @Override
@@ -61,8 +71,16 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
   }
 
   private void process(List<? extends ProductProcessInfo> list) {
-
-    // TODO: UPDATE
-
+    //  SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
+    list.forEach(
+        productProcessInfo -> {
+          jdbcTemplate.update(
+              updateQuery,
+              productProcessInfo.getStatus().name(),
+              new Date(),
+              productProcessInfo.getResponseData(),
+              jobId,
+              productProcessInfo.getId());
+        });
   }
 }

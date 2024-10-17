@@ -6,7 +6,6 @@ import com.edelflex.app.batch.sync_items.step.product_type.SyncBaseProductReader
 import com.edelflex.app.batch.sync_items.step.product_type.SyncBaseProductWriter;
 import com.edelflex.app.exceptions.SapCallException;
 import com.edelflex.app.model.ProductProcessInfo;
-import com.edelflex.app.model.product.RepuestosProduct;
 import com.edelflex.app.model.product.RestoInterProduct;
 import com.edelflex.app.services.integration.SapItemService;
 import lombok.extern.slf4j.Slf4j;

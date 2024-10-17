@@ -84,6 +84,13 @@ public class SyncBusinessPartnerConfig {
         .build();
   }
 
+  @Bean
+  public Flow syncRestoInterProductStepFlow(Step syncRestoInterProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncRestoInterProductStepFlow")
+            .start(syncRestoInterProductStepDefinition)
+            .build();
+  }
+
   /*
     @Bean
     public Flow splitFlow(
@@ -251,12 +258,6 @@ public class SyncBusinessPartnerConfig {
           .build();
     }
 
-    @Bean
-    public Flow syncRestoInterProductStepFlow(Step syncRestoInterProductStepDefinition) {
-      return new FlowBuilder<SimpleFlow>("syncRestoInterProductStepFlow")
-          .start(syncRestoInterProductStepDefinition)
-          .build();
-    }
 
     @Bean
     public Flow syncSemielaboProductStepFlow(Step syncSemielaboProductStepDefinition) {
