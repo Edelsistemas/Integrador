@@ -30,10 +30,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 @EnableBatchProcessing
 @Slf4j
 @Profile("sync-items-batch")
-public class SyncBusinessPartnerConfig {
+public class SyncItemsConfig {
 
   public static final String PARAM_PROCESS_IDENTIFIER = "process-identifier";
-  private static final String SYNC_ITEMS = "SYNC_ITEMS";
+  public static final String SYNC_ITEMS = "SYNC_ITEMS";
+  public static final String ITEMS_HISTORY_COLLECTION = "items-process-history";
 
   @Autowired
   @Qualifier("jobLauncherSyncItems")

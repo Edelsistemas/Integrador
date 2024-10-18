@@ -1,24 +1,23 @@
 package com.edelflex.app.batch.sync_items.step.product_type;
 
+import com.edelflex.app.batch.sync_items.SyncItemsConfig;
 import com.edelflex.app.batch.sync_items.SyncItemsMetrics;
 import com.edelflex.app.model.ProductProcessInfo;
-import com.edelflex.app.model.product.AcceInlineProduct;
 import com.edelflex.app.model.product.Product;
 import com.edelflex.app.services.integration.SapItemService;
 import com.edelflex.app.utils.ProcessInfo;
+import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.annotation.BeforeStep;
 import org.springframework.batch.item.ItemProcessor;
-import org.springframework.context.annotation.Profile;
-
-import java.util.Map;
 
 @Slf4j
 public class SyncBaseProductProcessor<T extends Product>
     implements ItemProcessor<T, ProductProcessInfo> {
 
   protected final SapItemService sapItemService;
+  private String jobId;
 
   public SyncBaseProductProcessor(SapItemService sapItemService) {
     this.sapItemService = sapItemService;
@@ -29,6 +28,8 @@ public class SyncBaseProductProcessor<T extends Product>
   @BeforeStep
   public void beforeStep(StepExecution stepExecution) {
     this.processInfo = SyncItemsMetrics.getProcessInfo(stepExecution);
+    this.jobId =
+        stepExecution.getJobParameters().getString(SyncItemsConfig.PARAM_PROCESS_IDENTIFIER);
   }
 
   @Override
@@ -53,6 +54,7 @@ public class SyncBaseProductProcessor<T extends Product>
     }
     long t2 = System.currentTimeMillis();
     SyncItemsMetrics.registerProcessEnd(processInfo, t1, t2);
+    productProcessInfo.setJobId(jobId);
     return productProcessInfo;
   }
 }

@@ -1,6 +1,6 @@
 package com.edelflex.app.utils;
 
-import com.edelflex.app.batch.sync_items.SyncBusinessPartnerConfig;
+import com.edelflex.app.batch.sync_items.SyncItemsConfig;
 import java.util.*;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,7 @@ public class ProcessTracer {
     String jobId =
         stepExecution
             .getJobParameters()
-            .getString(SyncBusinessPartnerConfig.PARAM_PROCESS_IDENTIFIER);
+            .getString(SyncItemsConfig.PARAM_PROCESS_IDENTIFIER);
     ProcessInfo processInfo =
         INFO.stream()
             .filter(

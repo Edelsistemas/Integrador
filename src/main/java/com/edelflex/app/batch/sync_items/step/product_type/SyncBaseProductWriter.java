@@ -1,6 +1,6 @@
 package com.edelflex.app.batch.sync_items.step.product_type;
 
-import com.edelflex.app.batch.sync_items.SyncBusinessPartnerConfig;
+import com.edelflex.app.batch.sync_items.SyncItemsConfig;
 import com.edelflex.app.batch.sync_items.SyncItemsMetrics;
 import com.edelflex.app.model.ProductProcessInfo;
 import com.edelflex.app.model.product.Product;
@@ -8,16 +8,16 @@ import com.edelflex.app.utils.ProcessInfo;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.annotation.BeforeStep;
 import org.springframework.batch.item.ItemWriter;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Profile;
+import org.springframework.data.mongodb.core.BulkOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @Slf4j
@@ -41,9 +41,7 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
   public void beforeStep(StepExecution stepExecution) {
     this.processInfo = SyncItemsMetrics.getProcessInfo(stepExecution);
     this.jobId =
-        stepExecution
-            .getJobParameters()
-            .getString(SyncBusinessPartnerConfig.PARAM_PROCESS_IDENTIFIER);
+        stepExecution.getJobParameters().getString(SyncItemsConfig.PARAM_PROCESS_IDENTIFIER);
   }
 
   @Override
@@ -68,6 +66,12 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
             .filter(item -> item.getStatus().equals(ProductProcessInfo.Status.ERROR))
             .count();
     SyncItemsMetrics.registerWriter(processInfo, createCount, updateCount, errorCount);
+
+    BulkOperations bulkOperations =
+        mongoTemplate.bulkOps(
+            BulkOperations.BulkMode.UNORDERED, Map.class, SyncItemsConfig.ITEMS_HISTORY_COLLECTION);
+    bulkOperations.insert(list);
+    bulkOperations.execute();
   }
 
   private void process(List<? extends ProductProcessInfo> list) {

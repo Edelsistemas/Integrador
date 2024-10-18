@@ -22,97 +22,97 @@ team-center:
   querys:
     schema: DB_Edelflex_SAP
     acce-inline:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.AcceInline
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.AcceInline WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.AcceInline SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     bom-des-pos:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.BomDesPos
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.BomDesPos WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.BomDesPos SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     bomba-cen:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.BombaCen
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.BombaCen WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.BombaCen SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     disp-limpi:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.DispLimpi
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.DispLimpi WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.DispLimpi SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     ena:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.ENA
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.ENA WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.ENA SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     homogen:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.Homogen
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Homogen WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.Homogen SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     instr-ind:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.InstrInd
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.InstrInd WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.InstrInd SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     instrumen:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.Instrumen
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Instrumen WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.Instrumen SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     inter-calor:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.Inter_Calor
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Inter_Calor WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.Inter_Calor SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     mat-pri:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.MatPri
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.MatPri WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.MatPri SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     otras-bom:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.OtrasBom
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.OtrasBom WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.OtrasBom SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     otras-val:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.OtrasVal
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.OtrasVal WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.OtrasVal SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     otros-comp:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.OtrosComp
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.OtrosComp WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.OtrosComp SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     pieza:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.Pieza
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Pieza WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.Pieza SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     repuestos:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.Repuestos
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Repuestos WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.Repuestos SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     resto-inter:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.RestoInter
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.RestoInter WHERE Status IS NULL OR Status = '' OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.RestoInter SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     semielabo:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.Semielabo
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Semielabo WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.Semielabo SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     sis-cal-eh:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.SisCalEH
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.SisCalEH WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.SisCalEH SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     sis-lim-ec:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.SisLimEC
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.SisLimEC WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.SisLimEC SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     sis-mez-em:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.SisMezEM
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.SisMezEM WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.SisMezEM SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     sis-rec-prod:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.SisRecProd
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.SisRecProd WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.SisRecProd SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     sistemas:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.Sistemas
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Sistemas WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.Sistemas SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     subcon:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.Subcon
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Subcon WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.Subcon SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     tanques:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.Tanques
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Tanques WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.Tanques SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     val-ali-seg:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValAliSeg
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValAliSeg WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.ValAliSeg SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     val-asiento:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValAsiento
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValAsiento WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.ValAsiento SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     val-control:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValControl
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValControl WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.ValControl SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     val-dia:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValDia
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValDia WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.ValDia SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     val-fuelle:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValFuelle
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValFuelle WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.ValFuelle SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     val-reten:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValReten
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.ValReten WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.ValReten SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     valvulas:
-      get: SELECT * FROM ${team-center.querys.schema}.dbo.Valvulas
+      get: SELECT * FROM ${team-center.querys.schema}.dbo.Valvulas WHERE Status IS NULL OR Status = 'ERROR'
       update: UPDATE ${team-center.querys.schema}.dbo.Valvulas SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
 
 
