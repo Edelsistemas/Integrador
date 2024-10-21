@@ -16,44 +16,24 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class PiezaProduct extends Product {
 
-  private String codigoEdelflex; // U_SEIDORAR_ARTICULO_EDE_2
   private String codigoProveedor; // U_SEI_ITEMPROV
-  private String itemTipo; // U_SEI_Tipo
 
   @Override
   public ProductProcessInfo getProcessInfo() {
     return ProductProcessInfo.builder()
-        .request(new HashMap<>()) // TODO:
+        .request(new HashMap<>())
         .code(getProduct())
         .build();
   }
 
   @Override
-  protected Map<String, Object> getUpdateRequest() {
-    Map<String, Object> request = new HashMap<>();
-    // request.put("ItemCode", product);
-    request.put("ItemName", getName());
-    request.put("ItemsGroupCode", "TODO");
-    request.put("U_SEIDORAR_REVISION", getRevision());
-    request.put("U_SEIDORAR_ESTADO", "TODO");
-    request.put("U_SEIDORAR_ARTICULO_EDE_2", codigoEdelflex);
+  protected void populateUpdateRequest(Map<String, Object> request) {
     request.put("U_SEI_ITEMPROV", codigoProveedor);
-    request.put("U_SEI_Tipo", itemTipo);
-    return request;
   }
 
   @Override
-  protected Map<String, Object> getCreateRequest() {
-    Map<String, Object> request = new HashMap<>();
-    request.put("ItemCode", getProduct());
-    request.put("ItemName", getName());
-    request.put("ItemsGroupCode", "TODO");
-    request.put("U_SEIDORAR_REVISION", getRevision());
-    request.put("U_SEIDORAR_ESTADO", "TODO");
-    request.put("U_SEIDORAR_ARTICULO_EDE_2", codigoEdelflex);
+  protected void populateCreateRequest(Map<String, Object> request) {
     request.put("U_SEI_ITEMPROV", codigoProveedor);
-    request.put("U_SEI_Tipo", itemTipo);
-    return request;
   }
 
   public static PiezaProduct create(ResultSet rs) throws SQLException {
@@ -64,8 +44,17 @@ public class PiezaProduct extends Product {
         .revision(rs.getString("Revision"))
         .codigoEdelflex(rs.getString("Item_Codigo Edelflex"))
         .codigoProveedor(rs.getString("Item_Codigo Proveedor"))
-        .itemTipo(rs.getString("Item_Tipo"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
+  }
+
+  @Override
+  protected int getGroupCode() {
+    return 107;
+  }
+
+  @Override
+  protected String getUoM() {
+    return null;
   }
 }

@@ -16,7 +16,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class InterCalorProduct extends Product {
 
-  private String codigoEdelflex; // U_SEIDORAR_ARTICULO_EDE_2
   private String codigoProveedor; // U_SEI_ITEMPROV
   private String itemTipo; // U_SEI_Tipo
   private String materialPlacas; // U_SEI_MatPlac
@@ -25,24 +24,18 @@ public class InterCalorProduct extends Product {
   private String corrugacion; // U_SEI_Corruga
   private String modeloBastidor; // U_SEI_ModBas
   private String itemTamano; // U_SEI_Tamanho
+  private String marca;
 
   @Override
   public ProductProcessInfo getProcessInfo() {
     return ProductProcessInfo.builder()
-        .request(new HashMap<>()) // TODO:
+        .request(new HashMap<>())
         .code(getProduct())
         .build();
   }
 
   @Override
-  protected Map<String, Object> getUpdateRequest() {
-    Map<String, Object> request = new HashMap<>();
-    // request.put("ItemCode", product);
-    request.put("ItemName", getName());
-    request.put("ItemsGroupCode", "TODO");
-    request.put("U_SEIDORAR_REVISION", getRevision());
-    request.put("U_SEIDORAR_ESTADO", "TODO");
-    request.put("U_SEIDORAR_ARTICULO_EDE_2", codigoEdelflex);
+  protected void populateUpdateRequest(Map<String, Object> request) {
     request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_Tipo", itemTipo);
     request.put("U_SEI_MatPlac", materialPlacas);
@@ -51,18 +44,10 @@ public class InterCalorProduct extends Product {
     request.put("U_SEI_Corruga", corrugacion);
     request.put("U_SEI_ModBas", modeloBastidor);
     request.put("U_SEI_Tamanho", itemTamano);
-    return request;
   }
 
   @Override
-  protected Map<String, Object> getCreateRequest() {
-    Map<String, Object> request = new HashMap<>();
-    request.put("ItemCode", getProduct());
-    request.put("ItemName", getName());
-    request.put("ItemsGroupCode", "TODO");
-    request.put("U_SEIDORAR_REVISION", getRevision());
-    request.put("U_SEIDORAR_ESTADO", "TODO");
-    request.put("U_SEIDORAR_ARTICULO_EDE_2", codigoEdelflex);
+  protected void populateCreateRequest(Map<String, Object> request) {
     request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_Tipo", itemTipo);
     request.put("U_SEI_MatPlac", materialPlacas);
@@ -71,7 +56,6 @@ public class InterCalorProduct extends Product {
     request.put("U_SEI_Corruga", corrugacion);
     request.put("U_SEI_ModBas", modeloBastidor);
     request.put("U_SEI_Tamanho", itemTamano);
-    return request;
   }
 
   public static InterCalorProduct create(ResultSet rs) throws SQLException {
@@ -89,7 +73,22 @@ public class InterCalorProduct extends Product {
         .materialJuntas(rs.getString("Material juntas"))
         .materialPlacas(rs.getString("Material Placas"))
         .modeloBastidor(rs.getString("Modelo Bastidor"))
+        .marca(rs.getString("Item_Marca"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
+  }
+
+  @Override
+  protected int getGroupCode() {
+    if (marca.equalsIgnoreCase("ARAX")) {
+      return 104;
+    } else {
+      return 130;
+    }
+  }
+
+  @Override
+  protected String getUoM() {
+    return "UN";
   }
 }
