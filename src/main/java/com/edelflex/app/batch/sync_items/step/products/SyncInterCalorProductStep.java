@@ -12,6 +12,9 @@ import com.edelflex.app.services.integration.SapItemService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.job.builder.FlowBuilder;
+import org.springframework.batch.core.job.flow.Flow;
+import org.springframework.batch.core.job.flow.support.SimpleFlow;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -62,5 +65,12 @@ public class SyncInterCalorProductStep {
       @Qualifier("jdbcTemplateSQLServer") JdbcTemplate jdbcTemplate,
       @Value("${team-center.querys.inter-calor.update}") String updateQuery) {
     return new SyncBaseProductWriter(mongoTemplate, jdbcTemplate, updateQuery);
+  }
+
+  @Bean
+  public Flow syncInterCalorProductStepFlow(Step syncInterCalorProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncInterCalorProductStepFlow")
+            .start(syncInterCalorProductStepDefinition)
+            .build();
   }
 }

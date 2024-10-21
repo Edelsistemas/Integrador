@@ -33,7 +33,7 @@ public class ValRetenProduct extends Product {
   @Override
   protected void populateUpdateRequest(Map<String, Object> request) {
     request.put("U_SEI_Marca", itemMarca);
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+  //  request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_Diametro", diametro);
     request.put("U_SEI_Conex", conexiones);
@@ -42,7 +42,7 @@ public class ValRetenProduct extends Product {
   @Override
   protected void populateCreateRequest(Map<String, Object> request) {
     request.put("U_SEI_Marca", itemMarca);
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+   // request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_Diametro", diametro);
     request.put("U_SEI_Conex", conexiones);

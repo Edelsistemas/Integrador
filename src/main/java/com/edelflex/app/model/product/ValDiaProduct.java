@@ -37,7 +37,7 @@ public class ValDiaProduct extends Product {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+   // request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_Actuacion", itemActuacion);
     request.put("U_SEI_Diametro", itemDiametro);
@@ -48,7 +48,7 @@ public class ValDiaProduct extends Product {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+   // request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_Actuacion", itemActuacion);
     request.put("U_SEI_Diametro", itemDiametro);

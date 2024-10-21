@@ -29,12 +29,12 @@ public class TanquesProduct extends Product {
 
   @Override
   protected void populateUpdateRequest(Map<String, Object> request) {
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+    //request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   @Override
   protected void populateCreateRequest(Map<String, Object> request) {
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+   // request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   public static TanquesProduct create(ResultSet rs) throws SQLException {

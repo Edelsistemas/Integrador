@@ -35,7 +35,7 @@ public class RestoInterProduct extends Product {
     request.put("U_SEI_Tipo", itemTipo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Modelo", itemModelo);
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+   // request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   @Override
@@ -43,7 +43,7 @@ public class RestoInterProduct extends Product {
     request.put("U_SEI_Tipo", itemTipo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Modelo", itemModelo);
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+    //request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   public static RestoInterProduct create(ResultSet rs) throws SQLException {

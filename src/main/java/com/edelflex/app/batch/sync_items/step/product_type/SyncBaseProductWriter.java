@@ -16,8 +16,6 @@ import org.springframework.batch.core.annotation.BeforeStep;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.data.mongodb.core.BulkOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @Slf4j
@@ -70,8 +68,7 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
     BulkOperations bulkOperations =
         mongoTemplate.bulkOps(
             BulkOperations.BulkMode.UNORDERED, Map.class, SyncItemsConfig.ITEMS_HISTORY_COLLECTION);
-    bulkOperations.insert(list);
-    bulkOperations.execute();
+    bulkOperations.insert(list).execute();
   }
 
   private void process(List<? extends ProductProcessInfo> list) {
@@ -84,7 +81,7 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
               new Date(),
               productProcessInfo.getResponseData(),
               jobId,
-              productProcessInfo.getId());
+              productProcessInfo.getRecordId());
         });
   }
 }

@@ -33,14 +33,14 @@ public class BomDesPosProduct extends Product {
   protected void populateUpdateRequest(Map<String, Object> request) {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+   // request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   @Override
   protected void populateCreateRequest(Map<String, Object> request) {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+    //request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   public static BomDesPosProduct create(ResultSet rs) throws SQLException {

@@ -37,7 +37,7 @@ public class ValAliSegProduct extends Product {
   protected void populateUpdateRequest(Map<String, Object> request) {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+   // request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_Actuacion", itemActuacion);
     request.put("U_SEI_DiamSup", itemDiametroSupMedio);
@@ -49,7 +49,7 @@ public class ValAliSegProduct extends Product {
   protected void populateCreateRequest(Map<String, Object> request) {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+  //  request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_Actuacion", itemActuacion);
     request.put("U_SEI_DiamSup", itemDiametroSupMedio);

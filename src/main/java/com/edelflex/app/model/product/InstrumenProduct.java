@@ -32,7 +32,7 @@ public class InstrumenProduct extends Product {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+   // request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_Variable", itemVariable);
   }
 
@@ -41,7 +41,7 @@ public class InstrumenProduct extends Product {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+    //request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_Variable", itemVariable);
   }
 

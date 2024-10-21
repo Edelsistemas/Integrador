@@ -12,6 +12,9 @@ import com.edelflex.app.services.integration.SapItemService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.job.builder.FlowBuilder;
+import org.springframework.batch.core.job.flow.Flow;
+import org.springframework.batch.core.job.flow.support.SimpleFlow;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -62,5 +65,12 @@ public class SyncValRetenProductStep {
       @Qualifier("jdbcTemplateSQLServer") JdbcTemplate jdbcTemplate,
       @Value("${team-center.querys.val-reten.update}") String updateQuery) {
     return new SyncBaseProductWriter(mongoTemplate, jdbcTemplate, updateQuery);
+  }
+
+  @Bean
+  public Flow syncValRetenProductStepFlow(Step syncValRetenProductStepDefinition) {
+    return new FlowBuilder<SimpleFlow>("syncValRetenProductStepFlow")
+            .start(syncValRetenProductStepDefinition)
+            .build();
   }
 }

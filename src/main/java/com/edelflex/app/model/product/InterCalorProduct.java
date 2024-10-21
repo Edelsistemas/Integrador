@@ -36,7 +36,7 @@ public class InterCalorProduct extends Product {
 
   @Override
   protected void populateUpdateRequest(Map<String, Object> request) {
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+    //request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_Tipo", itemTipo);
     request.put("U_SEI_MatPlac", materialPlacas);
     request.put("U_SEI_MatJun", materialJuntas);
@@ -48,7 +48,7 @@ public class InterCalorProduct extends Product {
 
   @Override
   protected void populateCreateRequest(Map<String, Object> request) {
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+   // request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_Tipo", itemTipo);
     request.put("U_SEI_MatPlac", materialPlacas);
     request.put("U_SEI_MatJun", materialJuntas);

@@ -36,7 +36,7 @@ public class AcceInlineProduct extends Product {
     request.put("U_SEI_Equipo", itemEquipo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+    //request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   @Override
@@ -45,7 +45,7 @@ public class AcceInlineProduct extends Product {
     request.put("U_SEI_Equipo", itemEquipo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-    request.put("U_SEI_ITEMPROV", codigoProveedor);
+    //request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   public static AcceInlineProduct create(ResultSet rs) throws SQLException {

@@ -21,7 +21,8 @@ public class ProductProcessInfo {
     ERROR
   }
 
-  private long id;
+  private String id;
+  private long recordId;
   private Map<String, Object> response;
   private Status status;
   private String errorMessage;

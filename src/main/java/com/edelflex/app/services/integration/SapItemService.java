@@ -62,7 +62,7 @@ public class SapItemService {
         .status(status)
         .action(Product.Action.CREATE)
         .code(code)
-        .id(id)
+        .recordId(id)
         .build();
   }
 
@@ -107,7 +107,7 @@ public class SapItemService {
         .status(status)
         .action(Product.Action.UPDATE)
         .code(code)
-        .id(id)
+        .recordId(id)
         .build();
   }
 
