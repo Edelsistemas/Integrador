@@ -9,13 +9,13 @@
 
     <appender name="bitone-appender-send-logs" class="com.edelflex.app.config.BitOneAppender">
         <app>BACKEND</app>
-        <clientCode>CIGRA_INTERCOMPANY</clientCode>
+        <clientCode>EDELFLEX_INTEGRATION</clientCode>
         <sendLogs>true</sendLogs>
         <apiKey>ea5d21be-882d-4281-9d95-963649d89d66</apiKey>
         <server>https://bit-one-tools.ar/services/api/logs/register</server>
     </appender>
 
-    <springProfile name="local,dev,qa,qacig,cloud">
+    <springProfile name="local,dev,qa">
         <root level="INFO">
             <appender-ref ref="stdout-normal"/>
         </root>

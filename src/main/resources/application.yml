@@ -9,8 +9,8 @@ sap:
     url: https://10.250.2.10:50000/b1s/v1/
     credentials:
       user: gregorio.hakimian
-      password: 1234
-      company: TEST_EDELFLEX
+      password: EDFsapbone
+      company: SBOEDEL24TST
 
 sqlserver:
   jdbcUrl: jdbc:sqlserver://localhost:1433;encrypt=true;trustServerCertificate=true;databaseName=master

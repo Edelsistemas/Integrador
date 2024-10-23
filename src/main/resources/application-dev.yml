@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-      database: edelflex-local
+      database: edelflex-dev
       authentication-database: admin
       host: 66.97.43.117
       port: 9001
