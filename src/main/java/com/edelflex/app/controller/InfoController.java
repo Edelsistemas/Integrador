@@ -27,7 +27,7 @@ public class InfoController {
     this.mongoTemplate = mongoTemplate;
   }
 
-  @GetMapping("/process/status")
+  @GetMapping("/")
   public String status(Model model) {
 
     boolean isRunningItems =
