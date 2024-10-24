@@ -1,12 +1,12 @@
 spring:
   data:
     mongodb:
-      database: edelflex-local
+      database: edelflex
       authentication-database: admin
-      host: 66.97.43.117
+      host: 192.168.54.26
       port: 9001
       username: root
-      password: C1gr4.2o2l.Qa
+      password: Erq29Y8gVZunZJ7
 
 sqlserver:
   jdbcUrl: jdbc:sqlserver://192.168.54.13:1433;encrypt=true;trustServerCertificate=true;databaseName=master

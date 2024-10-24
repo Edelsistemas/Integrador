@@ -21,7 +21,7 @@ public class WebSecurityConfig {
     http.csrf(AbstractHttpConfigurer::disable)
         .cors(CorsConfigurer::disable)
         .authorizeRequests()
-        .antMatchers("/process/status")
+        .antMatchers("/")
         .hasRole("ADMIN")
         .anyRequest()
         .authenticated()
