@@ -9,11 +9,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import lombok.extern.slf4j.Slf4j;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
+@Slf4j
 public class HomogenProduct extends Product {
 
   private String codigoProveedor; // U_SEI_ITEMPROV
@@ -23,10 +25,7 @@ public class HomogenProduct extends Product {
 
   @Override
   public ProductProcessInfo getProcessInfo() {
-    return ProductProcessInfo.builder()
-        .request(new HashMap<>())
-        .code(getProduct())
-        .build();
+    return ProductProcessInfo.builder().request(new HashMap<>()).code(getProduct()).build();
   }
 
   @Override
@@ -34,7 +33,7 @@ public class HomogenProduct extends Product {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-   // request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   @Override
@@ -42,7 +41,7 @@ public class HomogenProduct extends Product {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-    //request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   public static HomogenProduct create(ResultSet rs) throws SQLException {
@@ -52,17 +51,14 @@ public class HomogenProduct extends Product {
         .product(rs.getString("Product"))
         .revision(rs.getString("Revision"))
         .codigoEdelflex(rs.getString("Codigo Edelflex"))
-        .codigoProveedor(rs.getString("Codigo Proveedor"))
+        .codigoProveedor(rs.getString("Item_Codigo Proveedor"))
         .itemModelo(rs.getString("Codigo Proveedor"))
         .itemMarca(rs.getString("Item_Marca"))
         .itemTipo(rs.getString("Item_Tipo"))
+        .status(rs.getString("Estado_TC"))
+            .groupCode(rs.getInt("GroupCode"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
-  }
-
-  @Override
-  protected int getGroupCode() {
-    return 115;
   }
 
   @Override

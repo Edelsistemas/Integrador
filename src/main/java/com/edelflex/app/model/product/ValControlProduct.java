@@ -27,17 +27,14 @@ public class ValControlProduct extends Product {
 
   @Override
   public ProductProcessInfo getProcessInfo() {
-    return ProductProcessInfo.builder()
-        .request(new HashMap<>())
-        .code(getProduct())
-        .build();
+    return ProductProcessInfo.builder().request(new HashMap<>()).code(getProduct()).build();
   }
 
   @Override
   protected void populateUpdateRequest(Map<String, Object> request) {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
-   // request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_Actuacion", itemActuacion);
     request.put("U_SEI_DiamSup", itemDiametroSupMedio);
@@ -49,7 +46,7 @@ public class ValControlProduct extends Product {
   protected void populateCreateRequest(Map<String, Object> request) {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
-  //  request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_Actuacion", itemActuacion);
     request.put("U_SEI_DiamSup", itemDiametroSupMedio);
@@ -72,6 +69,8 @@ public class ValControlProduct extends Product {
         .itemDiametroInferior(rs.getString("Item_Diametro cuerpo inferior"))
         .itemActuacion(rs.getString("Item_Actuacion"))
         .cuerpo(rs.getString("Cuerpo"))
+        .status(rs.getString("Estado_TC"))
+            .groupCode(rs.getInt("GroupCode"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
   }

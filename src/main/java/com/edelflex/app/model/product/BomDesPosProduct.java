@@ -23,24 +23,21 @@ public class BomDesPosProduct extends Product {
 
   @Override
   public ProductProcessInfo getProcessInfo() {
-    return ProductProcessInfo.builder()
-        .request(new HashMap<>())
-        .code(getProduct())
-        .build();
+    return ProductProcessInfo.builder().request(new HashMap<>()).code(getProduct()).build();
   }
 
   @Override
   protected void populateUpdateRequest(Map<String, Object> request) {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
-   // request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   @Override
   protected void populateCreateRequest(Map<String, Object> request) {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
-    //request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   public static BomDesPosProduct create(ResultSet rs) throws SQLException {
@@ -53,13 +50,10 @@ public class BomDesPosProduct extends Product {
         .codigoProveedor(rs.getString("Codigo Proveedor"))
         .itemModelo(rs.getString("Item_Modelo"))
         .itemMarca(rs.getString("Item_Marca"))
+        .status(rs.getString("Estado_TC"))
+        .groupCode(rs.getInt("GroupCode"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
-  }
-
-  @Override
-  protected int getGroupCode() {
-    return 128;
   }
 
   @Override

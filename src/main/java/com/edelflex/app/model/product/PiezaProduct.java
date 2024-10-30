@@ -20,20 +20,17 @@ public class PiezaProduct extends Product {
 
   @Override
   public ProductProcessInfo getProcessInfo() {
-    return ProductProcessInfo.builder()
-        .request(new HashMap<>())
-        .code(getProduct())
-        .build();
+    return ProductProcessInfo.builder().request(new HashMap<>()).code(getProduct()).build();
   }
 
   @Override
   protected void populateUpdateRequest(Map<String, Object> request) {
-   // request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   @Override
   protected void populateCreateRequest(Map<String, Object> request) {
-   // request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   public static PiezaProduct create(ResultSet rs) throws SQLException {
@@ -44,6 +41,8 @@ public class PiezaProduct extends Product {
         .revision(rs.getString("Revision"))
         .codigoEdelflex(rs.getString("Item_Codigo Edelflex"))
         .codigoProveedor(rs.getString("Item_Codigo Proveedor"))
+        .status(rs.getString("Estado_TC"))
+            .groupCode(rs.getInt("GroupCode"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
   }

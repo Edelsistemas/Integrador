@@ -17,10 +17,7 @@ public class SistemasProduct extends Product {
 
   @Override
   public ProductProcessInfo getProcessInfo() {
-    return ProductProcessInfo.builder()
-        .request(new HashMap<>())
-        .code(getProduct())
-        .build();
+    return ProductProcessInfo.builder().request(new HashMap<>()).code(getProduct()).build();
   }
 
   @Override
@@ -36,6 +33,8 @@ public class SistemasProduct extends Product {
         .product(rs.getString("Product"))
         .revision(rs.getString("Revision"))
         .codigoEdelflex(rs.getString("efx4_CodigoEdelflex"))
+        .status(rs.getString("Estado_TC"))
+            .groupCode(rs.getInt("GroupCode"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
   }

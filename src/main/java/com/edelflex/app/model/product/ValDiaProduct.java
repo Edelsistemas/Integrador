@@ -26,10 +26,7 @@ public class ValDiaProduct extends Product {
 
   @Override
   public ProductProcessInfo getProcessInfo() {
-    return ProductProcessInfo.builder()
-        .request(new HashMap<>())
-        .code(getProduct())
-        .build();
+    return ProductProcessInfo.builder().request(new HashMap<>()).code(getProduct()).build();
   }
 
   @Override
@@ -37,7 +34,7 @@ public class ValDiaProduct extends Product {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-   // request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_Actuacion", itemActuacion);
     request.put("U_SEI_Diametro", itemDiametro);
@@ -48,7 +45,7 @@ public class ValDiaProduct extends Product {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-   // request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_Actuacion", itemActuacion);
     request.put("U_SEI_Diametro", itemDiametro);
@@ -68,6 +65,8 @@ public class ValDiaProduct extends Product {
         .itemDiametro(rs.getString("Item_Diametro"))
         .itemActuacion(rs.getString("Item_Actuacion"))
         .materialJuntas(rs.getString("Material diafragma"))
+        .status(rs.getString("Estado_TC"))
+            .groupCode(rs.getInt("GroupCode"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
   }

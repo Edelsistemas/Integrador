@@ -23,6 +23,7 @@ public abstract class Product {
   private Action action;
   private String status;
   private String codigoEdelflex;
+  private int groupCode;
 
   public enum Action {
     CREATE("Crear"),
@@ -46,7 +47,7 @@ public abstract class Product {
     request.put("ItemName", getName());
     request.put("ItemsGroupCode", getGroupCode());
     request.put("U_SEIDORAR_REVISION", getRevision());
-    request.put("U_SEIDORAR_ESTADO", getStatus()); // TODO:
+    request.put("U_SEIDORAR_ESTADO", getStatus());
     request.put("U_SEIDORAR_ARTICULO_EDE_2", getCodigoEdelflex());
     request.put("InventoryUOM", getUoM());
     // CREATE
@@ -79,8 +80,6 @@ public abstract class Product {
   protected abstract void populateUpdateRequest(Map<String, Object> request);
 
   protected abstract void populateCreateRequest(Map<String, Object> request);
-
-  protected abstract int getGroupCode();
 
   protected abstract String getUoM();
 }

@@ -26,10 +26,7 @@ public class OtrasValProduct extends Product {
 
   @Override
   public ProductProcessInfo getProcessInfo() {
-    return ProductProcessInfo.builder()
-        .request(new HashMap<>())
-        .code(getProduct())
-        .build();
+    return ProductProcessInfo.builder().request(new HashMap<>()).code(getProduct()).build();
   }
 
   @Override
@@ -37,7 +34,7 @@ public class OtrasValProduct extends Product {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-   // request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_Diametro", itemDiametro);
     request.put("U_SEI_Actuacion", actuacion);
@@ -48,7 +45,7 @@ public class OtrasValProduct extends Product {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-   // request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_Diametro", itemDiametro);
     request.put("U_SEI_Actuacion", actuacion);
@@ -64,10 +61,12 @@ public class OtrasValProduct extends Product {
         .codigoProveedor(rs.getString("Codigo Proveedor"))
         .itemModelo(rs.getString("Item_Modelo"))
         .itemMarca(rs.getString("Item_Marca"))
-        .itemTipo(rs.getString("Item_Tipo"))
+        .itemTipo(rs.getString("Item_Tipo de valvula"))
         .materialJuntas(rs.getString("Material sellos"))
         .itemDiametro(rs.getString("Item_Diametro"))
         .actuacion(rs.getString("Item_Actuacion"))
+        .status(rs.getString("Estado_TC"))
+            .groupCode(rs.getInt("GroupCode"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
   }

@@ -14,6 +14,73 @@ sqlserver:
   password: ConectorSAP_24
   driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
+team-center:
+  querys:
+    acce-inline:
+      group-code: 1
+    bom-des-pos:
+      group-code: 1
+    bomba-cen:
+      group-code: 1
+    disp-limpi:
+      group-code: 1
+    ena:
+      group-code: 1
+    homogen:
+      group-code: 1
+    instr-ind:
+      group-code: 1
+    instrumen:
+      group-code: 1
+    inter-calor:
+      group-code: 1
+    mat-pri:
+      group-code: 1
+    otras-bom:
+      group-code: 1
+    otras-val:
+      group-code: 1
+    otros-comp:
+      group-code: 1
+    pieza:
+      group-code: 1
+    repuestos:
+      group-code: 1
+    resto-inter:
+      group-code: 1
+    semielabo:
+      group-code: 1
+    sis-cal-eh:
+      group-code: 1
+    sis-lim-ec:
+      group-code: 1
+    sis-mez-em:
+      group-code: 1
+    sis-rec-prod:
+      group-code: 1
+    sistemas:
+      group-code: 1
+    subcon:
+      group-code: 1
+    tanques:
+      group-code: 1
+    val-ali-seg:
+      group-code: 1
+    val-asiento:
+      group-code: 1
+    val-control:
+      group-code: 1
+    val-dia:
+      group-code: 1
+    val-fuelle:
+      group-code: 1
+    val-reten:
+      group-code: 1
+    valvulas:
+      group-code: 1
+
+
+
 #SACARLOOOO
 bitone:
   integration:

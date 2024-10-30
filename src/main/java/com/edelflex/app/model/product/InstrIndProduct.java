@@ -24,10 +24,7 @@ public class InstrIndProduct extends Product {
 
   @Override
   public ProductProcessInfo getProcessInfo() {
-    return ProductProcessInfo.builder()
-        .request(new HashMap<>())
-        .code(getProduct())
-        .build();
+    return ProductProcessInfo.builder().request(new HashMap<>()).code(getProduct()).build();
   }
 
   @Override
@@ -35,7 +32,7 @@ public class InstrIndProduct extends Product {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-    //request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_Variable", itemVariable);
   }
 
@@ -44,7 +41,7 @@ public class InstrIndProduct extends Product {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-    //request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_Variable", itemVariable);
   }
 
@@ -60,13 +57,10 @@ public class InstrIndProduct extends Product {
         .itemMarca(rs.getString("Item_Marca"))
         .itemTipo(rs.getString("Item_Tipo"))
         .itemVariable(rs.getString("Item_Variable"))
+        .status(rs.getString("Estado_TC"))
+        .groupCode(rs.getInt("GroupCode"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
-  }
-
-  @Override
-  protected int getGroupCode() {
-    return 103;
   }
 
   @Override

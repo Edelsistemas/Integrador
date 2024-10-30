@@ -24,10 +24,7 @@ public class RestoInterProduct extends Product {
 
   @Override
   public ProductProcessInfo getProcessInfo() {
-    return ProductProcessInfo.builder()
-        .request(new HashMap<>())
-        .code(getProduct())
-        .build();
+    return ProductProcessInfo.builder().request(new HashMap<>()).code(getProduct()).build();
   }
 
   @Override
@@ -35,7 +32,7 @@ public class RestoInterProduct extends Product {
     request.put("U_SEI_Tipo", itemTipo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Modelo", itemModelo);
-   // request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   @Override
@@ -43,7 +40,7 @@ public class RestoInterProduct extends Product {
     request.put("U_SEI_Tipo", itemTipo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Modelo", itemModelo);
-    //request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   public static RestoInterProduct create(ResultSet rs) throws SQLException {
@@ -53,10 +50,12 @@ public class RestoInterProduct extends Product {
         .product(rs.getString("Product"))
         .revision(rs.getString("Revision"))
         .codigoEdelflex(rs.getString("Codigo Edelflex"))
-        //  .codigoProveedor(rs.getString("Codigo Proveedor")) TODO:
+        .codigoProveedor(rs.getString("Codigo Proveedor"))
+        .status(rs.getString("Estado_TC"))
         .itemTipo(rs.getString("Item_Tipo"))
         .itemMarca(rs.getString("Item_Marca"))
         .itemModelo(rs.getString("Item_Modelo"))
+            .groupCode(rs.getInt("GroupCode"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
   }

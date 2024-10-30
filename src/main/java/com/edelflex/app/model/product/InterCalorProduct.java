@@ -28,15 +28,12 @@ public class InterCalorProduct extends Product {
 
   @Override
   public ProductProcessInfo getProcessInfo() {
-    return ProductProcessInfo.builder()
-        .request(new HashMap<>())
-        .code(getProduct())
-        .build();
+    return ProductProcessInfo.builder().request(new HashMap<>()).code(getProduct()).build();
   }
 
   @Override
   protected void populateUpdateRequest(Map<String, Object> request) {
-    //request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_Tipo", itemTipo);
     request.put("U_SEI_MatPlac", materialPlacas);
     request.put("U_SEI_MatJun", materialJuntas);
@@ -48,7 +45,7 @@ public class InterCalorProduct extends Product {
 
   @Override
   protected void populateCreateRequest(Map<String, Object> request) {
-   // request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_Tipo", itemTipo);
     request.put("U_SEI_MatPlac", materialPlacas);
     request.put("U_SEI_MatJun", materialJuntas);
@@ -74,6 +71,8 @@ public class InterCalorProduct extends Product {
         .materialPlacas(rs.getString("Material Placas"))
         .modeloBastidor(rs.getString("Modelo Bastidor"))
         .marca(rs.getString("Item_Marca"))
+        .status(rs.getString("Estado_TC"))
+        .groupCode(rs.getInt("GroupCode"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
   }

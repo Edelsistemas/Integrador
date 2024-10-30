@@ -28,10 +28,7 @@ public class ValAsientoProduct extends Product {
 
   @Override
   public ProductProcessInfo getProcessInfo() {
-    return ProductProcessInfo.builder()
-        .request(new HashMap<>())
-        .code(getProduct())
-        .build();
+    return ProductProcessInfo.builder().request(new HashMap<>()).code(getProduct()).build();
   }
 
   @Override
@@ -39,7 +36,7 @@ public class ValAsientoProduct extends Product {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-   // request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_Actuacion", itemActuacion);
     request.put("U_SEI_Familia", itemFamilia);
@@ -52,7 +49,7 @@ public class ValAsientoProduct extends Product {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-    //request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_Actuacion", itemActuacion);
     request.put("U_SEI_Familia", itemFamilia);
@@ -76,6 +73,8 @@ public class ValAsientoProduct extends Product {
         .itemDiametroSupMedio(rs.getString("Item_Diametro cuerpo sup_medio"))
         .itemDiametroInferior(rs.getString("Item_Diametro cuerpo inferior"))
         .itemActuacion(rs.getString("Item_Actuacion"))
+        .status(rs.getString("Estado_TC"))
+            .groupCode(rs.getInt("GroupCode"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
   }

@@ -23,10 +23,7 @@ public class DispLimpiProduct extends Product {
 
   @Override
   public ProductProcessInfo getProcessInfo() {
-    return ProductProcessInfo.builder()
-        .request(new HashMap<>())
-        .code(getProduct())
-        .build();
+    return ProductProcessInfo.builder().request(new HashMap<>()).code(getProduct()).build();
   }
 
   @Override
@@ -34,7 +31,7 @@ public class DispLimpiProduct extends Product {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-   // request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   @Override
@@ -42,7 +39,7 @@ public class DispLimpiProduct extends Product {
     request.put("U_SEI_Modelo", itemModelo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-   // request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   public static DispLimpiProduct create(ResultSet rs) throws SQLException {
@@ -56,13 +53,10 @@ public class DispLimpiProduct extends Product {
         .itemModelo(rs.getString("Item_Modelo"))
         .itemMarca(rs.getString("Item_Marca"))
         .itemTipo(rs.getString("Item_Tipo"))
+        .status(rs.getString("Estado_TC"))
+            .groupCode(rs.getInt("GroupCode"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
-  }
-
-  @Override
-  protected int getGroupCode() {
-    return 114;
   }
 
   @Override

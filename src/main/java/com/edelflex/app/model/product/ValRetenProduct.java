@@ -24,16 +24,13 @@ public class ValRetenProduct extends Product {
 
   @Override
   public ProductProcessInfo getProcessInfo() {
-    return ProductProcessInfo.builder()
-        .request(new HashMap<>())
-        .code(getProduct())
-        .build();
+    return ProductProcessInfo.builder().request(new HashMap<>()).code(getProduct()).build();
   }
 
   @Override
   protected void populateUpdateRequest(Map<String, Object> request) {
     request.put("U_SEI_Marca", itemMarca);
-  //  request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_Diametro", diametro);
     request.put("U_SEI_Conex", conexiones);
@@ -42,7 +39,7 @@ public class ValRetenProduct extends Product {
   @Override
   protected void populateCreateRequest(Map<String, Object> request) {
     request.put("U_SEI_Marca", itemMarca);
-   // request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_Diametro", diametro);
     request.put("U_SEI_Conex", conexiones);
@@ -60,6 +57,8 @@ public class ValRetenProduct extends Product {
         .diametro(rs.getString("Item_Diametro"))
         .conexiones(rs.getString("Item_Conexiones"))
         .materialJuntas(rs.getString("Material sellos"))
+        .status(rs.getString("Estado_TC"))
+            .groupCode(rs.getInt("GroupCode"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
   }

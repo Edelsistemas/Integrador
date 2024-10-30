@@ -24,10 +24,7 @@ public class AcceInlineProduct extends Product {
 
   @Override
   public ProductProcessInfo getProcessInfo() {
-    return ProductProcessInfo.builder()
-        .request(new HashMap<>())
-        .code(getProduct())
-        .build();
+    return ProductProcessInfo.builder().request(new HashMap<>()).code(getProduct()).build();
   }
 
   @Override
@@ -36,7 +33,7 @@ public class AcceInlineProduct extends Product {
     request.put("U_SEI_Equipo", itemEquipo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-    //request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   @Override
@@ -45,7 +42,7 @@ public class AcceInlineProduct extends Product {
     request.put("U_SEI_Equipo", itemEquipo);
     request.put("U_SEI_Marca", itemMarca);
     request.put("U_SEI_Tipo", itemTipo);
-    //request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   public static AcceInlineProduct create(ResultSet rs) throws SQLException {
@@ -60,14 +57,11 @@ public class AcceInlineProduct extends Product {
         .itemMarca(rs.getString("Item_Marca"))
         .itemTipo(rs.getString("Item_Tipo"))
         .itemDiametro(rs.getString("Item_Diametro"))
+        .status(rs.getString("Estado_TC"))
+        .groupCode(rs.getInt("GroupCode"))
         .action(
             rs.getString("Revision").equals("A") ? Product.Action.CREATE : Product.Action.UPDATE)
         .build();
-  }
-
-  @Override
-  protected int getGroupCode() {
-    return 109;
   }
 
   @Override

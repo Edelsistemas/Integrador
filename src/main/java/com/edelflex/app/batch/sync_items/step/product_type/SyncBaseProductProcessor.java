@@ -43,14 +43,14 @@ public class SyncBaseProductProcessor<T extends Product>
         productInfo.getName(),
         productInfo.getAction().getLabel());
     Map<String, Object> request = productInfo.createRequest();
-    ProductProcessInfo productProcessInfo;
+    ProductProcessInfo productProcessInfo = ProductProcessInfo.builder().build();
     // CREATE
     if (productInfo.getAction().equals(Product.Action.CREATE)) {
-      productProcessInfo =
-          sapItemService.create(productInfo.getId(), productInfo.getProduct(), request);
+     // productProcessInfo =
+    //      sapItemService.create(productInfo.getId(), productInfo.getProduct(), request);
     } else { // UPDATE
-      productProcessInfo =
-          sapItemService.update(productInfo.getId(), productInfo.getProduct(), request);
+    //  productProcessInfo =
+    //      sapItemService.update(productInfo.getId(), productInfo.getProduct(), request);
     }
     long t2 = System.currentTimeMillis();
     SyncItemsMetrics.registerProcessEnd(processInfo, t1, t2);

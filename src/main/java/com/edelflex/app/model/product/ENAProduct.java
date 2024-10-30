@@ -28,12 +28,12 @@ public class ENAProduct extends Product {
 
   @Override
   protected void populateUpdateRequest(Map<String, Object> request) {
-    //request.put("U_SEI_ITEMPROV", codigoProveedor);
+    request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   @Override
   protected void populateCreateRequest(Map<String, Object> request) {
-   // request.put("U_SEI_ITEMPROV", codigoProveedor);
+   request.put("U_SEI_ITEMPROV", codigoProveedor);
   }
 
   public static ENAProduct create(ResultSet rs) throws SQLException {
@@ -44,13 +44,10 @@ public class ENAProduct extends Product {
         .revision(rs.getString("Revision"))
         .codigoEdelflex(rs.getString("Codigo Edelflex"))
         .codigoProveedor(rs.getString("Item_Codigo Proveedor"))
+        .status(rs.getString("Estado_TC"))
+            .groupCode(rs.getInt("GroupCode"))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
-  }
-
-  @Override
-  protected int getGroupCode() {
-    return 106;
   }
 
   @Override

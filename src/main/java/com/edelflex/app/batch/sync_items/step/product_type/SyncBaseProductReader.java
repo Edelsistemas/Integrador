@@ -6,6 +6,7 @@ import com.edelflex.app.utils.ProcessInfo;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
@@ -38,13 +39,13 @@ public class SyncBaseProductReader<T extends Product> implements ItemReader<T> {
                   try {
                     return (T) clazz.getDeclaredMethod("create", ResultSet.class).invoke(null, rs);
                   } catch (Exception e) {
-                    e.printStackTrace();
+                    log.error("ERROR QUERY: " + query);
+                    log.error(e.getCause().getMessage());
                   }
                   return null;
                 })
             .stream()
             .filter(Objects::nonNull)
-            .map(p -> (T) p)
             .collect(Collectors.toList());
     this.totalItems = data.size();
     this.data = data.iterator();
