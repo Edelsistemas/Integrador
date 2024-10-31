@@ -24,39 +24,113 @@ sqlserver:
 team-center:
   querys:
     schema: DB_Edelflex_SAP
-    acce-inline:
-      group-code: 1
-      get: SELECT FIELDS FROM ${team-center.querys.schema}.dbo.AcceInline WHERE Status IS NULL OR Status = 'ERROR' ORDER BY id
-      fields: '{
-          "ID": "id",
-          "NAME": "Name",
-          "PRODUCT": "Product",
-          "REVISION": "Revision",
-          "EDELFLEX": "Codigo Edelflex",
-          "PROVEEDOR": "Codigo Proveedor",
-          "EQUIPO": "Item_Equipo",
-          "MARCA": "Item_Marca",
-          "TIPO": "Item_Tipo",
-          "DIAMETRO": "Item_Diametro",
-          "ESTADO": "Estado_TC"
-      }'
-      update: UPDATE ${team-center.querys.schema}.dbo.AcceInline SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
-    bomba-cen:
-      group-code: 1
-      get: SELECT FIELDS FROM ${team-center.querys.schema}.dbo.BombaCen WHERE Status IS NULL OR Status = 'ERROR' ORDER BY id
-      fields: '{
-          "ID": "id",
-          "NAME": "Name",
-          "PRODUCT": "Product",
-          "REVISION": "Revision",
-          "EDELFLEX": "Codigo Edelflex",
-          "PROVEEDOR": "Codigo Proveedor",
-          "MODELO": "Item_Modelo",
-          "MARCA": "Item_Marca",
-          "TIPO": "Item_Tipo",
-          "ESTADO": "Estado_TC"
-      }'
-      update: UPDATE ${team-center.querys.schema}.dbo.BombaCen SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
+    get: SELECT FIELDS FROM ${team-center.querys.schema}.dbo.TABLE WHERE Status IS NULL OR Status = 'ERROR' ORDER BY id
+    update: UPDATE ${team-center.querys.schema}.dbo.TABLE SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
+    configs:
+      -
+        fields:
+          ID: "id"
+          NAME: "Name"
+          PRODUCT: "Product"
+          REVISION: "Revision"
+          EDELFLEX: "Codigo Edelflex"
+          PROVEEDOR: "Codigo Proveedor"
+          EQUIPO: "Item_Equipo"
+          MARCA: "Item_Marca"
+          TIPO: "Item_Tipo"
+          DIAMETRO: "Item_Diametro"
+          STATUS: "Estado_TC"
+          FIXED_UOM: "UN"
+          CLAUSE_GROUPITEM: "(CASE WHEN Item_Marca like '%ARAX%' THEN 101 ELSE 102 END)"
+        table: "AcceInline"
+      -
+        fields:
+          ID: "id"
+          NAME: "Name"
+          PRODUCT: "Product"
+          REVISION: "Revision"
+          EDELFLEX: "Codigo Edelflex"
+          PROVEEDOR: "Codigo Proveedor"
+          MODELO: "Item_Modelo"
+          MARCA: "Item_Marca"
+          STATUS: "Estado_TC"
+          FIXED_UOM: "UN"
+          FIXED_GROUPITEM: 100
+        table: "BomDesPos"
+      -
+        fields:
+          ID: "id"
+          NAME: "Name"
+          PRODUCT: "Product"
+          REVISION: "Revision"
+          EDELFLEX: "Codigo Edelflex"
+          PROVEEDOR: "Codigo Proveedor"
+          MODELO: "Item_Modelo"
+          MARCA: "Item_Marca"
+          TIPO: "Item_Tipo"
+          STATUS: "Estado_TC"
+          FIXED_UOM: "UN"
+          FIXED_GROUPITEM: 100
+        table: "DispLimpi"
+      -
+        fields:
+          ID: "id"
+          NAME: "Name"
+          PRODUCT: "Product"
+          REVISION: "Revision"
+          EDELFLEX: "Codigo Edelflex"
+          PROVEEDOR: "Item_Codigo Proveedor"
+          STATUS: "Estado_TC"
+          FIXED_UOM: "UN"
+          FIXED_GROUPITEM: 100
+        table: "ENA"
+      -
+        fields:
+          ID: "id"
+          NAME: "Name"
+          PRODUCT: "Product"
+          REVISION: "Revision"
+          FIXED_EDELFLEX: "0303456" #TODO: NO LO ENCONTRE
+          PROVEEDOR: "Item_Codigo Proveedor"
+          MODELO: "Item_Codigo Proveedor"
+          MARCA: "Item_Marca"
+          TIPO: "Item_Tipo"
+          STATUS: "Estado_TC"
+          FIXED_UOM: "UN"
+          FIXED_GROUPITEM: 100
+        table: "Homogen"
+      -
+        fields:
+          ID: "id"
+          NAME: "Name"
+          PRODUCT: "Product"
+          REVISION: "Revision"
+          EDELFLEX: "Codigo Edelflex"
+          PROVEEDOR: "Codigo Proveedor"
+          MODELO: "Item_Modelo"
+          MARCA: "Item_Marca"
+          TIPO: "Item_Tipo"
+          VARIABLE: "Item_Variable"
+          STATUS: "Estado_TC"
+          FIXED_UOM: "UN"
+          FIXED_GROUPITEM: 100
+        table: "InstrInd"
+      -
+        fields:
+          ID: "id"
+          NAME: "Name"
+          PRODUCT: "Product"
+          REVISION: "Revision"
+          EDELFLEX: "Codigo Edelflex"
+          PROVEEDOR: "Codigo"
+          MODELO: "Item_Modelo"
+          MARCA: "Item_Marca"
+          TIPO: "Item_Tipo"
+          VARIABLE: "Item_Variable"
+          STATUS: "Estado_TC"
+          FIXED_UOM: "UN"
+          FIXED_GROUPITEM: 100
+        table: "Instrumen"
 
 
 batch-process:

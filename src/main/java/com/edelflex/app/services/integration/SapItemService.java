@@ -60,7 +60,7 @@ public class SapItemService {
         .response(responseData)
         .errorMessage(responseError)
         .status(status)
-        .action(Product.Action.CREATE)
+      //  .action(Product.Action.CREATE)
         .code(code)
         .recordId(id)
         .build();
@@ -105,17 +105,19 @@ public class SapItemService {
         .response(responseData)
         .errorMessage(responseError)
         .status(status)
-        .action(Product.Action.UPDATE)
+       // .action(Product.Action.UPDATE)
         .code(code)
         .recordId(id)
         .build();
   }
 
-  public String getUrl(Product.Action action, String code) {
-    if (action.equals(Product.Action.CREATE)) {
+  public String getUrl(String code) {
+    /*
+    if (Product.Action.CREATE.equals(action)) {
       return sapApiService.getBaseUrl() + "Items";
     } else {
       return sapApiService.getBaseUrl() + String.format("Items('%s')", code);
-    }
+    } TODO: */
+    return "";
   }
 }

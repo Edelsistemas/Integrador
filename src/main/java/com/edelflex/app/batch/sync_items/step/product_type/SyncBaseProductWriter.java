@@ -50,14 +50,16 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
             .filter(
                 item ->
                     item.getStatus().equals(ProductProcessInfo.Status.OK)
-                        && item.getAction().equals(Product.Action.CREATE))
+            //            && item.getAction().equals(Product.Action.CREATE)
+            )
             .count();
     long updateCount =
         list.stream()
             .filter(
                 item ->
                     item.getStatus().equals(ProductProcessInfo.Status.OK)
-                        && item.getAction().equals(Product.Action.UPDATE))
+                      //  && item.getAction().equals(Product.Action.UPDATE)
+            )
             .count();
     long errorCount =
         list.stream()

@@ -13,8 +13,8 @@ import org.springframework.batch.core.annotation.BeforeStep;
 import org.springframework.batch.item.ItemProcessor;
 
 @Slf4j
-public class SyncBaseProductProcessor<T extends Product>
-    implements ItemProcessor<T, ProductProcessInfo> {
+public class SyncBaseProductProcessor
+    implements ItemProcessor<Product, ProductProcessInfo> {
 
   protected final SapItemService sapItemService;
   private String jobId;
@@ -33,25 +33,25 @@ public class SyncBaseProductProcessor<T extends Product>
   }
 
   @Override
-  public ProductProcessInfo process(T productInfo) {
+  public ProductProcessInfo process(Product productInfo) {
     long t1 = System.currentTimeMillis();
-    String url = sapItemService.getUrl(productInfo.getAction(), productInfo.getProduct());
+    String url = sapItemService.getUrl(productInfo.getProduct());
     SyncItemsMetrics.registerProcessStart(
         processInfo,
         url,
         productInfo.getProduct(),
         productInfo.getName(),
-        productInfo.getAction().getLabel());
+       " productInfo.getAction().getLabel()");
     Map<String, Object> request = productInfo.createRequest();
     ProductProcessInfo productProcessInfo = ProductProcessInfo.builder().build();
     // CREATE
-    if (productInfo.getAction().equals(Product.Action.CREATE)) {
+    //if (productInfo.getAction().equals(Product.Action.CREATE)) {
      // productProcessInfo =
     //      sapItemService.create(productInfo.getId(), productInfo.getProduct(), request);
-    } else { // UPDATE
+   // } else { // UPDATE
     //  productProcessInfo =
     //      sapItemService.update(productInfo.getId(), productInfo.getProduct(), request);
-    }
+    //}
     long t2 = System.currentTimeMillis();
     SyncItemsMetrics.registerProcessEnd(processInfo, t1, t2);
     productProcessInfo.setJobId(jobId);

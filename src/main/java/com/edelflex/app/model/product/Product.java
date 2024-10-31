@@ -3,45 +3,47 @@ package com.edelflex.app.model.product;
 import com.edelflex.app.model.ProductProcessInfo;
 import com.edelflex.app.utils.Utils;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
+@Builder
 public class Product {
 
   private long id;
-  private String name; // NAME
-  private String product; // CODE
-  private String revision; // REVISION
-  private Action action;
+  private String name;
+  private String product;
+  private String revision;
   private String status;
-  private String codigoEdelflex;
+  private String edelflex;
+  private int groupitem;
 
-  private int groupCode;
-
-  public enum Action {
-    CREATE("Crear"),
-    UPDATE("Actualizar");
-
-    private final String label;
-
-    Action(String label) {
-      this.label = label;
-    }
-
-    public String getLabel() {
-      return label;
-    }
-  }
+  private String proveedor;
+  private String marca;
+  private String tipo;
+  private String modelo;
+  private String equipo;
+  private String variable;
+  private String tamanio;
+  private String modeloBastidor;
+  private String corrugacion;
+  private String materialPlacas;
+  private String materialJuntas;
+  private String cantSecciones;
+  private String diametro;
+  private String actuacion;
+  private String familia;
+  private String diametroSuperior;
+  private String diametroInferior;
+  private String cuerpo;
+  private String conexion;
+  private String uom;
 
   public ProductProcessInfo getProcessInfo() {
     return null;
@@ -50,11 +52,11 @@ public class Product {
   public Map<String, Object> createRequest() {
     Map<String, Object> request = new HashMap<>();
     request.put("ItemName", getName());
-    request.put("ItemsGroupCode", getGroupCode());
+    request.put("ItemsGroupCode", getGroupitem());
     request.put("U_SEIDORAR_REVISION", getRevision());
     request.put("U_SEIDORAR_ESTADO", getStatus());
-    request.put("U_SEIDORAR_ARTICULO_EDE_2", getCodigoEdelflex());
-    request.put("InventoryUOM", getUoM());
+    request.put("U_SEIDORAR_ARTICULO_EDE_2", getEdelflex());
+    request.put("InventoryUOM", uom);
     // CREATE
     if (getRevision().equals("A")) {
       request.put("ItemCode", getProduct());
@@ -63,6 +65,34 @@ public class Product {
       populateUpdateRequest(request);
     }
     return clearEmptyValues(request);
+  }
+
+  protected void populateUpdateRequest(Map<String, Object> request) {
+    request.put("U_SEI_Diametro", diametro);
+    request.put("U_SEI_Equipo", equipo);
+    request.put("U_SEI_Marca", marca);
+    request.put("U_SEI_Tipo", tipo);
+    request.put("U_SEI_ITEMPROV", proveedor);
+    request.put("U_SEI_MatPlac", materialPlacas);
+    request.put("U_SEI_MatJun", materialJuntas);
+    request.put("U_SEI_CanSec", cantSecciones);
+    request.put("U_SEI_Corruga", corrugacion);
+    request.put("U_SEI_ModBas", modeloBastidor);
+    request.put("U_SEI_Tamanho", tamanio);
+  }
+
+  protected void populateCreateRequest(Map<String, Object> request) {
+    request.put("U_SEI_Diametro", diametro);
+    request.put("U_SEI_Equipo", equipo);
+    request.put("U_SEI_Marca", marca);
+    request.put("U_SEI_Tipo", tipo);
+    request.put("U_SEI_ITEMPROV", proveedor);
+    request.put("U_SEI_MatPlac", materialPlacas);
+    request.put("U_SEI_MatJun", materialJuntas);
+    request.put("U_SEI_CanSec", cantSecciones);
+    request.put("U_SEI_Corruga", corrugacion);
+    request.put("U_SEI_ModBas", modeloBastidor);
+    request.put("U_SEI_Tamanho", tamanio);
   }
 
   private Map<String, Object> clearEmptyValues(Map<String, Object> request) {
@@ -82,21 +112,4 @@ public class Product {
     return results;
   }
 
-  protected void populateUpdateRequest(Map<String, Object> request) {}
-
-  protected void populateCreateRequest(Map<String, Object> request) {}
-
-  protected String getUoM() {
-    return null;
-  }
-
-  public static <T extends Product> T populate(T product, ResultSet rs) throws SQLException {
-    product.setId(rs.getLong("ID"));
-    product.setName(rs.getString("NAME"));
-    product.setProduct(rs.getString("PRODUCT"));
-    product.setRevision(rs.getString("REVISION"));
-    product.setCodigoEdelflex(rs.getString("EDELFLEX"));
-    product.setStatus(rs.getString("ESTADO"));
-    return product;
-  }
 }
