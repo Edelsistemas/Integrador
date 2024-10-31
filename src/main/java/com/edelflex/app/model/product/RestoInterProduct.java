@@ -60,10 +60,7 @@ public class RestoInterProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 100;
-  }
+  //return 100;
 
   @Override
   protected String getUoM() {

@@ -22,6 +22,9 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.Map;
+
 @Slf4j
 @Component
 @Profile("sync-items-batch")
@@ -48,9 +51,10 @@ public class SyncAcceInlineProductStep {
 
   @Bean("acceInlineReader")
   public SyncBaseProductReader<AcceInlineProduct> reader(
-      @Qualifier("jdbcTemplateSQLServer") JdbcTemplate jdbcTemplate,
-      @Value("${team-center.querys.acce-inline.get}") String query) {
-    return new SyncBaseProductReader<>(jdbcTemplate, query, AcceInlineProduct.class);
+          @Qualifier("jdbcTemplateSQLServer") JdbcTemplate jdbcTemplate,
+          @Value("${team-center.querys.acce-inline.get}") String query,
+          @Value("#{${team-center.querys.acce-inline.fields}}") Map<String, String> fields) {
+    return new SyncBaseProductReader<>(jdbcTemplate, query, fields, AcceInlineProduct.class);
   }
 
   @Bean("acceInlineProcessor")

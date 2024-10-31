@@ -17,8 +17,6 @@ sqlserver:
 
 team-center:
   querys:
-    acce-inline:
-      group-code: 1
     bom-des-pos:
       group-code: 1
     bomba-cen:
@@ -34,7 +32,8 @@ team-center:
     instrumen:
       group-code: 1
     inter-calor:
-      group-code: 1
+      group-code: 104
+      group-code2: 130
     mat-pri:
       group-code: 1
     otras-bom:

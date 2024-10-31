@@ -72,19 +72,26 @@ public class InterCalorProduct extends Product {
         .modeloBastidor(rs.getString("Modelo Bastidor"))
         .marca(rs.getString("Item_Marca"))
         .status(rs.getString("Estado_TC"))
-        .groupCode(rs.getInt("GroupCode"))
+        .groupCode(getGroupCode("", rs))
         .action(rs.getString("Revision").equals("A") ? Action.CREATE : Action.UPDATE)
         .build();
   }
 
-  @Override
+  private static int getGroupCode(String brand, ResultSet rs) throws SQLException {
+    if (brand.equalsIgnoreCase("ARAX")) {
+      return rs.getInt("GroupCode1");
+    } else {
+      return rs.getInt("GroupCode2");
+    }
+  }
+/*
   protected int getGroupCode() {
     if (marca.equalsIgnoreCase("ARAX")) {
       return 104;
     } else {
       return 130;
     }
-  }
+  }*/
 
   @Override
   protected String getUoM() {

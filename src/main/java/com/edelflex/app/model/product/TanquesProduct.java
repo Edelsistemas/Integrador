@@ -48,10 +48,7 @@ public class TanquesProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 112;
-  }
+  // return 112;
 
   @Override
   protected String getUoM() {

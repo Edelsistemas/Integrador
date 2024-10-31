@@ -46,22 +46,16 @@ public class AcceInlineProduct extends Product {
   }
 
   public static AcceInlineProduct create(ResultSet rs) throws SQLException {
-    return AcceInlineProduct.builder()
-        .id(rs.getLong("id"))
-        .name(rs.getString("Name"))
-        .product(rs.getString("Product"))
-        .revision(rs.getString("Revision"))
-        .codigoEdelflex(rs.getString("Codigo Edelflex"))
-        .codigoProveedor(rs.getString("Codigo Proveedor"))
-        .itemEquipo(rs.getString("Item_Equipo"))
-        .itemMarca(rs.getString("Item_Marca"))
-        .itemTipo(rs.getString("Item_Tipo"))
-        .itemDiametro(rs.getString("Item_Diametro"))
-        .status(rs.getString("Estado_TC"))
-        .groupCode(rs.getInt("GroupCode"))
-        .action(
-            rs.getString("Revision").equals("A") ? Product.Action.CREATE : Product.Action.UPDATE)
-        .build();
+    return populate(
+        AcceInlineProduct.builder()
+            .codigoProveedor(rs.getString("PROVEEDOR"))
+            .itemEquipo(rs.getString("EQUIPO"))
+            .itemMarca(rs.getString("MARCA"))
+            .itemTipo(rs.getString("TIPO"))
+            .itemDiametro(rs.getString("DIAMETRO"))
+            // .groupCode(rs.getInt("GroupCode"))
+            .build(),
+        rs);
   }
 
   @Override

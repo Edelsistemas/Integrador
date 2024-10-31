@@ -39,10 +39,7 @@ public class SisCalEHProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 118;
-  }
+  // return 118;
 
   @Override
   protected String getUoM() {

@@ -71,10 +71,7 @@ public class OtrasValProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 127;
-  }
+    // return 127;
 
   @Override
   protected String getUoM() {

@@ -75,10 +75,7 @@ public class ValFuelleProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 123;
-  }
+  // return 123;
 
   @Override
   protected String getUoM() {

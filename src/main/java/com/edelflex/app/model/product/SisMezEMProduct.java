@@ -39,10 +39,7 @@ public class SisMezEMProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 110;
-  }
+  // return 110;
 
   @Override
   protected String getUoM() {

@@ -59,10 +59,7 @@ public class OtrasBomProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 129;
-  }
+    // return 129;
 
   @Override
   protected String getUoM() {

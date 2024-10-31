@@ -54,10 +54,7 @@ public class RepuestosProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 108;
-  }
+    // return 108;
 
   @Override
   protected String getUoM() {

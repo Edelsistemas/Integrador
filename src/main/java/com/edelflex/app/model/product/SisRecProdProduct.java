@@ -39,10 +39,7 @@ public class SisRecProdProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 120;
-  }
+  // return 120;
 
   @Override
   protected String getUoM() {

@@ -75,10 +75,7 @@ public class ValAliSegProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 126;
-  }
+  //  return 126;
 
   @Override
   protected String getUoM() {

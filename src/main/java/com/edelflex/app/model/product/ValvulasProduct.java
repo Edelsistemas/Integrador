@@ -64,10 +64,7 @@ public class ValvulasProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 113;
-  }
+  // return 113;
 
   @Override
   protected String getUoM() {

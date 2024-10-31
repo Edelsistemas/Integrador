@@ -79,10 +79,7 @@ public class ValAsientoProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 121;
-  }
+  //  return 121;
 
   @Override
   protected String getUoM() {

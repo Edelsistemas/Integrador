@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,44 @@ public class SyncBaseProductReader<T extends Product> implements ItemReader<T> {
   public void beforeStep(StepExecution stepExecution) {
     ProcessInfo processInfo = SyncItemsMetrics.getProcessInfo(stepExecution);
     SyncItemsMetrics.registerReader(processInfo, totalItems);
+  }
+
+  public SyncBaseProductReader(
+      JdbcTemplate jdbcTemplate,
+      String query,
+      Map<String, String> fields,
+      Class<? extends Product> clazz) {
+    String targetQuery = createQuery(query, fields);
+    List<T> data =
+        jdbcTemplate
+            .query(
+                targetQuery,
+                (rs, i) -> {
+                  try {
+                    return (T)
+                        clazz.getDeclaredMethod("create", ResultSet.class).invoke(null, rs);
+                  } catch (Exception e) {
+                    log.error("ERROR QUERY: " + targetQuery);
+                    log.error(e.getCause().getMessage());
+                  }
+                  return null;
+                })
+            .stream()
+            .filter(Objects::nonNull)
+            .collect(Collectors.toList());
+    this.totalItems = data.size();
+    this.data = data.iterator();
+  }
+
+  private String createQuery(String query, Map<String, String> fields) {
+    String queryFields =
+        fields.entrySet().stream()
+            .map(
+                field -> {
+                  return String.format("\"%s\" AS %s", field.getValue(), field.getKey());
+                })
+            .collect(Collectors.joining(", "));
+    return query.replaceAll("FIELDS", queryFields);
   }
 
   public SyncBaseProductReader(

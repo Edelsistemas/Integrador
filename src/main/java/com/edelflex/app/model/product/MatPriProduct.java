@@ -39,10 +39,10 @@ public class MatPriProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 105;
-  }
+  //@Override
+  //protected int getGroupCode() {
+  //return 105;
+  //}
 
   @Override
   protected String getUoM() {

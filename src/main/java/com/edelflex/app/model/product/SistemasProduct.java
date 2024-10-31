@@ -39,10 +39,7 @@ public class SistemasProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 131;
-  }
+  // return 131;
 
   @Override
   protected String getUoM() {

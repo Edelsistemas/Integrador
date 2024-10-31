@@ -39,10 +39,7 @@ public class SubconProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 111;
-  }
+  //return 111;
 
   @Override
   protected String getUoM() {

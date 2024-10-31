@@ -39,10 +39,7 @@ public class SisLimECProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 119;
-  }
+  // return 119;
 
   @Override
   protected String getUoM() {

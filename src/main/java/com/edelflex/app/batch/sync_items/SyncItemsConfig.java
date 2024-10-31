@@ -78,6 +78,15 @@ public class SyncItemsConfig {
   }
 
   @Bean
+  public Flow splitFlow(Flow syncAcceInlineProductStepFlow) {
+    return new FlowBuilder<SimpleFlow>("getFlow")
+        .split(getFlowTaskExecutor())
+        .add(syncAcceInlineProductStepFlow)
+        .build();
+  }
+
+  /*
+  @Bean
   public Flow splitFlow(
       Flow syncAcceInlineProductStepFlow,
       Flow syncBomDesPosProductStepFlow,
@@ -145,7 +154,7 @@ public class SyncItemsConfig {
             syncValvulasProductStepFlow,
             syncENAProductStepFlow)
         .build();
-  }
+  }*/
 
   @Bean
   public TaskExecutor getFlowTaskExecutor() {

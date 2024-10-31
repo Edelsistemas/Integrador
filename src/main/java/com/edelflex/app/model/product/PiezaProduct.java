@@ -47,10 +47,7 @@ public class PiezaProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 107;
-  }
+  // return 107;
 
   @Override
   protected String getUoM() {

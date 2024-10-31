@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +16,7 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public abstract class Product {
+public class Product {
 
   private long id;
   private String name; // NAME
@@ -23,6 +25,7 @@ public abstract class Product {
   private Action action;
   private String status;
   private String codigoEdelflex;
+
   private int groupCode;
 
   public enum Action {
@@ -40,7 +43,9 @@ public abstract class Product {
     }
   }
 
-  public abstract ProductProcessInfo getProcessInfo();
+  public ProductProcessInfo getProcessInfo() {
+    return null;
+  }
 
   public Map<String, Object> createRequest() {
     Map<String, Object> request = new HashMap<>();
@@ -77,9 +82,21 @@ public abstract class Product {
     return results;
   }
 
-  protected abstract void populateUpdateRequest(Map<String, Object> request);
+  protected void populateUpdateRequest(Map<String, Object> request) {}
 
-  protected abstract void populateCreateRequest(Map<String, Object> request);
+  protected void populateCreateRequest(Map<String, Object> request) {}
 
-  protected abstract String getUoM();
+  protected String getUoM() {
+    return null;
+  }
+
+  public static <T extends Product> T populate(T product, ResultSet rs) throws SQLException {
+    product.setId(rs.getLong("ID"));
+    product.setName(rs.getString("NAME"));
+    product.setProduct(rs.getString("PRODUCT"));
+    product.setRevision(rs.getString("REVISION"));
+    product.setCodigoEdelflex(rs.getString("EDELFLEX"));
+    product.setStatus(rs.getString("ESTADO"));
+    return product;
+  }
 }

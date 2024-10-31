@@ -27,7 +27,8 @@ team-center:
     instrumen:
       group-code: 1
     inter-calor:
-      group-code: 1
+      group-code: 104 # Marca: ARAX
+      group-code2: 130
     mat-pri:
       group-code: 1
     otras-bom:

@@ -75,10 +75,7 @@ public class ValControlProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 125;
-  }
+  //return 125;
 
   @Override
   protected String getUoM() {

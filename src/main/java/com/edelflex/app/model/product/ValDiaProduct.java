@@ -71,10 +71,7 @@ public class ValDiaProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 122;
-  }
+  //return 122;
 
   @Override
   protected String getUoM() {

@@ -63,10 +63,7 @@ public class ValRetenProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 124;
-  }
+  // return 124;
 
   @Override
   protected String getUoM() {

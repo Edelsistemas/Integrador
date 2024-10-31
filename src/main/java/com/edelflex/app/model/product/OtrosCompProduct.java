@@ -59,10 +59,7 @@ public class OtrosCompProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 102;
-  }
+  // return 102;
 
   @Override
   protected String getUoM() {

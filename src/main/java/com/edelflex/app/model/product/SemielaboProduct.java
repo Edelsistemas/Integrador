@@ -47,10 +47,7 @@ public class SemielaboProduct extends Product {
         .build();
   }
 
-  @Override
-  protected int getGroupCode() {
-    return 116;
-  }
+  //return 116;
 
   @Override
   protected String getUoM() {
