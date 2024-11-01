@@ -72,16 +72,14 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
   }
 
   private void process(List<? extends ProductProcessInfo> list) {
-    //  SET Status = ?, Fecha_Proceso = ?, Mensaje_Proceso = ?, Id_Proceso = ? WHERE id = ?
     list.forEach(
-        productProcessInfo -> {
-          jdbcTemplate.update(
-              updateQuery,
-              productProcessInfo.getStatus().name(),
-              new Date(),
-              productProcessInfo.getResponseData(),
-              jobId,
-              productProcessInfo.getRecordId());
-        });
+        productProcessInfo ->
+            jdbcTemplate.update(
+                updateQuery,
+                productProcessInfo.getStatus().name(),
+                new Date(),
+                productProcessInfo.getResponseData(),
+                jobId,
+                productProcessInfo.getRecordId()));
   }
 }

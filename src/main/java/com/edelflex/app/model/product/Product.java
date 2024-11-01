@@ -3,9 +3,9 @@ package com.edelflex.app.model.product;
 import com.edelflex.app.model.ProductProcessInfo;
 import com.edelflex.app.utils.Utils;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,50 +13,101 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
-public abstract class Product {
+@Builder
+public class Product {
 
   private long id;
-  private String name; // NAME
-  private String product; // CODE
-  private String revision; // REVISION
-  private Action action;
+  private String name;
+  private String product;
+  private String revision;
   private String status;
-  private String codigoEdelflex;
+  private String edelflex;
+  private String groupItem;
+
+  private String proveedor;
+  private String marca;
+  private String tipo;
+  private String modelo;
+  private String equipo;
+  private String variable;
+  private String tamanio;
+  private String modeloBastidor;
+  private String corrugacion;
+  private String materialPlacas;
+  private String materialJuntas;
+  private String cantidadSecciones;
+  private String diametro;
+  private String actuacion;
+  private String familia;
+  private String diametroSuperior;
+  private String diametroInferior;
+  private String cuerpo;
+  private String conexiones;
+  private String uom;
+  private Action action;
 
   public enum Action {
-    CREATE("Crear"),
-    UPDATE("Actualizar");
-
-    private final String label;
+    UPDATE("Actualizar"), CREATE("Crear");
 
     Action(String label) {
       this.label = label;
     }
+
+    private final String label;
 
     public String getLabel() {
       return label;
     }
   }
 
-  public abstract ProductProcessInfo getProcessInfo();
+  public ProductProcessInfo getProcessInfo() {
+    return null;
+  }
 
   public Map<String, Object> createRequest() {
     Map<String, Object> request = new HashMap<>();
     request.put("ItemName", getName());
-    request.put("ItemsGroupCode", getGroupCode());
+    request.put("ItemsGroupCode", Integer.parseInt(getGroupItem()));
     request.put("U_SEIDORAR_REVISION", getRevision());
-    request.put("U_SEIDORAR_ESTADO", getStatus()); // TODO:
-    request.put("U_SEIDORAR_ARTICULO_EDE_2", getCodigoEdelflex());
-    request.put("InventoryUOM", getUoM());
+    request.put("U_SEIDORAR_ESTADO", getStatus());
+    request.put("U_SEIDORAR_ARTICULO_EDE_2", getEdelflex());
+    request.put("InventoryUOM", getUom());
     // CREATE
-    if (getRevision().equals("A")) {
+    if (getAction().equals(Action.CREATE)) {
       request.put("ItemCode", getProduct());
       populateCreateRequest(request);
     } else { // UPDATE
       populateUpdateRequest(request);
     }
     return clearEmptyValues(request);
+  }
+
+  protected void populateUpdateRequest(Map<String, Object> request) {
+    request.put("U_SEI_Diametro", diametro);
+    request.put("U_SEI_Equipo", equipo);
+    request.put("U_SEI_Marca", marca);
+    request.put("U_SEI_Tipo", tipo);
+    request.put("U_SEI_ITEMPROV", proveedor);
+    request.put("U_SEI_MatPlac", materialPlacas);
+    request.put("U_SEI_MatJun", materialJuntas);
+    request.put("U_SEI_CanSec", cantidadSecciones);
+    request.put("U_SEI_Corruga", corrugacion);
+    request.put("U_SEI_ModBas", modeloBastidor);
+    request.put("U_SEI_Tamanho", tamanio);
+  }
+
+  protected void populateCreateRequest(Map<String, Object> request) {
+    request.put("U_SEI_Diametro", diametro);
+    request.put("U_SEI_Equipo", equipo);
+    request.put("U_SEI_Marca", marca);
+    request.put("U_SEI_Tipo", tipo);
+    request.put("U_SEI_ITEMPROV", proveedor);
+    request.put("U_SEI_MatPlac", materialPlacas);
+    request.put("U_SEI_MatJun", materialJuntas);
+    request.put("U_SEI_CanSec", cantidadSecciones);
+    request.put("U_SEI_Corruga", corrugacion);
+    request.put("U_SEI_ModBas", modeloBastidor);
+    request.put("U_SEI_Tamanho", tamanio);
   }
 
   private Map<String, Object> clearEmptyValues(Map<String, Object> request) {
@@ -76,11 +127,4 @@ public abstract class Product {
     return results;
   }
 
-  protected abstract void populateUpdateRequest(Map<String, Object> request);
-
-  protected abstract void populateCreateRequest(Map<String, Object> request);
-
-  protected abstract int getGroupCode();
-
-  protected abstract String getUoM();
 }

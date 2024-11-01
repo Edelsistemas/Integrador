@@ -2,6 +2,7 @@ package com.edelflex.app.services.integration;
 
 import java.util.Map;
 
+import com.edelflex.app.exceptions.SapCallException;
 import com.edelflex.app.model.ProductProcessInfo;
 import com.edelflex.app.model.product.Product;
 import lombok.extern.slf4j.Slf4j;
@@ -111,11 +112,37 @@ public class SapItemService {
         .build();
   }
 
-  public String getUrl(Product.Action action, String code) {
-    if (action.equals(Product.Action.CREATE)) {
+  public String getUrl(String code) {
+    /*
+    if (Product.Action.CREATE.equals(action)) {
       return sapApiService.getBaseUrl() + "Items";
     } else {
       return sapApiService.getBaseUrl() + String.format("Items('%s')", code);
+    } TODO: */
+    return "";
+  }
+
+  public boolean existItem(String code) throws SapCallException {
+    log.info("GET");
+    try {
+      HttpHeaders headers = sapApiService.getHeaders();
+      HttpEntity<Object> request = new HttpEntity<>(headers);
+      ResponseEntity<String> response =
+          sapApiService
+              .getRestTemplate()
+              .exchange(
+                  sapApiService.getBaseUrl()
+                      + String.format("Items/$count?$filter=ItemCode eq '%s'", code),
+                  HttpMethod.GET,
+                  request,
+                  String.class);
+
+      if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
+        return Integer.parseInt(response.getBody()) == 1;
+      }
+    } catch (Exception exc) {
+      log.error("SAP Error", exc);
     }
+    throw new SapCallException("Error al obtener datos del Item: " + code);
   }
 }

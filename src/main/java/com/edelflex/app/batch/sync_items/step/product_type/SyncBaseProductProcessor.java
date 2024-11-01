@@ -2,6 +2,7 @@ package com.edelflex.app.batch.sync_items.step.product_type;
 
 import com.edelflex.app.batch.sync_items.SyncItemsConfig;
 import com.edelflex.app.batch.sync_items.SyncItemsMetrics;
+import com.edelflex.app.exceptions.SapCallException;
 import com.edelflex.app.model.ProductProcessInfo;
 import com.edelflex.app.model.product.Product;
 import com.edelflex.app.services.integration.SapItemService;
@@ -13,8 +14,7 @@ import org.springframework.batch.core.annotation.BeforeStep;
 import org.springframework.batch.item.ItemProcessor;
 
 @Slf4j
-public class SyncBaseProductProcessor<T extends Product>
-    implements ItemProcessor<T, ProductProcessInfo> {
+public class SyncBaseProductProcessor implements ItemProcessor<Product, ProductProcessInfo> {
 
   protected final SapItemService sapItemService;
   private String jobId;
@@ -33,18 +33,35 @@ public class SyncBaseProductProcessor<T extends Product>
   }
 
   @Override
-  public ProductProcessInfo process(T productInfo) {
+  public ProductProcessInfo process(Product productInfo) throws SapCallException {
     long t1 = System.currentTimeMillis();
-    String url = sapItemService.getUrl(productInfo.getAction(), productInfo.getProduct());
+    String url = sapItemService.getUrl(productInfo.getProduct());
+    SyncItemsMetrics.registerProcessStart(
+        processInfo,
+        url,
+        productInfo.getProduct(),
+        productInfo.getName(),
+        "Verificando si Item existe");
+
+    if (sapItemService.existItem(productInfo.getProduct())) {
+      productInfo.setAction(Product.Action.UPDATE);
+    } else {
+      productInfo.setAction(Product.Action.CREATE);
+    }
+
+    long t2 = System.currentTimeMillis();
+    SyncItemsMetrics.registerProcessEnd(processInfo, t1, t2);
+
+    t1 = System.currentTimeMillis();
     SyncItemsMetrics.registerProcessStart(
         processInfo,
         url,
         productInfo.getProduct(),
         productInfo.getName(),
         productInfo.getAction().getLabel());
+
     Map<String, Object> request = productInfo.createRequest();
     ProductProcessInfo productProcessInfo;
-    // CREATE
     if (productInfo.getAction().equals(Product.Action.CREATE)) {
       productProcessInfo =
           sapItemService.create(productInfo.getId(), productInfo.getProduct(), request);
@@ -52,7 +69,7 @@ public class SyncBaseProductProcessor<T extends Product>
       productProcessInfo =
           sapItemService.update(productInfo.getId(), productInfo.getProduct(), request);
     }
-    long t2 = System.currentTimeMillis();
+    t2 = System.currentTimeMillis();
     SyncItemsMetrics.registerProcessEnd(processInfo, t1, t2);
     productProcessInfo.setJobId(jobId);
     return productProcessInfo;

@@ -8,6 +8,43 @@ spring:
       username: root
       password: C1gr4.2o24.T3kN0s!
 
+team-center:
+  querys:
+    item-groups:
+      acce-inline: 109
+      bom-des-pos: 128
+      bomba-cen: 101
+      disp-limpi: 114
+      ena: 106
+      homogen: 115
+      instr-ind: 103
+      instrumen: 103
+      inter-calor-kvn: 1
+      inter-calor-arax: 1
+      mat-pri: 1
+      otras-bom: 1
+      otras-val: 1
+      otros-comp: 1
+      pieza: 1
+      repuestos: 1
+      resto-inter: 1
+      semielabo: 1
+      sis-cal-eh: 1
+      sis-lim-ec: 1
+      sis-mez-em: 1
+      sis-rec-prod: 1
+      sistemas: 1
+      subcon: 1
+      tanques: 1
+      val-ali-seg: 1
+      val-asiento: 1
+      val-control: 1
+      val-dia: 1
+      val-fuelle: 1
+      val-reten: 1
+      valvulas: 1
+
+
 bitone:
   integration:
     api-key: "9342b191-90bd-4105-a60d-7b0c6b9812fc"
