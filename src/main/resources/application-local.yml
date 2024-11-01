@@ -17,68 +17,39 @@ sqlserver:
 
 team-center:
   querys:
-    bom-des-pos:
-      group-code: 1
-    bomba-cen:
-      group-code: 1
-    disp-limpi:
-      group-code: 1
-    ena:
-      group-code: 1
-    homogen:
-      group-code: 1
-    instr-ind:
-      group-code: 1
-    instrumen:
-      group-code: 1
-    inter-calor:
-      group-code: 104
-      group-code2: 130
-    mat-pri:
-      group-code: 1
-    otras-bom:
-      group-code: 1
-    otras-val:
-      group-code: 1
-    otros-comp:
-      group-code: 1
-    pieza:
-      group-code: 1
-    repuestos:
-      group-code: 1
-    resto-inter:
-      group-code: 1
-    semielabo:
-      group-code: 1
-    sis-cal-eh:
-      group-code: 1
-    sis-lim-ec:
-      group-code: 1
-    sis-mez-em:
-      group-code: 1
-    sis-rec-prod:
-      group-code: 1
-    sistemas:
-      group-code: 1
-    subcon:
-      group-code: 1
-    tanques:
-      group-code: 1
-    val-ali-seg:
-      group-code: 1
-    val-asiento:
-      group-code: 1
-    val-control:
-      group-code: 1
-    val-dia:
-      group-code: 1
-    val-fuelle:
-      group-code: 1
-    val-reten:
-      group-code: 1
-    valvulas:
-      group-code: 1
-
+    item-groups:
+      acce-inline: 142
+      bom-des-pos: 161
+      bomba-cen: 134
+      disp-limpi: 147
+      ena: 139
+      homogen: 148
+      instr-ind: 136
+      instrumen: 136
+      inter-calor-kvn: 163
+      inter-calor-arax: 137
+      mat-pri: 138
+      otras-bom: 162
+      otras-val: 160
+      otros-comp: 135
+      pieza: 140
+      repuestos: 141
+      resto-inter: 133
+      semielabo: 149
+      sis-cal-eh: 151
+      sis-lim-ec: 152
+      sis-mez-em: 143
+      sis-rec-prod: 153
+      sistemas: 164
+      subcon: 144
+      tanques: 145
+      val-ali-seg: 159
+      val-asiento: 154
+      val-control: 158
+      val-dia: 155
+      val-fuelle: 156
+      val-reten: 157
+      valvulas: 146
 
 
 #SACARLOOOO

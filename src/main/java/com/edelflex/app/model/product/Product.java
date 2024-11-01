@@ -22,7 +22,7 @@ public class Product {
   private String revision;
   private String status;
   private String edelflex;
-  private int groupitem;
+  private String groupItem;
 
   private String proveedor;
   private String marca;
@@ -35,15 +35,30 @@ public class Product {
   private String corrugacion;
   private String materialPlacas;
   private String materialJuntas;
-  private String cantSecciones;
+  private String cantidadSecciones;
   private String diametro;
   private String actuacion;
   private String familia;
   private String diametroSuperior;
   private String diametroInferior;
   private String cuerpo;
-  private String conexion;
+  private String conexiones;
   private String uom;
+  private Action action;
+
+  public enum Action {
+    UPDATE("Actualizar"), CREATE("Crear");
+
+    Action(String label) {
+      this.label = label;
+    }
+
+    private final String label;
+
+    public String getLabel() {
+      return label;
+    }
+  }
 
   public ProductProcessInfo getProcessInfo() {
     return null;
@@ -52,13 +67,13 @@ public class Product {
   public Map<String, Object> createRequest() {
     Map<String, Object> request = new HashMap<>();
     request.put("ItemName", getName());
-    request.put("ItemsGroupCode", getGroupitem());
+    request.put("ItemsGroupCode", Integer.parseInt(getGroupItem()));
     request.put("U_SEIDORAR_REVISION", getRevision());
     request.put("U_SEIDORAR_ESTADO", getStatus());
     request.put("U_SEIDORAR_ARTICULO_EDE_2", getEdelflex());
-    request.put("InventoryUOM", uom);
+    request.put("InventoryUOM", getUom());
     // CREATE
-    if (getRevision().equals("A")) {
+    if (getAction().equals(Action.CREATE)) {
       request.put("ItemCode", getProduct());
       populateCreateRequest(request);
     } else { // UPDATE
@@ -75,7 +90,7 @@ public class Product {
     request.put("U_SEI_ITEMPROV", proveedor);
     request.put("U_SEI_MatPlac", materialPlacas);
     request.put("U_SEI_MatJun", materialJuntas);
-    request.put("U_SEI_CanSec", cantSecciones);
+    request.put("U_SEI_CanSec", cantidadSecciones);
     request.put("U_SEI_Corruga", corrugacion);
     request.put("U_SEI_ModBas", modeloBastidor);
     request.put("U_SEI_Tamanho", tamanio);
@@ -89,7 +104,7 @@ public class Product {
     request.put("U_SEI_ITEMPROV", proveedor);
     request.put("U_SEI_MatPlac", materialPlacas);
     request.put("U_SEI_MatJun", materialJuntas);
-    request.put("U_SEI_CanSec", cantSecciones);
+    request.put("U_SEI_CanSec", cantidadSecciones);
     request.put("U_SEI_Corruga", corrugacion);
     request.put("U_SEI_ModBas", modeloBastidor);
     request.put("U_SEI_Tamanho", tamanio);

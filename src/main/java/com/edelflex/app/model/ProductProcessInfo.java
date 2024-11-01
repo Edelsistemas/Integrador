@@ -29,6 +29,7 @@ public class ProductProcessInfo {
   private Map<String, Object> request;
   private String code;
   private String jobId;
+  private Product.Action action;
 
   public String getResponseData() {
     ObjectMapper objectMapper = new ObjectMapper();
