@@ -38,8 +38,7 @@ public class SyncBaseProductReader implements ItemReader<Product> {
   }
 
   public SyncBaseProductReader(
-      JdbcTemplate jdbcTemplate, String query, String tableName, Map<String, Object> fields)
-      throws Exception {
+      JdbcTemplate jdbcTemplate, String query, String tableName, Map<String, Object> fields) {
     String targetQuery = createQuery(query, tableName, fields);
     List<Product> data =
         jdbcTemplate
@@ -48,6 +47,7 @@ public class SyncBaseProductReader implements ItemReader<Product> {
                 (rs, i) -> {
                   try {
                     Product item = Product.builder().build();
+                    item.setProductType(tableName);
                     populateItem(item, rs);
                     return item;
                   } catch (Exception e) {
@@ -121,29 +121,6 @@ public class SyncBaseProductReader implements ItemReader<Product> {
       return tokens[0].toLowerCase();
     }
     return "";
-  }
-
-  public SyncBaseProductReader(
-      JdbcTemplate jdbcTemplate, String query, Class<? extends Product> clazz) {
-    List<Product> data =
-        jdbcTemplate
-            .query(
-                query,
-                (rs, i) -> {
-                  try {
-                    return (Product)
-                        clazz.getDeclaredMethod("create", ResultSet.class).invoke(null, rs);
-                  } catch (Exception e) {
-                    log.error("ERROR QUERY: " + query);
-                    log.error(e.getCause().getMessage());
-                  }
-                  return null;
-                })
-            .stream()
-            .filter(Objects::nonNull)
-            .collect(Collectors.toList());
-    this.totalItems = data.size();
-    this.data = data.iterator();
   }
 
   @Override

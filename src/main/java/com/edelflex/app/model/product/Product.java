@@ -23,6 +23,7 @@ public class Product {
   private String status;
   private String edelflex;
   private String groupItem;
+  private String productType;
 
   private String proveedor;
   private String marca;

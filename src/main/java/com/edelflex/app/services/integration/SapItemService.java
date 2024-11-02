@@ -29,14 +29,13 @@ public class SapItemService {
     String responseError = null;
     ProductProcessInfo.Status status;
     Map<String, Object> responseData = null;
+    String url = getUrl(Product.Action.CREATE, null);
     try {
       HttpHeaders headers = sapApiService.getHeaders();
       headers.set("Prefer", "return-no-content");
       HttpEntity<Object> request = new HttpEntity<>(requestData, headers);
       ResponseEntity<Map> response =
-          sapApiService
-              .getRestTemplate()
-              .exchange(sapApiService.getBaseUrl() + "Items", HttpMethod.POST, request, Map.class);
+          sapApiService.getRestTemplate().exchange(url, HttpMethod.POST, request, Map.class);
 
       if (response.getStatusCode().is2xxSuccessful()) {
         // OK
@@ -64,6 +63,7 @@ public class SapItemService {
         .action(Product.Action.CREATE)
         .code(code)
         .recordId(id)
+        .api("POST " + url)
         .build();
   }
 
@@ -73,10 +73,8 @@ public class SapItemService {
     String responseError = null;
     ProductProcessInfo.Status status;
     Map<String, Object> responseData = null;
+    String url = getUrl(Product.Action.UPDATE, code);
     try {
-
-      String url = sapApiService.getBaseUrl() + String.format("Items('%s')", code);
-
       HttpHeaders headers = sapApiService.getHeaders();
       headers.set("Prefer", "return-no-content");
       HttpEntity<Object> request = new HttpEntity<>(requestData, headers);
@@ -109,17 +107,8 @@ public class SapItemService {
         .action(Product.Action.UPDATE)
         .code(code)
         .recordId(id)
+        .api("PUT " + url)
         .build();
-  }
-
-  public String getUrl(String code) {
-    /*
-    if (Product.Action.CREATE.equals(action)) {
-      return sapApiService.getBaseUrl() + "Items";
-    } else {
-      return sapApiService.getBaseUrl() + String.format("Items('%s')", code);
-    } TODO: */
-    return "";
   }
 
   public boolean existItem(String code) throws SapCallException {
@@ -144,5 +133,13 @@ public class SapItemService {
       log.error("SAP Error", exc);
     }
     throw new SapCallException("Error al obtener datos del Item: " + code);
+  }
+
+  public String getUrl(Product.Action action, String code) {
+    if (action.equals(Product.Action.CREATE)){
+      return sapApiService.getBaseUrl() + "Items";
+    } else {
+      return sapApiService.getBaseUrl() + String.format("Items('%s')", code);
+    }
   }
 }
