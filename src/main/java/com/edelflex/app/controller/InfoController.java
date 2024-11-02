@@ -51,17 +51,10 @@ public class InfoController {
                 SyncItemsConfig.ITEMS_HISTORY_COLLECTION)
             : Collections.emptyList();
 
+    model.addAttribute("errorCount", resultsItems.stream().filter(resultsItem -> resultsItem.getStatus().equals(ProductProcessInfo.Status.ERROR)).count());
     model.addAttribute("batchItems", batchItems);
     model.addAttribute("resultsItems", resultsItems);
     model.addAttribute("isRunningItems", isRunningItems);
     return "status";
   }
-
-  /*
-  @PostMapping("/intercompany/run_items")
-  public void runItems(HttpServletResponse response) throws IOException {
-    syncItemConfig.schedule();
-    response.sendRedirect("/intercompany/status");
-  }
-   */
 }

@@ -29,8 +29,7 @@
                 <th scope="col">Inicio</th>
                 <th scope="col">Fin</th>
                 <th scope="col">Estado</th>
-                <th scope="col" class="text-center">Errores</th>
-                <th scope="col">&nbsp;</th>
+                <th scope="col" class="text-center">Detalle</th>
             </tr>
             </thead>
             <tbody>
@@ -40,13 +39,13 @@
                 <td th:text="${batchItems.dateEndStr}"/>
                 <td th:text="${batchItems.status}"/>
                 <td class="text-center">
-                    <label th:text="${resultsItems.size()}" th:if="${resultsItems.size()} == 0"/>
                     <button type="button" class="btn btn-link" style="text-decoration: none !important;"
                             th:if="${resultsItems.size()} > 0"
                             data-bs-toggle="modal"
                             data-bs-target="#erroresModal">
-                        Ver <label th:text="${resultsItems.size()}"/> Errores
+                        Ver
                     </button>
+                    Errores <label th:text="${errorCount}"/>
                 </td>
             </tr>
             </tbody>
@@ -68,20 +67,30 @@
                             <div class="col-12">
                                 <div class="card mb-3" style="width: 100%;">
                                     <div class="card-header">
+                                        <span class="mb-0 badge bg-secondary"><label th:text="${resultsItems.getProductType()}"/></span>
                                         <label th:text="${resultsItems.getActionData()}"/>
+                                        <span class="mb-0 badge bg-success" th:if='${resultsItems.getStatus().name().equals("OK")}'><label th:text="${resultsItems.getStatus()}"/></span>
+                                        <span class="mb-0 badge bg-danger" th:if='${resultsItems.getStatus().name().equals("ERROR")}'><label th:text="${resultsItems.getStatus()}"/></span>
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-12">
+                                            <div class="col-12" th:if="${resultsItems.errorMessage != null && !resultsItems.errorMessage.isEmpty()}">
                                                 <h6><span class="mb-0 badge bg-secondary">API Error:</span>
                                                 </h6><label
-                                                    th:text="${resultsItems.apiError}"/>
+                                                    th:text="${resultsItems.errorMessage}"/>
                                             </div>
                                             <div class="col-12 bg-light">
-                                                <h6><span class="mb-0 badge bg-secondary">RequestData:</span>
+                                                <h6><span class="mb-0 badge bg-secondary">Request:</span>
                                                 </h6>
                                                 <pre
                                                         th:utext="${resultsItems.getRequestData()}"></pre>
+
+                                            </div>
+                                            <div class="col-12 bg-light">
+                                                <h6><span class="mb-0 badge bg-secondary">Response:</span>
+                                                </h6>
+                                                <pre
+                                                        th:utext="${resultsItems.getResponseData()}"></pre>
 
                                             </div>
                                         </div>

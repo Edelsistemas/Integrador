@@ -44,7 +44,7 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
 
   @Override
   public void write(List<? extends ProductProcessInfo> list) {
-    process(list);
+    //process(list);
     long createCount =
         list.stream()
             .filter(

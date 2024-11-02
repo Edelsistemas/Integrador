@@ -24,12 +24,14 @@ public class ProductProcessInfo {
   private String id;
   private long recordId;
   private Map<String, Object> response;
+  private String productType;
   private Status status;
   private String errorMessage;
   private Map<String, Object> request;
   private String code;
   private String jobId;
   private Product.Action action;
+  private String api;
 
   public String getResponseData() {
     ObjectMapper objectMapper = new ObjectMapper();
@@ -46,5 +48,18 @@ public class ProductProcessInfo {
       str.append(errorMessage);
     }
     return str.toString();
+  }
+
+  public String getActionData() {
+    return action.getLabel() + " :: " + getApi();
+  }
+
+  public String getRequestData() {
+    try {
+      return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(request);
+    } catch (JsonProcessingException e) {
+      e.printStackTrace();
+    }
+    return "";
   }
 }

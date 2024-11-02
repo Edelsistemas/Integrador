@@ -11,10 +11,7 @@ import com.edelflex.app.model.product.Product;
 import com.edelflex.app.services.integration.ProcessService;
 import com.edelflex.app.services.integration.SapItemService;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.batch.core.Job;
@@ -30,9 +27,6 @@ import org.springframework.batch.core.job.flow.support.SimpleFlow;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.support.SimpleJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
-import org.springframework.batch.item.ExecutionContext;
-import org.springframework.batch.item.ItemStreamException;
-import org.springframework.batch.item.ItemStreamWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -111,7 +105,7 @@ public class SyncItemsConfig {
                                 sapItemService))
                         .build();
                   } catch (Exception e) {
-                      e.printStackTrace();
+                    e.printStackTrace();
                     throw new RuntimeException(e);
                   }
                 })
@@ -135,8 +129,7 @@ public class SyncItemsConfig {
       String tableName,
       Map<String, Object> fields,
       String updateQuery,
-      SapItemService sapItemService)
-      throws Exception {
+      SapItemService sapItemService) {
     SyncBaseProductReader reader =
         new SyncBaseProductReader(jdbcTemplate, query, tableName, fields);
     SyncBaseProductProcessor processor = new SyncBaseProductProcessor(sapItemService);
@@ -147,122 +140,13 @@ public class SyncItemsConfig {
         .<Product, ProductProcessInfo>chunk(100)
         .reader(reader)
         .processor(processor)
-        .writer(new ItemStreamWriter<ProductProcessInfo>() {
-          @Override
-          public void open(ExecutionContext executionContext) throws ItemStreamException {
-
-          }
-
-          @Override
-          public void update(ExecutionContext executionContext) throws ItemStreamException {
-
-          }
-
-          @Override
-          public void close() throws ItemStreamException {
-
-          }
-
-          @Override
-          public void write(List<? extends ProductProcessInfo> list) throws Exception {
-
-          }
-        })
+        .writer(writer)
         .faultTolerant()
         .retryLimit(10)
         .retry(SapCallException.class)
         .listener(new SyncItemsExecutionListener())
         .build();
   }
-
-  /*
-  @Bean
-  public Flow splitFlow(Flow syncAcceInlineProductStepFlow) {
-    return new FlowBuilder<SimpleFlow>("getFlow")
-        .split(getFlowTaskExecutor())
-        .add(new FlowBuilder<SimpleFlow>("syncProductStepFlow")
-                .start(syncProductStepFlowDefinition)
-                .build())
-        .build();
-  }
-
-  @Bean
-  public Flow syncAcceInlineProductStepFlow(Step syncProductStep) {
-    return new FlowBuilder<SimpleFlow>("syncProductStepFlow")
-            .start(syncProductStep)
-            .build();
-  }*/
-
-  /*
-  @Bean
-  public Flow splitFlow(
-      Flow syncAcceInlineProductStepFlow,
-      Flow syncBomDesPosProductStepFlow,
-      Flow syncBombaCenProductStepFlow,
-      Flow syncDispLimpiProductStepFlow,
-      Flow syncHomogenProductStepFlow,
-      Flow syncInstrIndProductStepFlow,
-      Flow syncInstrumenProductStepFlow,
-      Flow syncInterCalorProductStepFlow,
-      Flow syncMatPriProductStepFlow,
-      Flow syncOtrasBomProductStepFlow,
-      Flow syncOtrasValProductStepFlow,
-      Flow syncOtrosCompProductStepFlow,
-      Flow syncPiezaProductStepFlow,
-      Flow syncRepuestosProductStepFlow,
-      Flow syncRestoInterProductStepFlow,
-      Flow syncSemielaboProductStepFlow,
-      Flow syncSisCalEHProductStepFlow,
-      Flow syncSisLimECProductStepFlow,
-      Flow syncSisMezEMProductStepFlow,
-      Flow syncSisRecProdProductStepFlow,
-      Flow syncSistemasProductStepFlow,
-      Flow syncSubconProductStepFlow,
-      Flow syncTanquesProductStepFlow,
-      Flow syncValAliSegProductStepFlow,
-      Flow syncValAsientoProductStepFlow,
-      Flow syncValControlProductStepFlow,
-      Flow syncValDiaProductStepFlow,
-      Flow syncValFuelleProductStepFlow,
-      Flow syncValRetenProductStepFlow,
-      Flow syncValvulasProductStepFlow,
-      Flow syncENAProductStepFlow) {
-    return new FlowBuilder<SimpleFlow>("getFlow")
-        .split(getFlowTaskExecutor())
-        .add(
-            syncAcceInlineProductStepFlow,
-            syncBomDesPosProductStepFlow,
-            syncBombaCenProductStepFlow,
-            syncDispLimpiProductStepFlow,
-            syncHomogenProductStepFlow,
-            syncInstrIndProductStepFlow,
-            syncInstrumenProductStepFlow,
-            syncInterCalorProductStepFlow,
-            syncMatPriProductStepFlow,
-            syncOtrasBomProductStepFlow,
-            syncOtrasValProductStepFlow,
-            syncOtrosCompProductStepFlow,
-            syncPiezaProductStepFlow,
-            syncRepuestosProductStepFlow,
-            syncRestoInterProductStepFlow,
-            syncSemielaboProductStepFlow,
-            syncSisCalEHProductStepFlow,
-            syncSisLimECProductStepFlow,
-            syncSisMezEMProductStepFlow,
-            syncSisRecProdProductStepFlow,
-            syncSistemasProductStepFlow,
-            syncSubconProductStepFlow,
-            syncTanquesProductStepFlow,
-            syncValAliSegProductStepFlow,
-            syncValAsientoProductStepFlow,
-            syncValControlProductStepFlow,
-            syncValDiaProductStepFlow,
-            syncValFuelleProductStepFlow,
-            syncValRetenProductStepFlow,
-            syncValvulasProductStepFlow,
-            syncENAProductStepFlow)
-        .build();
-  }*/
 
   @Bean
   public TaskExecutor getFlowTaskExecutor() {

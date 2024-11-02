@@ -34,14 +34,6 @@ public class SyncBaseProductProcessor implements ItemProcessor<Product, ProductP
 
   @Override
   public ProductProcessInfo process(Product productInfo) throws SapCallException {
-    long t1 = System.currentTimeMillis();
-    String url = sapItemService.getUrl(productInfo.getProduct());
-    SyncItemsMetrics.registerProcessStart(
-        processInfo,
-        url,
-        productInfo.getProduct(),
-        productInfo.getName(),
-        "Verificando si Item existe");
 
     if (sapItemService.existItem(productInfo.getProduct())) {
       productInfo.setAction(Product.Action.UPDATE);
@@ -49,10 +41,9 @@ public class SyncBaseProductProcessor implements ItemProcessor<Product, ProductP
       productInfo.setAction(Product.Action.CREATE);
     }
 
-    long t2 = System.currentTimeMillis();
-    SyncItemsMetrics.registerProcessEnd(processInfo, t1, t2);
+    String url = sapItemService.getUrl(productInfo.getAction(), productInfo.getProduct());
 
-    t1 = System.currentTimeMillis();
+    long t1 = System.currentTimeMillis();
     SyncItemsMetrics.registerProcessStart(
         processInfo,
         url,
@@ -69,7 +60,8 @@ public class SyncBaseProductProcessor implements ItemProcessor<Product, ProductP
       productProcessInfo =
           sapItemService.update(productInfo.getId(), productInfo.getProduct(), request);
     }
-    t2 = System.currentTimeMillis();
+    productProcessInfo.setProductType(productInfo.getProductType());
+    long t2 = System.currentTimeMillis();
     SyncItemsMetrics.registerProcessEnd(processInfo, t1, t2);
     productProcessInfo.setJobId(jobId);
     return productProcessInfo;
