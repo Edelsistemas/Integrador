@@ -61,10 +61,6 @@ public class Product {
     }
   }
 
-  public ProductProcessInfo getProcessInfo() {
-    return null;
-  }
-
   public Map<String, Object> createRequest() {
     Map<String, Object> request = new HashMap<>();
     request.put("ItemName", getName());
@@ -76,6 +72,7 @@ public class Product {
     // CREATE
     if (getAction().equals(Action.CREATE)) {
       request.put("ItemCode", getProduct());
+      request.put("Valid", "N");
       populateCreateRequest(request);
     } else { // UPDATE
       populateUpdateRequest(request);
