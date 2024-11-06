@@ -134,7 +134,7 @@ public class SyncItemsConfig {
         new SyncBaseProductReader(jdbcTemplate, query, tableName, fields);
     SyncBaseProductProcessor processor = new SyncBaseProductProcessor(sapItemService);
     SyncBaseProductWriter writer =
-        new SyncBaseProductWriter(mongoTemplate, jdbcTemplate, updateQuery);
+        new SyncBaseProductWriter(mongoTemplate, jdbcTemplate, updateQuery.replaceAll("TABLE", tableName));
     return stepBuilderFactory
         .get("Sync " + tableName + " Step")
         .<Product, ProductProcessInfo>chunk(100)
