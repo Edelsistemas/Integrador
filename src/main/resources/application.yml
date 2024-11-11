@@ -959,7 +959,7 @@ team-center:
         table: "Valvulas"
 
 batch-process:
-  sync-business-partners: 1800000
+  sync-business-partners: 120000
 
 bitone:
   integration:
