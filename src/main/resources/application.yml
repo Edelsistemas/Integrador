@@ -11,8 +11,8 @@ sap:
   edelflex:
     url: https://10.250.2.10:50000/b1s/v1/
     credentials:
-      user: gregorio.hakimian
-      password: EDFsapbone
+      user: interfaz
+      password: qxknQqEUP2
       company: SBOEDEL24TST
 
 sqlserver:
