@@ -9,6 +9,7 @@ import com.edelflex.app.utils.ProcessInfo;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.StepExecution;
@@ -72,6 +73,8 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
   }
 
   private void process(List<? extends ProductProcessInfo> list) {
+    String info = list.stream().map(productProcessInfo -> String.valueOf(productProcessInfo.getRecordId())).collect(Collectors.joining(","));
+    processInfo.addMetric("TO_UPDATE", info);
     list.forEach(
         productProcessInfo ->
             jdbcTemplate.update(

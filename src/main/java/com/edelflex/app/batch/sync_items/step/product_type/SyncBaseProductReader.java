@@ -3,8 +3,7 @@ package com.edelflex.app.batch.sync_items.step.product_type;
 import com.edelflex.app.batch.sync_items.SyncItemsMetrics;
 import com.edelflex.app.model.product.Product;
 import com.edelflex.app.utils.ProcessInfo;
-
-import java.lang.reflect.InvocationTargetException;
+import com.edelflex.app.utils.Utils;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -14,8 +13,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-import com.edelflex.app.utils.Utils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.batch.core.StepExecution;
@@ -29,12 +26,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class SyncBaseProductReader implements ItemReader<Product> {
 
   private final Iterator<Product> data;
-  private int totalItems;
+  private final int totalItems;
+  private final String query;
 
   @BeforeStep
   public void beforeStep(StepExecution stepExecution) {
     ProcessInfo processInfo = SyncItemsMetrics.getProcessInfo(stepExecution);
-    SyncItemsMetrics.registerReader(processInfo, totalItems);
+    SyncItemsMetrics.registerReader(processInfo, totalItems, query);
   }
 
   public SyncBaseProductReader(
@@ -59,6 +57,7 @@ public class SyncBaseProductReader implements ItemReader<Product> {
             .filter(Objects::nonNull)
             .collect(Collectors.toList());
     this.totalItems = data.size();
+    this.query = targetQuery;
     this.data = data.iterator();
   }
 
