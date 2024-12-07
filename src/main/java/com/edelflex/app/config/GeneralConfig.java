@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import org.springframework.batch.core.launch.JobLauncher;
-import org.springframework.batch.core.launch.support.SimpleJobLauncher;
+import java.sql.SQLException;
+import javax.sql.DataSource;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.repository.support.JobRepositoryFactoryBean;
 import org.springframework.batch.support.transaction.ResourcelessTransactionManager;
@@ -15,11 +15,7 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
-
-import javax.sql.DataSource;
 
 @Configuration
 public class GeneralConfig {
@@ -66,9 +62,11 @@ public class GeneralConfig {
 
   @Bean
   @Qualifier("jdbcTemplateSQLServer")
-  public JdbcTemplate jdbcTemplate() {
+  public JdbcTemplate jdbcTemplate() throws SQLException {
     JdbcTemplate jdbcTemplate = new JdbcTemplate();
-    jdbcTemplate.setDataSource(dataSourceSQLServer());
+    DataSource ds = dataSourceSQLServer();
+    ds.getConnection().setAutoCommit(true);
+    jdbcTemplate.setDataSource(ds);
     return jdbcTemplate;
   }
 

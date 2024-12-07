@@ -31,7 +31,8 @@ public class SyncItemsMetrics {
     processInfo.addMetric("P_1Total Procesado", pagesProcessed + "/" + items);
   }
 
-  public static void registerReader(ProcessInfo processInfo, int totalItems) {
+  public static void registerReader(ProcessInfo processInfo, int totalItems, String query) {
+    processInfo.addMetric("QUERY", query);
     processInfo.addMetric("ITEMS", totalItems);
   }
 
