@@ -9,6 +9,7 @@ import com.edelflex.app.exceptions.SapCallException;
 import com.edelflex.app.model.ProductProcessInfo;
 import com.edelflex.app.model.product.Product;
 import com.edelflex.app.services.integration.ProcessService;
+import com.edelflex.app.services.integration.SQLServerService;
 import com.edelflex.app.services.integration.SapItemService;
 import java.util.Date;
 import java.util.Map;
@@ -83,7 +84,7 @@ public class SyncItemsConfig {
       StepBuilderFactory stepBuilderFactory,
       MongoTemplate mongoTemplate,
       ItemProcessConfigProperties itemProcessConfigProperties,
-      @Qualifier("jdbcTemplateSQLServer") JdbcTemplate jdbcTemplate,
+      SQLServerService sqlServerService,
       SapItemService sapItemService,
       ProcessService processService) {
 
@@ -97,7 +98,7 @@ public class SyncItemsConfig {
                             syncProductStep(
                                 stepBuilderFactory,
                                 mongoTemplate,
-                                jdbcTemplate,
+                                    sqlServerService,
                                 itemProcessConfigProperties.getGet(),
                                 config.getTable(),
                                 config.getFields(),
@@ -124,17 +125,17 @@ public class SyncItemsConfig {
   public Step syncProductStep(
       StepBuilderFactory stepBuilderFactory,
       MongoTemplate mongoTemplate,
-      JdbcTemplate jdbcTemplate,
+      SQLServerService sqlServerService,
       String query,
       String tableName,
       Map<String, Object> fields,
       String updateQuery,
       SapItemService sapItemService) {
     SyncBaseProductReader reader =
-        new SyncBaseProductReader(jdbcTemplate, query, tableName, fields);
+        new SyncBaseProductReader(sqlServerService, query, tableName, fields);
     SyncBaseProductProcessor processor = new SyncBaseProductProcessor(sapItemService);
     SyncBaseProductWriter writer =
-        new SyncBaseProductWriter(mongoTemplate, jdbcTemplate, updateQuery.replaceAll("TABLE", tableName));
+        new SyncBaseProductWriter(mongoTemplate, sqlServerService, updateQuery.replaceAll("TABLE", tableName));
     return stepBuilderFactory
         .get("Sync " + tableName + " Step")
         .<Product, ProductProcessInfo>chunk(100)
