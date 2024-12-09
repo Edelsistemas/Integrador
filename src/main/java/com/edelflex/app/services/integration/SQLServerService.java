@@ -31,6 +31,7 @@ import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
@@ -44,6 +45,7 @@ public class SQLServerService {
     this.jdbcTemplate = jdbcTemplate;
   }
 
+  @Transactional(propagation = Propagation.REQUIRES_NEW)
   public List<Product> getProducts(String query, String tableName, Map<String, Object> fields) {
     String targetQuery = createQuery(query, tableName, fields);
     return jdbcTemplate
@@ -126,7 +128,7 @@ public class SQLServerService {
     return "";
   }
 
-  @Transactional
+  @Transactional(propagation = Propagation.REQUIRES_NEW)
   public void updateProducts(
       List<? extends ProductProcessInfo> list, String updateQuery, String jobId) {
     list.forEach(
