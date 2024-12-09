@@ -62,11 +62,9 @@ public class GeneralConfig {
 
   @Bean
   @Qualifier("jdbcTemplateSQLServer")
-  public JdbcTemplate jdbcTemplate() throws SQLException {
+  public JdbcTemplate jdbcTemplate() {
     JdbcTemplate jdbcTemplate = new JdbcTemplate();
-    DataSource ds = dataSourceSQLServer();
-    ds.getConnection().setAutoCommit(true);
-    jdbcTemplate.setDataSource(ds);
+    jdbcTemplate.setDataSource(dataSourceSQLServer());
     return jdbcTemplate;
   }
 
