@@ -4,13 +4,11 @@ import com.edelflex.app.batch.sync_items.SyncItemsConfig;
 import com.edelflex.app.batch.sync_items.SyncItemsMetrics;
 import com.edelflex.app.model.ProductProcessInfo;
 import com.edelflex.app.model.product.Product;
+import com.edelflex.app.services.integration.SQLServerService;
 import com.edelflex.app.utils.ProcessInfo;
-
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.annotation.BeforeStep;
@@ -18,21 +16,20 @@ import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.data.mongodb.core.BulkOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 @Slf4j
 @StepScope
 public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
 
   protected final MongoTemplate mongoTemplate;
-  private final JdbcTemplate jdbcTemplate;
+  private final SQLServerService sqlServerService;
   private final String updateQuery;
   private String jobId;
 
   public SyncBaseProductWriter(
-      MongoTemplate mongoTemplate, JdbcTemplate jdbcTemplate, String updateQuery) {
+      MongoTemplate mongoTemplate, SQLServerService sqlServerService, String updateQuery) {
     this.mongoTemplate = mongoTemplate;
-    this.jdbcTemplate = jdbcTemplate;
+    this.sqlServerService = sqlServerService;
     this.updateQuery = updateQuery;
   }
 
@@ -75,16 +72,11 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
   }
 
   private void process(List<? extends ProductProcessInfo> list) {
-    String info = list.stream().map(productProcessInfo -> String.valueOf(productProcessInfo.getRecordId())).collect(Collectors.joining(","));
+    String info =
+        list.stream()
+            .map(productProcessInfo -> String.valueOf(productProcessInfo.getRecordId()))
+            .collect(Collectors.joining(","));
     processInfo.addMetric("TO_UPDATE", info);
-    list.forEach(
-        productProcessInfo ->
-            jdbcTemplate.update(
-                updateQuery,
-                productProcessInfo.getStatus().name(),
-                new Date(),
-                productProcessInfo.getResponseData(),
-                jobId,
-                productProcessInfo.getRecordId()));
+    sqlServerService.updateProducts(list, updateQuery, jobId);
   }
 }
