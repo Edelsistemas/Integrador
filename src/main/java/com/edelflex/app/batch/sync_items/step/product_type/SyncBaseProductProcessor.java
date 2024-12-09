@@ -11,9 +11,11 @@ import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.annotation.BeforeStep;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemProcessor;
 
 @Slf4j
+@StepScope
 public class SyncBaseProductProcessor implements ItemProcessor<Product, ProductProcessInfo> {
 
   protected final SapItemService sapItemService;
