@@ -30,9 +30,11 @@ import org.springframework.batch.core.launch.support.SimpleJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.Scope;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -54,8 +56,7 @@ public class SyncItemsConfig {
   private JobLauncher jobLauncherSyncItems;
 
   @Autowired
-  @Qualifier("syncItems")
-  private Job syncItems;
+  private ApplicationContext context;
 
   private JobExecution execution;
 
@@ -64,6 +65,7 @@ public class SyncItemsConfig {
     if (execution == null || !execution.isRunning()) {
       try {
         String jobId = String.valueOf(new Date().getTime());
+        Job syncItems = (Job) context.getBean("syncItems");
         execution =
             jobLauncherSyncItems.run(
                 syncItems,
@@ -79,6 +81,7 @@ public class SyncItemsConfig {
   }
 
   @Bean
+  @Scope("prototype")
   public Job syncItems(
       JobBuilderFactory jobBuilderFactory,
       StepBuilderFactory stepBuilderFactory,
