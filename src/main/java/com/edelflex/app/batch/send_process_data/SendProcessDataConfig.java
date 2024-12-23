@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.scheduling.annotation.Scheduled;
 
 @Configuration
 @EnableBatchProcessing
@@ -25,36 +24,10 @@ import org.springframework.scheduling.annotation.Scheduled;
 @Profile("send-process-data-batch")
 public class SendProcessDataConfig {
 
-  private static final String SEND_PROCESS_DATA = "SEND_PROCESS_DATA";
-
-  @Autowired
-  @Qualifier("jobLauncherSendProcessData")
-  private JobLauncher jobLauncher;
-
-  @Autowired
-  @Qualifier("processSendProcessDataJob")
-  private Job processSendProcessDataJob;
-
-  private JobExecution execution;
 
   @Bean
   public Job processSendProcessDataJob(Step processorSendProcessDataStep, JobRepository jobRepository) {
-    return new JobBuilder(SEND_PROCESS_DATA, jobRepository).start(processorSendProcessDataStep).build();
-  }
-
-  @Scheduled(fixedDelayString = "10000")
-  public void schedule() {
-    if (execution == null || !execution.isRunning()) {
-      try {
-        execution = jobLauncher.run(
-            processSendProcessDataJob,
-            new JobParametersBuilder().addLong("time", new Date().getTime()).toJobParameters());
-      } catch (Exception e) {
-        log.error("Error al lanzar proceso", e);
-      } finally {
-        MDC.clear();
-      }
-    }
+    return new JobBuilder(SendProcessDataLauncher.SEND_PROCESS_DATA, jobRepository).start(processorSendProcessDataStep).build();
   }
 
   @Bean
