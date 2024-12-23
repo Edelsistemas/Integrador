@@ -26,6 +26,7 @@ public class InMemoryBatchConfig  {
         JobRepositoryFactoryBean factory = new JobRepositoryFactoryBean();
         factory.setDataSource(dataSource);
         factory.setTransactionManager(transactionManager());
+        factory.afterPropertiesSet();
         return factory.getObject();
     }
 
