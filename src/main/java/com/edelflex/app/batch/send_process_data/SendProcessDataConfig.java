@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-@EnableBatchProcessing
 @Slf4j
 @Profile("send-process-data-batch")
 public class SendProcessDataConfig {

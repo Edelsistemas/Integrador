@@ -9,6 +9,7 @@ import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.Scheduled;
 
@@ -22,16 +23,15 @@ public class SendProcessDataLauncher {
   @Qualifier("jobLauncherSendProcessData")
   private JobLauncher jobLauncher;
 
-  private JobExecution execution;
+  @Autowired private ApplicationContext context;
 
-  @Autowired
-  @Qualifier("processSendProcessDataJob")
-  private Job processSendProcessDataJob;
+  private JobExecution execution;
 
   @Scheduled(fixedDelayString = "10000")
   public void schedule() {
     if (execution == null || !execution.isRunning()) {
       try {
+        Job processSendProcessDataJob = (Job) context.getBean("processSendProcessDataJob");
         execution =
             jobLauncher.run(
                 processSendProcessDataJob,
