@@ -28,32 +28,6 @@ public class GeneralConfig {
   }
 
   @Bean
-  public ResourcelessTransactionManager transactionManager() {
-    return new ResourcelessTransactionManager();
-  }
-
-  @Bean
-  public JobRepository jobRepository(DataSource dataSource) throws Exception {
-    JobRepositoryFactoryBean factory = new JobRepositoryFactoryBean();
-    factory.setDataSource(dataSource);
-    factory.setTransactionManager(transactionManager());
-    return factory.getObject();
-  }
-
-  @Bean
-  @Primary
-  public HikariDataSource getDataSource(){
-    HikariConfig config = new HikariConfig();
-    config.setJdbcUrl("jdbc:hsqldb:mem:testdb;sql.enforce_strict_size=true;hsqldb.tx=MVCC");
-    config.setUsername("sa");
-    config.setDriverClassName("org.hsqldb.jdbc.JDBCDriver");
-    config.setConnectionTimeout(300000);
-    config.setMaximumPoolSize(50);
-    config.setMaxLifetime(300000);
-    return new HikariDataSource(config);
-  }
-
-  @Bean
   @Qualifier("dataSourceSQLServer")
   @ConfigurationProperties(prefix = "sqlserver")
   public DataSource dataSourceSQLServer() {
