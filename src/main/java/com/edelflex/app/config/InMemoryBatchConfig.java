@@ -2,7 +2,7 @@ package com.edelflex.app.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
+import javax.sql.DataSource;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.repository.support.JobRepositoryFactoryBean;
 import org.springframework.batch.support.transaction.ResourcelessTransactionManager;
@@ -10,10 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
-import javax.sql.DataSource;
-
 @Configuration
-@EnableBatchProcessing
 public class InMemoryBatchConfig  {
 
     @Bean
@@ -32,7 +29,7 @@ public class InMemoryBatchConfig  {
 
     @Bean
     @Primary
-    public HikariDataSource getDataSource(){
+    public HikariDataSource dataSource(){
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl("jdbc:hsqldb:mem:testdb;sql.enforce_strict_size=true;hsqldb.tx=MVCC");
         config.setUsername("sa");
