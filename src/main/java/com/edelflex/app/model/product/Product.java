@@ -1,6 +1,5 @@
 package com.edelflex.app.model.product;
 
-import com.edelflex.app.model.ProductProcessInfo;
 import com.edelflex.app.utils.Utils;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
