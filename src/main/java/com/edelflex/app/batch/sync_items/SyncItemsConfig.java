@@ -11,26 +11,18 @@ import com.edelflex.app.model.product.Product;
 import com.edelflex.app.services.integration.ProcessService;
 import com.edelflex.app.services.integration.SQLServerService;
 import com.edelflex.app.services.integration.SapItemService;
-import java.util.Date;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.MDC;
 import org.springframework.batch.core.Job;
-import org.springframework.batch.core.JobExecution;
-import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.job.builder.FlowBuilder;
+import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.batch.core.job.flow.support.SimpleFlow;
 import org.springframework.batch.core.launch.JobLauncher;
-import org.springframework.batch.core.launch.support.SimpleJobLauncher;
+import org.springframework.batch.core.launch.support.TaskExecutorJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.ApplicationContext;
+import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -38,58 +30,26 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-@EnableBatchProcessing
 @Slf4j
 @Profile("sync-items-batch")
 public class SyncItemsConfig {
 
-  public static final String PARAM_PROCESS_IDENTIFIER = "process-identifier";
   public static final String SYNC_ITEMS = "SYNC_ITEMS";
   public static final String ITEMS_HISTORY_COLLECTION = "items-process-history";
-
-  @Autowired
-  @Qualifier("jobLauncherSyncItems")
-  private JobLauncher jobLauncherSyncItems;
-
-  @Autowired
-  private ApplicationContext context;
-
-  private JobExecution execution;
-
-  @Scheduled(fixedDelayString = "${batch-process.sync-business-partners}")
-  public void schedule() {
-    if (execution == null || !execution.isRunning()) {
-      try {
-        String jobId = String.valueOf(new Date().getTime());
-        Job syncItems = (Job) context.getBean("syncItems");
-        execution =
-            jobLauncherSyncItems.run(
-                syncItems,
-                new JobParametersBuilder()
-                    .addString(PARAM_PROCESS_IDENTIFIER, jobId)
-                    .toJobParameters());
-      } catch (Exception e) {
-        log.error("Error al lanzar proceso", e);
-      } finally {
-        MDC.clear();
-      }
-    }
-  }
 
   @Bean
   @Scope("prototype")
   public Job syncItems(
-      JobBuilderFactory jobBuilderFactory,
-      StepBuilderFactory stepBuilderFactory,
+      PlatformTransactionManager transactionManager,
       MongoTemplate mongoTemplate,
       ItemProcessConfigProperties itemProcessConfigProperties,
       SQLServerService sqlServerService,
       SapItemService sapItemService,
-      ProcessService processService) {
+      ProcessService processService,
+      JobRepository jobRepository) {
 
     Flow[] flows =
         itemProcessConfigProperties.getConfigs().stream()
@@ -99,14 +59,15 @@ public class SyncItemsConfig {
                     return new FlowBuilder<SimpleFlow>("syncProductStepFlow")
                         .start(
                             syncProductStep(
-                                stepBuilderFactory,
+                                transactionManager,
                                 mongoTemplate,
-                                    sqlServerService,
+                                sqlServerService,
                                 itemProcessConfigProperties.getGet(),
                                 config.getTable(),
                                 config.getFields(),
                                 itemProcessConfigProperties.getUpdate(),
-                                sapItemService))
+                                sapItemService,
+                                jobRepository))
                         .build();
                   } catch (Exception e) {
                     e.printStackTrace();
@@ -115,8 +76,7 @@ public class SyncItemsConfig {
                 })
             .toArray(Flow[]::new);
 
-    return jobBuilderFactory
-        .get(SYNC_ITEMS)
+    return new JobBuilder(SYNC_ITEMS, jobRepository)
         .start(
             new FlowBuilder<SimpleFlow>("getFlow").split(getFlowTaskExecutor()).add(flows).build())
         .build()
@@ -126,22 +86,23 @@ public class SyncItemsConfig {
   }
 
   public Step syncProductStep(
-      StepBuilderFactory stepBuilderFactory,
+      PlatformTransactionManager transactionManager,
       MongoTemplate mongoTemplate,
       SQLServerService sqlServerService,
       String query,
       String tableName,
       Map<String, Object> fields,
       String updateQuery,
-      SapItemService sapItemService) {
+      SapItemService sapItemService,
+      JobRepository jobRepository) {
     SyncBaseProductReader reader =
         new SyncBaseProductReader(sqlServerService, query, tableName, fields);
     SyncBaseProductProcessor processor = new SyncBaseProductProcessor(sapItemService);
     SyncBaseProductWriter writer =
-        new SyncBaseProductWriter(mongoTemplate, sqlServerService, updateQuery.replaceAll("TABLE", tableName));
-    return stepBuilderFactory
-        .get("Sync " + tableName + " Step")
-        .<Product, ProductProcessInfo>chunk(100)
+        new SyncBaseProductWriter(
+            mongoTemplate, sqlServerService, updateQuery.replaceAll("TABLE", tableName));
+    return new StepBuilder("Sync " + tableName + " Step", jobRepository)
+        .<Product, ProductProcessInfo>chunk(100, transactionManager)
         .reader(reader)
         .processor(processor)
         .writer(writer)
@@ -153,15 +114,14 @@ public class SyncItemsConfig {
   }
 
   @Bean
-  public TaskExecutor getFlowTaskExecutor() {
+  TaskExecutor getFlowTaskExecutor() {
     return new SimpleAsyncTaskExecutor("GetFlowTaskExecutor");
   }
 
   @Bean
-  public JobLauncher jobLauncherSyncItems(JobRepository jobRepository) throws Exception {
-    SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
+  JobLauncher jobLauncherSyncItems(JobRepository jobRepository) throws Exception {
+    TaskExecutorJobLauncher jobLauncher = new TaskExecutorJobLauncher();
     jobLauncher.setJobRepository(jobRepository);
-    jobLauncher.setTaskExecutor(new SimpleAsyncTaskExecutor());
     jobLauncher.afterPropertiesSet();
     return jobLauncher;
   }

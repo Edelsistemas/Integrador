@@ -49,8 +49,8 @@ public class SapItemService {
     } catch (Exception exc) {
       log.error("SAP Error", exc);
       status = ProductProcessInfo.Status.ERROR;
-      if (exc instanceof HttpClientErrorException) {
-        responseError = ((HttpClientErrorException) exc).getResponseBodyAsString();
+      if (exc instanceof HttpClientErrorException exception) {
+        responseError = exception.getResponseBodyAsString();
       } else {
         responseError = exc.getMessage();
       }
@@ -93,8 +93,8 @@ public class SapItemService {
     } catch (Exception exc) {
       log.error("SAP Error", exc);
       status = ProductProcessInfo.Status.ERROR;
-      if (exc instanceof HttpClientErrorException) {
-        responseError = ((HttpClientErrorException) exc).getResponseBodyAsString();
+      if (exc instanceof HttpClientErrorException exception) {
+        responseError = exception.getResponseBodyAsString();
       } else {
         responseError = exc.getMessage();
       }
@@ -121,7 +121,7 @@ public class SapItemService {
               .getRestTemplate()
               .exchange(
                   sapApiService.getBaseUrl()
-                      + String.format("Items/$count?$filter=ItemCode eq '%s'", code),
+                      + "Items/$count?$filter=ItemCode eq '%s'".formatted(code),
                   HttpMethod.GET,
                   request,
                   String.class);
@@ -139,7 +139,7 @@ public class SapItemService {
     if (action.equals(Product.Action.CREATE)){
       return sapApiService.getBaseUrl() + "Items";
     } else {
-      return sapApiService.getBaseUrl() + String.format("Items('%s')", code);
+      return sapApiService.getBaseUrl() + "Items('%s')".formatted(code);
     }
   }
 }

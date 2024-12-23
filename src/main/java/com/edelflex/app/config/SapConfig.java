@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class SapConfig {
 
   @Bean
-  public CommonAPIService sapApiService(
+  CommonAPIService sapApiService(
       @Value("${sap.edelflex.credentials.user}") String user,
       @Value("${sap.edelflex.credentials.password}") String password,
       @Value("${sap.edelflex.credentials.company}") String company,

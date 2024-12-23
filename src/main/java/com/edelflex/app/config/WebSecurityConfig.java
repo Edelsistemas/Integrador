@@ -12,26 +12,27 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
 
   @Bean
-  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+  SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.csrf(AbstractHttpConfigurer::disable)
         .cors(CorsConfigurer::disable)
-        .authorizeRequests()
-        .antMatchers("/")
-        .hasRole("ADMIN")
-        .anyRequest()
-        .authenticated()
-        .and()
-        .httpBasic();
+        .authorizeRequests(requests -> requests
+            .requestMatchers("/")
+            .hasRole("ADMIN")
+            .anyRequest()
+            .authenticated())
+        .httpBasic(withDefaults());
     return http.build();
   }
 
   @Bean
-  public UserDetailsService userDetailsService() {
+  UserDetailsService userDetailsService() {
     UserDetails user =
         User.withDefaultPasswordEncoder()
             .username("process")

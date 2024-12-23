@@ -1,6 +1,7 @@
 package com.edelflex.app.batch.sync_items.step.product_type;
 
 import com.edelflex.app.batch.sync_items.SyncItemsConfig;
+import com.edelflex.app.batch.sync_items.SyncItemsLauncher;
 import com.edelflex.app.batch.sync_items.SyncItemsMetrics;
 import com.edelflex.app.model.ProductProcessInfo;
 import com.edelflex.app.model.product.Product;
@@ -13,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.annotation.BeforeStep;
 import org.springframework.batch.core.configuration.annotation.StepScope;
+import org.springframework.batch.item.Chunk;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.data.mongodb.core.BulkOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -39,28 +41,28 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
   public void beforeStep(StepExecution stepExecution) {
     this.processInfo = SyncItemsMetrics.getProcessInfo(stepExecution);
     this.jobId =
-        stepExecution.getJobParameters().getString(SyncItemsConfig.PARAM_PROCESS_IDENTIFIER);
+        stepExecution.getJobParameters().getString(SyncItemsLauncher.PARAM_PROCESS_IDENTIFIER);
   }
 
   @Override
-  public void write(List<? extends ProductProcessInfo> list) {
-    process(list);
+  public void write(Chunk<? extends ProductProcessInfo> list) throws Exception {
+    process(list.getItems());
     long createCount =
-        list.stream()
+        list.getItems().stream()
             .filter(
                 item ->
                     item.getStatus().equals(ProductProcessInfo.Status.OK)
                         && item.getAction().equals(Product.Action.CREATE))
             .count();
     long updateCount =
-        list.stream()
+        list.getItems().stream()
             .filter(
                 item ->
                     item.getStatus().equals(ProductProcessInfo.Status.OK)
                         && item.getAction().equals(Product.Action.UPDATE))
             .count();
     long errorCount =
-        list.stream()
+        list.getItems().stream()
             .filter(item -> item.getStatus().equals(ProductProcessInfo.Status.ERROR))
             .count();
     SyncItemsMetrics.registerWriter(processInfo, createCount, updateCount, errorCount);
@@ -68,7 +70,7 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
     BulkOperations bulkOperations =
         mongoTemplate.bulkOps(
             BulkOperations.BulkMode.UNORDERED, Map.class, SyncItemsConfig.ITEMS_HISTORY_COLLECTION);
-    bulkOperations.insert(list).execute();
+    bulkOperations.insert(list.getItems()).execute();
   }
 
   private void process(List<? extends ProductProcessInfo> list) {

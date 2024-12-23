@@ -82,17 +82,14 @@ public class SQLServerService {
                 field -> {
                   if (field.getKey().startsWith("FIXED_")) {
                     if (field.getValue() instanceof String) {
-                      return String.format(
-                          "'%s' AS %s", field.getValue(), field.getKey().replaceAll("FIXED_", ""));
+                      return "'%s' AS %s".formatted(field.getValue(), field.getKey().replaceAll("FIXED_", ""));
                     } else {
-                      return String.format(
-                          "%s AS %s", field.getValue(), field.getKey().replaceAll("FIXED_", ""));
+                      return "%s AS %s".formatted(field.getValue(), field.getKey().replaceAll("FIXED_", ""));
                     }
                   } else if (field.getKey().startsWith("CLAUSE_")) {
-                    return String.format(
-                        "%s AS %s", field.getValue(), field.getKey().replaceAll("CLAUSE_", ""));
+                    return "%s AS %s".formatted(field.getValue(), field.getKey().replaceAll("CLAUSE_", ""));
                   } else {
-                    return String.format("\"%s\" AS %s", field.getValue(), field.getKey());
+                    return "\"%s\" AS %s".formatted(field.getValue(), field.getKey());
                   }
                 })
             .collect(Collectors.joining(", "));

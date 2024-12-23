@@ -1,6 +1,6 @@
 package com.edelflex.app.batch.sync_items.step.product_type;
 
-import com.edelflex.app.batch.sync_items.SyncItemsConfig;
+import com.edelflex.app.batch.sync_items.SyncItemsLauncher;
 import com.edelflex.app.batch.sync_items.SyncItemsMetrics;
 import com.edelflex.app.exceptions.SapCallException;
 import com.edelflex.app.model.ProductProcessInfo;
@@ -31,7 +31,7 @@ public class SyncBaseProductProcessor implements ItemProcessor<Product, ProductP
   public void beforeStep(StepExecution stepExecution) {
     this.processInfo = SyncItemsMetrics.getProcessInfo(stepExecution);
     this.jobId =
-        stepExecution.getJobParameters().getString(SyncItemsConfig.PARAM_PROCESS_IDENTIFIER);
+        stepExecution.getJobParameters().getString(SyncItemsLauncher.PARAM_PROCESS_IDENTIFIER);
   }
 
   @Override
@@ -54,11 +54,15 @@ public class SyncBaseProductProcessor implements ItemProcessor<Product, ProductP
         productInfo.getAction().getLabel());
 
     Map<String, Object> request = productInfo.createRequest();
-    ProductProcessInfo productProcessInfo;
+    ProductProcessInfo productProcessInfo =
+        ProductProcessInfo.builder().status(ProductProcessInfo.Status.OK).build();
+
     if (productInfo.getAction().equals(Product.Action.CREATE)) {
+      // CREATE
       productProcessInfo =
           sapItemService.create(productInfo.getId(), productInfo.getProduct(), request);
-    } else { // UPDATE
+    } else {
+      // UPDATE
       productProcessInfo =
           sapItemService.update(productInfo.getId(), productInfo.getProduct(), request);
     }

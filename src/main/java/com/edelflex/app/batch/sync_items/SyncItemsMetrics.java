@@ -16,7 +16,7 @@ public class SyncItemsMetrics {
 
   public static void registerProcessStart(
       ProcessInfo processInfo, String url, String code, String product, String action) {
-    processInfo.addMetric("P_0Tarea", String.format("[%s] %s %s - %s", action, action, code, product));
+    processInfo.addMetric("P_0Tarea", "[%s] %s %s - %s".formatted(action, action, code, product));
     processInfo.addMetric("P_0API", url);
   }
 
