@@ -45,7 +45,8 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
   }
 
   @Override
-  public void write(Chunk<? extends ProductProcessInfo> list) throws Exception {
+  public void write(Chunk<? extends ProductProcessInfo> list) {
+    try{
     process(list.getItems());
     long createCount =
         list.getItems().stream()
@@ -71,6 +72,10 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
         mongoTemplate.bulkOps(
             BulkOperations.BulkMode.UNORDERED, Map.class, SyncItemsConfig.ITEMS_HISTORY_COLLECTION);
     bulkOperations.insert(list.getItems()).execute();
+  } catch (Exception e) {
+    log.error("WRITE ERROR", e);
+    SyncItemsMetrics.registerWriterError(processInfo, e.getMessage());
+  }
   }
 
   private void process(List<? extends ProductProcessInfo> list) throws Exception {
