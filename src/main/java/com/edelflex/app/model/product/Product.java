@@ -45,6 +45,8 @@ public class Product {
   private String conexiones;
   private String uom;
   private Action action;
+  private String importado;
+  private String fabricado;
 
   public enum Action {
     UPDATE("Actualizar"), CREATE("Crear");
@@ -91,6 +93,8 @@ public class Product {
     request.put("U_SEI_Corruga", corrugacion);
     request.put("U_SEI_ModBas", modeloBastidor);
     request.put("U_SEI_Tamanho", tamanio);
+    request.put("Properties1", getSapBoolean(importado));
+    request.put("Properties2", getSapBoolean(fabricado));
   }
 
   protected void populateCreateRequest(Map<String, Object> request) {
@@ -105,6 +109,18 @@ public class Product {
     request.put("U_SEI_Corruga", corrugacion);
     request.put("U_SEI_ModBas", modeloBastidor);
     request.put("U_SEI_Tamanho", tamanio);
+    request.put("Properties1", getSapBoolean(importado));
+    request.put("Properties2", getSapBoolean(fabricado));
+  }
+
+  private String getSapBoolean(String value ){
+    if (Utils.isEmpty(value)){
+      return "tNO";
+    }
+    if (value.trim().equalsIgnoreCase("si")){
+      return "tYES";
+    }
+    return "tNO";
   }
 
   private Map<String, Object> clearEmptyValues(Map<String, Object> request) {

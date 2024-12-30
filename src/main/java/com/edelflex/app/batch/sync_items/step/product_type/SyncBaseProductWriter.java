@@ -47,7 +47,7 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
   @Override
   public void write(Chunk<? extends ProductProcessInfo> list) {
     try {
-      //  process(list.getItems());
+      process(list.getItems());
       long createCount =
           list.getItems().stream()
               .filter(

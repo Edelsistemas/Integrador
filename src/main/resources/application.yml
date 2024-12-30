@@ -56,8 +56,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "AcceInline"
       -
         fields:
@@ -88,8 +88,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "BomDesPos"
       -
         fields:
@@ -120,8 +120,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "BombaCen"
       -
         fields:
@@ -152,8 +152,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "DispLimpi"
       -
         fields:
@@ -184,8 +184,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "ENA"
       -
         fields:
@@ -216,8 +216,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "Homogen"
       -
         fields:
@@ -248,8 +248,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "InstrInd"
       -
         fields:
@@ -280,8 +280,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "Instrumen"
       -
         fields:
@@ -312,8 +312,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "Inter_Calor"
       -
         fields:
@@ -344,8 +344,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "MatPri"
       -
         fields:
@@ -376,8 +376,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "OtrasBom"
       -
         fields:
@@ -408,8 +408,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "OtrasVal"
       -
         fields:
@@ -440,8 +440,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "OtrosComp"
       -
         fields:
@@ -472,8 +472,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "Pieza"
       -
         fields:
@@ -504,8 +504,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "Repuestos"
       -
         fields:
@@ -536,8 +536,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "RestoInter"
       -
         fields:
@@ -568,8 +568,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "Semielabo"
       -
         fields:
@@ -600,8 +600,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "SisCalEH"
       -
         fields:
@@ -632,8 +632,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "SisLimEC"
       -
         fields:
@@ -664,8 +664,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "SisMezEM"
       -
         fields:
@@ -696,8 +696,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "SisRecProd"
       -
         fields:
@@ -728,8 +728,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "Sistemas"
       -
         fields:
@@ -760,8 +760,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "Subcon"
       -
         fields:
@@ -792,8 +792,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "Tanques"
       -
         fields:
@@ -824,8 +824,8 @@ team-center:
           DIAMETRO_INFERIOR: "Item_Diametro cuerpo inferior"
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "ValAliSeg"
       -
         fields:
@@ -856,8 +856,8 @@ team-center:
           DIAMETRO_INFERIOR: "Item_Diametro cuerpo inferior"
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "ValAsiento"
       -
         fields:
@@ -888,8 +888,8 @@ team-center:
           DIAMETRO_INFERIOR: "Item_Diametro cuerpo inferior"
           CUERPO: "Cuerpo"
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "ValControl"
       -
         fields:
@@ -920,8 +920,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "ValDia"
       -
         fields:
@@ -952,8 +952,8 @@ team-center:
           DIAMETRO_INFERIOR: "Item_Diametro cuerpo inferior"
           CUERPO: "Cuerpo"
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "ValFuelle"
       -
         fields:
@@ -984,8 +984,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: "Item_Conexiones"
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "ValReten"
       -
         fields:
@@ -1016,8 +1016,8 @@ team-center:
           DIAMETRO_INFERIOR: ""
           CUERPO: ""
           CONEXIONES: ""
-          IMPORTADO: ""
-          FABRICADO: ""
+          IMPORTADO: "Es importado"
+          FABRICADO: "Es fabricado"
         table: "Valvulas"
 
 batch-process:
