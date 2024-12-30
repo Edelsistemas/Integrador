@@ -59,12 +59,12 @@ public class SyncBaseProductProcessor implements ItemProcessor<Product, ProductP
 
     if (productInfo.getAction().equals(Product.Action.CREATE)) {
       // CREATE
-      productProcessInfo =
-          sapItemService.create(productInfo.getId(), productInfo.getProduct(), request);
+    //  productProcessInfo =
+    //      sapItemService.create(productInfo.getId(), productInfo.getProduct(), request);
     } else {
       // UPDATE
-      productProcessInfo =
-          sapItemService.update(productInfo.getId(), productInfo.getProduct(), request);
+   //   productProcessInfo =
+   //       sapItemService.update(productInfo.getId(), productInfo.getProduct(), request);
     }
     productProcessInfo.setProductType(productInfo.getProductType());
     long t2 = System.currentTimeMillis();

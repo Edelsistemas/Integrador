@@ -80,7 +80,6 @@ public class SyncItemsConfig {
         .start(
             new FlowBuilder<SimpleFlow>("getFlow").split(getFlowTaskExecutor()).add(flows).build())
         .build()
-        .preventRestart()
         .listener(new BatchExecutionListener(processService))
         .build();
   }
@@ -106,9 +105,6 @@ public class SyncItemsConfig {
         .reader(reader)
         .processor(processor)
         .writer(writer)
-        .faultTolerant()
-        .retryLimit(10)
-        .retry(SapCallException.class)
         .listener(new SyncItemsExecutionListener())
         .build();
   }

@@ -46,36 +46,39 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
 
   @Override
   public void write(Chunk<? extends ProductProcessInfo> list) {
-    try{
-    process(list.getItems());
-    long createCount =
-        list.getItems().stream()
-            .filter(
-                item ->
-                    item.getStatus().equals(ProductProcessInfo.Status.OK)
-                        && item.getAction().equals(Product.Action.CREATE))
-            .count();
-    long updateCount =
-        list.getItems().stream()
-            .filter(
-                item ->
-                    item.getStatus().equals(ProductProcessInfo.Status.OK)
-                        && item.getAction().equals(Product.Action.UPDATE))
-            .count();
-    long errorCount =
-        list.getItems().stream()
-            .filter(item -> item.getStatus().equals(ProductProcessInfo.Status.ERROR))
-            .count();
-    SyncItemsMetrics.registerWriter(processInfo, createCount, updateCount, errorCount);
+    try {
+      //  process(list.getItems());
+      long createCount =
+          list.getItems().stream()
+              .filter(
+                  item ->
+                      item.getStatus().equals(ProductProcessInfo.Status.OK)
+                          && item.getAction().equals(Product.Action.CREATE))
+              .count();
+      long updateCount =
+          list.getItems().stream()
+              .filter(
+                  item ->
+                      item.getStatus().equals(ProductProcessInfo.Status.OK)
+                          && item.getAction().equals(Product.Action.UPDATE))
+              .count();
+      long errorCount =
+          list.getItems().stream()
+              .filter(item -> item.getStatus().equals(ProductProcessInfo.Status.ERROR))
+              .count();
+      SyncItemsMetrics.registerWriter(processInfo, createCount, updateCount, errorCount);
 
-    BulkOperations bulkOperations =
-        mongoTemplate.bulkOps(
-            BulkOperations.BulkMode.UNORDERED, Map.class, SyncItemsConfig.ITEMS_HISTORY_COLLECTION);
-    bulkOperations.insert(list.getItems()).execute();
-  } catch (Exception e) {
-    log.error("WRITE ERROR", e);
-    SyncItemsMetrics.registerWriterError(processInfo, e.getMessage());
-  }
+      BulkOperations bulkOperations =
+          mongoTemplate.bulkOps(
+              BulkOperations.BulkMode.UNORDERED,
+              Map.class,
+              SyncItemsConfig.ITEMS_HISTORY_COLLECTION);
+      bulkOperations.insert(list.getItems()).execute();
+    } catch (Exception e) {
+      log.error("WRITE ERROR", e);
+      SyncItemsMetrics.registerWriterError(processInfo, e.getMessage());
+      throw e;
+    }
   }
 
   private void process(List<? extends ProductProcessInfo> list) throws Exception {
