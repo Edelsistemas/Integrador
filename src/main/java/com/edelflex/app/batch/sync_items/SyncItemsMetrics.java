@@ -33,10 +33,13 @@ public class SyncItemsMetrics {
 
   public static void registerReader(ProcessInfo processInfo, int totalItems) {
     processInfo.addMetric("ITEMS", totalItems);
+    if (totalItems == 0){
+      processInfo.addMetric("P_1SIN DATOS", "-");
+    }
   }
 
   public static void registerReaderError(ProcessInfo processInfo, String error) {
-    processInfo.addMetric("READER ERROR", error);
+    processInfo.addMetric("P_4READER ERROR", error);
   }
 
   public static void registerWriter(ProcessInfo processInfo, long createCount, long updateCount, long errorCount) {
@@ -61,6 +64,6 @@ public class SyncItemsMetrics {
   }
 
   public static void registerWriterError(ProcessInfo processInfo, String error) {
-    processInfo.addMetric("WRITER ERROR", error);
+    processInfo.addMetric("P_4WRITER ERROR", error);
   }
 }
