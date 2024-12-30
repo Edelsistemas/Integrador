@@ -77,7 +77,6 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
     } catch (Exception e) {
       log.error("WRITE ERROR", e);
       SyncItemsMetrics.registerWriterError(processInfo, e.getMessage());
-      throw e;
     }
   }
 

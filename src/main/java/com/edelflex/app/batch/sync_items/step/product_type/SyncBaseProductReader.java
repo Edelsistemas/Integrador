@@ -34,7 +34,6 @@ public class SyncBaseProductReader implements ItemReader<Product> {
     } catch (Exception exc) {
       log.error("READ ERROR", exc);
       SyncItemsMetrics.registerReaderError(processInfo, exc.getMessage());
-      throw exc;
     }
   }
 
@@ -51,7 +50,7 @@ public class SyncBaseProductReader implements ItemReader<Product> {
 
   @Override
   public Product read() {
-    if (data.hasNext()) {
+    if (data != null && data.hasNext()) {
       return data.next();
     }
     return null;
