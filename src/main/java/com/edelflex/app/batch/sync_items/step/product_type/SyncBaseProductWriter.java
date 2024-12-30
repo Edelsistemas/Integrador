@@ -73,7 +73,7 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
     bulkOperations.insert(list.getItems()).execute();
   }
 
-  private void process(List<? extends ProductProcessInfo> list) {
+  private void process(List<? extends ProductProcessInfo> list) throws Exception {
     String info =
         list.stream()
             .map(productProcessInfo -> String.valueOf(productProcessInfo.getRecordId()))

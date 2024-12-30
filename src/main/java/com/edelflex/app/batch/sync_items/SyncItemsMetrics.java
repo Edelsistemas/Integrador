@@ -35,6 +35,10 @@ public class SyncItemsMetrics {
     processInfo.addMetric("ITEMS", totalItems);
   }
 
+  public static void registerReaderError(ProcessInfo processInfo, String error) {
+    processInfo.addMetric("READER ERROR", error);
+  }
+
   public static void registerWriter(ProcessInfo processInfo, long createCount, long updateCount, long errorCount) {
     processInfo.accumulateMetric("P_2Items Creados", createCount);
     processInfo.accumulateMetric("P_2Items Actualizados", updateCount);
@@ -54,5 +58,9 @@ public class SyncItemsMetrics {
         exitStatus.getExitCode().equals(ExitStatus.FAILED.getExitCode())
             ? ProcessInfo.ProcessStatus.ERROR
             : ProcessInfo.ProcessStatus.COMPLETE);
+  }
+
+  public static void registerWriterError(ProcessInfo processInfo, String error) {
+    processInfo.addMetric("WRITER ERROR", error);
   }
 }
