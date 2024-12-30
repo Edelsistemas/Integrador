@@ -51,6 +51,15 @@ team-center:
       valvulas: 146
 
 
+
+sap:
+  edelflex:
+    url: https://10.250.2.10:50000/b1s/v1/
+    credentials:
+      user: interfaz
+      password: qxknQqEU2.
+      company: TST_EDELFLEX_AR
+
 #SACARLOOOO
 bitone:
   integration:

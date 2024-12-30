@@ -5,20 +5,18 @@ import com.edelflex.app.batch.sync_items.step.product_type.SyncBaseProductProces
 import com.edelflex.app.batch.sync_items.step.product_type.SyncBaseProductReader;
 import com.edelflex.app.batch.sync_items.step.product_type.SyncBaseProductWriter;
 import com.edelflex.app.config.ItemProcessConfigProperties;
-import com.edelflex.app.exceptions.SapCallException;
 import com.edelflex.app.model.ProductProcessInfo;
 import com.edelflex.app.model.product.Product;
 import com.edelflex.app.services.integration.ProcessService;
 import com.edelflex.app.services.integration.SQLServerService;
 import com.edelflex.app.services.integration.SapItemService;
+import java.util.List;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.builder.JobBuilder;
-import org.springframework.batch.core.job.flow.Flow;
-import org.springframework.batch.core.job.flow.support.SimpleFlow;
+import org.springframework.batch.core.job.builder.SimpleJobBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.support.TaskExecutorJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
@@ -51,37 +49,28 @@ public class SyncItemsConfig {
       ProcessService processService,
       JobRepository jobRepository) {
 
-    Flow[] flows =
+    List<Step> steps =
         itemProcessConfigProperties.getConfigs().stream()
             .map(
-                config -> {
-                  try {
-                    return new FlowBuilder<SimpleFlow>("syncProductStepFlow")
-                        .start(
-                            syncProductStep(
-                                transactionManager,
-                                mongoTemplate,
-                                sqlServerService,
-                                itemProcessConfigProperties.getGet(),
-                                config.getTable(),
-                                config.getFields(),
-                                itemProcessConfigProperties.getUpdate(),
-                                sapItemService,
-                                jobRepository))
-                        .build();
-                  } catch (Exception e) {
-                    e.printStackTrace();
-                    throw new RuntimeException(e);
-                  }
-                })
-            .toArray(Flow[]::new);
+                config ->
+                    syncProductStep(
+                        transactionManager,
+                        mongoTemplate,
+                        sqlServerService,
+                        itemProcessConfigProperties.getGet(),
+                        config.getTable(),
+                        config.getFields(),
+                        itemProcessConfigProperties.getUpdate(),
+                        sapItemService,
+                        jobRepository))
+            .toList();
 
-    return new JobBuilder(SYNC_ITEMS, jobRepository)
-        .start(
-            new FlowBuilder<SimpleFlow>("getFlow").split(getFlowTaskExecutor()).add(flows).build())
-        .build()
-        .listener(new BatchExecutionListener(processService))
-        .build();
+    JobBuilder jobBuilder = new JobBuilder(SYNC_ITEMS, jobRepository);
+    SimpleJobBuilder simpleJobBuilder = jobBuilder.start(steps.get(0));
+    steps
+        .subList(1, itemProcessConfigProperties.getConfigs().size())
+        .forEach(simpleJobBuilder::next);
+    return simpleJobBuilder.listener(new BatchExecutionListener(processService)).build();
   }
 
   public Step syncProductStep(

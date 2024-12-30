@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-      database: edelflex-test
+      database: edelflex
       authentication-database: admin
       host: 192.168.54.26
       port: 9001
@@ -51,10 +51,19 @@ team-center:
       valvulas: 146
 
 
+
+sap:
+  edelflex:
+    url: https://10.250.2.10:50000/b1s/v1/
+    credentials:
+      user: interfaz
+      password: qxknQqEU2.
+      company: TST_EDELFLEX_AR
+
 #SACARLOOOO
 bitone:
   integration:
-    api-key: "9342b191-90bd-4105-a60d-7b0c6b9812fcTODO"
+    api-key: "9342b191-90bd-4105-a60d-7b0c6b9812fc"
     url: "https://bit-one-tools.ar/services/api/external-batch-process/register"
 
 
