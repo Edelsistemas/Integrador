@@ -11,6 +11,8 @@ import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.core.task.SimpleAsyncTaskExecutor;
+import org.springframework.core.task.TaskExecutor;
 
 @Configuration
 @Slf4j
@@ -24,9 +26,15 @@ public class SendProcessDataConfig {
   }
 
   @Bean
-  JobLauncher jobLauncherSendProcessData(JobRepository jobRepository) throws Exception {
+  TaskExecutor sendProcessTaskExecutor() {
+    return new SimpleAsyncTaskExecutor("SendProcessDataTaskExecutor");
+  }
+
+  @Bean
+  JobLauncher jobLauncherSendProcessData(JobRepository jobRepository, TaskExecutor sendProcessTaskExecutor) throws Exception {
     TaskExecutorJobLauncher jobLauncher = new TaskExecutorJobLauncher();
     jobLauncher.setJobRepository(jobRepository);
+    jobLauncher.setTaskExecutor(sendProcessTaskExecutor);
     jobLauncher.afterPropertiesSet();
     return jobLauncher;
   }
