@@ -17,38 +17,38 @@ sqlserver:
 team-center:
   querys:
     item-groups:
-      acce-inline: 142
-      bom-des-pos: 161
-      bomba-cen: 134
-      disp-limpi: 147
-      ena: 139
-      homogen: 148
-      instr-ind: 136
-      instrumen: 136
-      inter-calor-kvn: 163
-      inter-calor-arax: 137
-      mat-pri: 138
-      otras-bom: 162
-      otras-val: 160
-      otros-comp: 135
-      pieza: 140
-      repuestos: 141
-      resto-inter: 133
-      semielabo: 149
-      sis-cal-eh: 151
-      sis-lim-ec: 152
-      sis-mez-em: 143
-      sis-rec-prod: 153
-      sistemas: 164
-      subcon: 144
-      tanques: 145
-      val-ali-seg: 159
+      acce-inline: 100
+      bom-des-pos: 332
+      bomba-cen: 305
+      disp-limpi: 318
+      ena: 310
+      homogen: 319
+      instr-ind: 307
+      instrumen: 307
+      inter-calor-kvn: 334
+      inter-calor-arax: 308
+      mat-pri: 309
+      otras-bom: 333
+      otras-val: 331
+      otros-comp: 306
+      pieza: 311
+      repuestos: 312
+      resto-inter: 304
+      semielabo: 320
+      sis-cal-eh: 322
+      sis-lim-ec: 323
+      sis-mez-em: 314
+      sis-rec-prod: 324
+      sistemas: 335
+      subcon: 315
+      tanques: 316
+      val-ali-seg: 330
       val-asiento: 154
-      val-control: 158
-      val-dia: 155
-      val-fuelle: 156
-      val-reten: 157
-      valvulas: 146
+      val-control: 325
+      val-dia: 326
+      val-fuelle: 327
+      val-reten: 328
+      valvulas: 317
 
 
 
