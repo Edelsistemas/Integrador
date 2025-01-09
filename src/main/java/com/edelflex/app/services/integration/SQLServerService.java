@@ -17,8 +17,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
@@ -82,12 +80,15 @@ public class SQLServerService {
                 field -> {
                   if (field.getKey().startsWith("FIXED_")) {
                     if (field.getValue() instanceof String) {
-                      return "'%s' AS %s".formatted(field.getValue(), field.getKey().replaceAll("FIXED_", ""));
+                      return "'%s' AS %s"
+                          .formatted(field.getValue(), field.getKey().replaceAll("FIXED_", ""));
                     } else {
-                      return "%s AS %s".formatted(field.getValue(), field.getKey().replaceAll("FIXED_", ""));
+                      return "%s AS %s"
+                          .formatted(field.getValue(), field.getKey().replaceAll("FIXED_", ""));
                     }
                   } else if (field.getKey().startsWith("CLAUSE_")) {
-                    return "%s AS %s".formatted(field.getValue(), field.getKey().replaceAll("CLAUSE_", ""));
+                    return "%s AS %s"
+                        .formatted(field.getValue(), field.getKey().replaceAll("CLAUSE_", ""));
                   } else {
                     return "\"%s\" AS %s".formatted(field.getValue(), field.getKey());
                   }
@@ -109,7 +110,6 @@ public class SQLServerService {
     return "";
   }
 
-  @Transactional(propagation = Propagation.REQUIRES_NEW)
   public void updateProducts(
       List<? extends ProductProcessInfo> list, String updateQuery, String jobId) {
     list.forEach(
