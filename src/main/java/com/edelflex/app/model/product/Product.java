@@ -90,6 +90,7 @@ public class Product {
     request.put("U_SEI_MatPlac", materialPlacas);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_CanSec", cantidadSecciones);
+    request.put("U_SEI_Modelo", modelo);
     request.put("U_SEI_Corruga", corrugacion);
     request.put("U_SEI_ModBas", modeloBastidor);
     request.put("U_SEI_Tamanho", tamanio);
@@ -106,6 +107,7 @@ public class Product {
     request.put("U_SEI_MatPlac", materialPlacas);
     request.put("U_SEI_MatJun", materialJuntas);
     request.put("U_SEI_CanSec", cantidadSecciones);
+    request.put("U_SEI_Modelo", modelo);
     request.put("U_SEI_Corruga", corrugacion);
     request.put("U_SEI_ModBas", modeloBastidor);
     request.put("U_SEI_Tamanho", tamanio);
