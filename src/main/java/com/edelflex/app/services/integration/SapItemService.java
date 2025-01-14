@@ -107,7 +107,7 @@ public class SapItemService {
         .action(Product.Action.UPDATE)
         .code(code)
         .recordId(id)
-        .api("PUT " + url)
+        .api("PATCH " + url)
         .build();
   }
 
