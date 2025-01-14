@@ -1,5 +1,6 @@
 package com.edelflex.app.model;
 
+import java.util.Date;
 import java.util.Map;
 
 import com.edelflex.app.model.product.Product;
@@ -32,6 +33,7 @@ public class ProductProcessInfo {
   private String jobId;
   private Product.Action action;
   private String api;
+  private Date date;
 
   public String getResponseData() {
     ObjectMapper objectMapper = new ObjectMapper();

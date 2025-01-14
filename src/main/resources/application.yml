@@ -291,7 +291,7 @@ team-center:
           REVISION: "Revision"
           EDELFLEX: "Codigo Edelflex"
           STATUS: "Estado_TC"
-          CLAUSE_GROUP_ITEM: "(CASE WHEN Item_Marca like '%KVN%' THEN ${team-center.querys.item-groups.inter-calor-kvn} ELSE ${team-center.querys.item-groups.inter-calor-arax} END)"
+          CLAUSE_GROUP_ITEM: "(CASE WHEN Item_Marca like '%KELVION%' THEN ${team-center.querys.item-groups.inter-calor-kvn} ELSE ${team-center.querys.item-groups.inter-calor-arax} END)"
           FIXED_UOM: "UN"
           PROVEEDOR: "Codigo Proveedor"
           MARCA: ""
