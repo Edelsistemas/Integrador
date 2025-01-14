@@ -99,14 +99,15 @@ public class SyncItemsConfig {
   }
 
   @Bean
-  TaskExecutor getFlowTaskExecutor() {
+  TaskExecutor taskExecutor() {
     return new SimpleAsyncTaskExecutor("GetFlowTaskExecutor");
   }
 
   @Bean
-  JobLauncher jobLauncherSyncItems(JobRepository jobRepository) throws Exception {
+  JobLauncher jobLauncherSyncItems(JobRepository jobRepository, TaskExecutor taskExecutor) throws Exception {
     TaskExecutorJobLauncher jobLauncher = new TaskExecutorJobLauncher();
     jobLauncher.setJobRepository(jobRepository);
+    jobLauncher.setTaskExecutor(taskExecutor);
     jobLauncher.afterPropertiesSet();
     return jobLauncher;
   }

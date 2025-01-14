@@ -7,7 +7,6 @@ import com.edelflex.app.utils.Utils;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
@@ -41,18 +40,21 @@ public class SendProcessDataTasklet implements Tasklet {
   }
 
   @Override
-  public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext)
-      throws Exception {
+  public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
     List<BatchProcess> batchProcessList = processService.getProcessListToSend();
-    if (Utils.isNotEmpty(batchProcessList)) {
-      HttpEntity<List<BatchProcess>> entity = new HttpEntity<>(batchProcessList, headers);
-      restTemplate.exchange(new URI(url), HttpMethod.POST, entity, Object.class);
-      processService.markAsSynced(
-          batchProcessList.stream()
-              .filter(
-                  batchProcess -> !batchProcess.getStatus().equals(BatchProcessStatus.PROCESSING))
-              .map(BatchProcess::getId)
-              .collect(Collectors.toList()));
+    try {
+      if (Utils.isNotEmpty(batchProcessList)) {
+        HttpEntity<List<BatchProcess>> entity = new HttpEntity<>(batchProcessList, headers);
+        restTemplate.exchange(new URI(url), HttpMethod.POST, entity, Object.class);
+        processService.markAsSynced(
+            batchProcessList.stream()
+                .filter(
+                    batchProcess -> !batchProcess.getStatus().equals(BatchProcessStatus.PROCESSING))
+                .map(BatchProcess::getId)
+                .collect(Collectors.toList()));
+      }
+    } catch (Exception e) {
+      log.error("Error al enviar Traza");
     }
     return RepeatStatus.FINISHED;
   }

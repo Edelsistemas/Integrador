@@ -11,38 +11,38 @@ spring:
 team-center:
   querys:
     item-groups:
-      acce-inline: 109
-      bom-des-pos: 128
-      bomba-cen: 101
-      disp-limpi: 114
-      ena: 106
-      homogen: 115
-      instr-ind: 103
-      instrumen: 103
-      inter-calor-kvn: 1
-      inter-calor-arax: 1
-      mat-pri: 1
-      otras-bom: 1
-      otras-val: 1
-      otros-comp: 1
-      pieza: 1
-      repuestos: 1
-      resto-inter: 1
-      semielabo: 1
-      sis-cal-eh: 1
-      sis-lim-ec: 1
-      sis-mez-em: 1
-      sis-rec-prod: 1
-      sistemas: 1
-      subcon: 1
-      tanques: 1
-      val-ali-seg: 1
-      val-asiento: 1
-      val-control: 1
-      val-dia: 1
-      val-fuelle: 1
-      val-reten: 1
-      valvulas: 1
+      acce-inline: 100
+      bom-des-pos: 332
+      bomba-cen: 305
+      disp-limpi: 318
+      ena: 310
+      homogen: 319
+      instr-ind: 307
+      instrumen: 307
+      inter-calor-kvn: 334
+      inter-calor-arax: 308
+      mat-pri: 309
+      otras-bom: 333
+      otras-val: 331
+      otros-comp: 306
+      pieza: 311
+      repuestos: 312
+      resto-inter: 304
+      semielabo: 320
+      sis-cal-eh: 322
+      sis-lim-ec: 323
+      sis-mez-em: 314
+      sis-rec-prod: 324
+      sistemas: 335
+      subcon: 315
+      tanques: 316
+      val-ali-seg: 330
+      val-asiento: 154
+      val-control: 325
+      val-dia: 326
+      val-fuelle: 327
+      val-reten: 328
+      valvulas: 317
 
 
 bitone:
