@@ -83,6 +83,7 @@ public class Product {
   }
 
   protected void populateUpdateRequest(Map<String, Object> request) {
+    request.put("U_SEI_Marca", marca);
     request.put("U_SEI_Tipo", tipo);
     request.put("U_SEI_Modelo", modelo);
     request.put("U_SEI_Equipo", equipo);
@@ -112,6 +113,7 @@ public class Product {
   }
 
   protected void populateCreateRequest(Map<String, Object> request) {
+    request.put("U_SEI_Marca", marca);
     request.put("U_SEI_Tipo", tipo);
     request.put("U_SEI_Modelo", modelo);
     request.put("U_SEI_Equipo", equipo);
