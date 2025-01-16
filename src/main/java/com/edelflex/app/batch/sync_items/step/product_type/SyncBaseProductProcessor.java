@@ -7,6 +7,8 @@ import com.edelflex.app.model.ProductProcessInfo;
 import com.edelflex.app.model.product.Product;
 import com.edelflex.app.services.integration.SapItemService;
 import com.edelflex.app.utils.ProcessInfo;
+
+import java.util.Date;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.StepExecution;
@@ -70,6 +72,7 @@ public class SyncBaseProductProcessor implements ItemProcessor<Product, ProductP
     long t2 = System.currentTimeMillis();
     SyncItemsMetrics.registerProcessEnd(processInfo, t1, t2);
     productProcessInfo.setJobId(jobId);
+    productProcessInfo.setDate(new Date());
     return productProcessInfo;
   }
 }
