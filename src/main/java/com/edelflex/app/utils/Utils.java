@@ -45,18 +45,18 @@ public class Utils {
   }
 
   public static String convertCurrentDateToFormat(String format) {
-    return new SimpleDateFormat(format, new Locale("es", "ES")).format(new Date());
+    return new SimpleDateFormat(format, Locale.of("es", "ES")).format(new Date());
   }
 
   public static String convertDateToFormat(Date date, String format) {
     if (date == null) return "";
-    return new SimpleDateFormat(format, new Locale("es", "ES")).format(date);
+    return new SimpleDateFormat(format, Locale.of("es", "ES")).format(date);
   }
 
   public static Date convertDateStrToDate(String strDate, String format) {
     if (isEmpty(strDate)) return null;
     try {
-      return new SimpleDateFormat(format, new Locale("es", "ES")).parse(strDate);
+      return new SimpleDateFormat(format, Locale.of("es", "ES")).parse(strDate);
     } catch (ParseException e) {
       log.warn("Error al convertir fecha {} a Date", strDate, e);
       return null;
@@ -277,6 +277,6 @@ public class Utils {
     long HH = seconds / 3600;
     long MM = (seconds % 3600) / 60;
     long SS = seconds % 60;
-    return String.format("%02d:%02d:%02d", HH, MM, SS);
+    return "%02d:%02d:%02d".formatted(HH, MM, SS);
   }
 }

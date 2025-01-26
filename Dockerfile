@@ -1,5 +1,4 @@
-FROM openjdk:8-jdk-alpine
-RUN apk add ttf-dejavu
+FROM azul/zulu-openjdk-alpine:21
 RUN mkdir -p /tmp/logs
 VOLUME /tmp
 ADD target/edelflex-integration-service-1.0.0.jar app.jar

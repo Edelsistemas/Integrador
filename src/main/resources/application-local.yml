@@ -1,15 +1,70 @@
 spring:
   data:
     mongodb:
-      database: edelflex-dev
+      database: edelflex
       authentication-database: admin
-      host: 66.97.43.117
+      host: 192.168.54.26
       port: 9001
       username: root
-      password: C1gr4.2o2l.Qa
+      password: Erq29Y8gVZunZJ7
+
+sqlserver:
+  jdbcUrl: jdbc:sqlserver://192.168.54.13:1433;encrypt=true;trustServerCertificate=true;databaseName=master
+  username: 4points
+  password: ConectorSAP_24
+  driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+team-center:
+  querys:
+    item-groups:
+      acce-inline: 142
+      bom-des-pos: 161
+      bomba-cen: 134
+      disp-limpi: 147
+      ena: 139
+      homogen: 148
+      instr-ind: 136
+      instrumen: 136
+      inter-calor-kvn: 163
+      inter-calor-arax: 137
+      mat-pri: 138
+      otras-bom: 162
+      otras-val: 160
+      otros-comp: 135
+      pieza: 140
+      repuestos: 141
+      resto-inter: 133
+      semielabo: 149
+      sis-cal-eh: 151
+      sis-lim-ec: 152
+      sis-mez-em: 143
+      sis-rec-prod: 153
+      sistemas: 164
+      subcon: 144
+      tanques: 145
+      val-ali-seg: 159
+      val-asiento: 154
+      val-control: 158
+      val-dia: 155
+      val-fuelle: 156
+      val-reten: 157
+      valvulas: 146
+
+
+
+sap:
+  edelflex:
+    url: https://10.250.2.10:50000/b1s/v1/
+    credentials:
+      user: interfaz
+      password: qxknQqEU2.
+      company: TST_EDELFLEX_AR
 
 #SACARLOOOO
 bitone:
   integration:
-    api-key: "d896c408-9f6c-45b7-8ef1-59c323dd67f8"
+    api-key: "9342b191-90bd-4105-a60d-7b0c6b9812fc"
     url: "https://bit-one-tools.ar/services/api/external-batch-process/register"
+
+
+# jdbc:sqlserver://;serverName=192.168.54.13;

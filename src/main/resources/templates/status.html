@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edelflex Integration - Status</title>
+    <script src="css/jquery-3.7.1.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="card my-3" style="width: 100%;">
+        <div class="card-header">
+            <div class="row">
+                <div class="col"><h5 class="card-title">Procesos</h5>
+                </div>
+                <div class="col-auto">
+                    <form th:action="@{/process/status}" method="get">
+                        <input type="submit" class="btn btn-sm btn-primary" value="Refrescar"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <table class="table mb-0">
+            <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Inicio</th>
+                <th scope="col">Fin</th>
+                <th scope="col">Estado</th>
+                <th scope="col" class="text-center">Detalle</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Items</td>
+                <td th:text="${batchItems.dateStartStr}"/>
+                <td th:text="${batchItems.dateEndStr}"/>
+                <td th:text="${batchItems.status}"/>
+                <td class="text-center">
+                    <button type="button" class="btn btn-link" style="text-decoration: none !important;"
+                            th:if="${resultsItems.size()} > 0"
+                            data-bs-toggle="modal"
+                            data-bs-target="#erroresModal">
+                        Ver
+                    </button>
+                    Errores <label th:text="${errorCount}"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal Errores -->
+    <div class="modal fade" id="erroresModal" tabindex="-1" data-bs-backdrop="static"
+         aria-labelledby="cigraCamposLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="cigraCamposLabel">Errores</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row" th:each="resultsItems : ${resultsItems}">
+                            <div class="col-12">
+                                <div class="card mb-3" style="width: 100%;">
+                                    <div class="card-header">
+                                        <span class="mb-0 badge bg-secondary"><label th:text="${resultsItems.getProductType()}"/></span>
+                                        <label th:text="${resultsItems.getActionData()}"/>
+                                        <span class="mb-0 badge bg-success" th:if='${resultsItems.getStatus().name().equals("OK")}'><label th:text="${resultsItems.getStatus()}"/></span>
+                                        <span class="mb-0 badge bg-danger" th:if='${resultsItems.getStatus().name().equals("ERROR")}'><label th:text="${resultsItems.getStatus()}"/></span>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12" th:if="${resultsItems.errorMessage != null && !resultsItems.errorMessage.isEmpty()}">
+                                                <h6><span class="mb-0 badge bg-secondary">API Error:</span>
+                                                </h6><label
+                                                    th:text="${resultsItems.errorMessage}"/>
+                                            </div>
+                                            <div class="col-12 bg-light">
+                                                <h6><span class="mb-0 badge bg-secondary">Request:</span>
+                                                </h6>
+                                                <pre
+                                                        th:utext="${resultsItems.getRequestData()}"></pre>
+
+                                            </div>
+                                            <div class="col-12 bg-light">
+                                                <h6><span class="mb-0 badge bg-secondary">Response:</span>
+                                                </h6>
+                                                <pre
+                                                        th:utext="${resultsItems.getResponseData()}"></pre>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+</html>

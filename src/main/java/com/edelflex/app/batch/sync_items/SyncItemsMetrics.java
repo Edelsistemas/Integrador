@@ -16,7 +16,7 @@ public class SyncItemsMetrics {
 
   public static void registerProcessStart(
       ProcessInfo processInfo, String url, String code, String product, String action) {
-    processInfo.addMetric("P_0Tarea", String.format("[%s] %s %s - %s", action, action, code, product));
+    processInfo.addMetric("P_0Tarea", "[%s] %s %s - %s".formatted(action, action, code, product));
     processInfo.addMetric("P_0API", url);
   }
 
@@ -33,6 +33,13 @@ public class SyncItemsMetrics {
 
   public static void registerReader(ProcessInfo processInfo, int totalItems) {
     processInfo.addMetric("ITEMS", totalItems);
+    if (totalItems == 0){
+      processInfo.addMetric("P_1SIN DATOS", "-");
+    }
+  }
+
+  public static void registerReaderError(ProcessInfo processInfo, String error) {
+    processInfo.addMetric("P_4READER ERROR", error);
   }
 
   public static void registerWriter(ProcessInfo processInfo, long createCount, long updateCount, long errorCount) {
@@ -54,5 +61,9 @@ public class SyncItemsMetrics {
         exitStatus.getExitCode().equals(ExitStatus.FAILED.getExitCode())
             ? ProcessInfo.ProcessStatus.ERROR
             : ProcessInfo.ProcessStatus.COMPLETE);
+  }
+
+  public static void registerWriterError(ProcessInfo processInfo, String error) {
+    processInfo.addMetric("P_4WRITER ERROR", error);
   }
 }

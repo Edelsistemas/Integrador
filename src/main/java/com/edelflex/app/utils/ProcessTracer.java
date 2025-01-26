@@ -1,8 +1,12 @@
 package com.edelflex.app.utils;
 
-import com.edelflex.app.batch.sync_items.SyncBusinessPartnerConfig;
+import com.edelflex.app.batch.sync_items.SyncItemsConfig;
+
+import java.time.ZoneId;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import com.edelflex.app.batch.sync_items.SyncItemsLauncher;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.StepExecution;
 
@@ -22,9 +26,7 @@ public class ProcessTracer {
   public static synchronized ProcessInfo getProcessInfo(StepExecution stepExecution, int group) {
     String job = stepExecution.getJobExecution().getJobInstance().getJobName();
     String jobId =
-        stepExecution
-            .getJobParameters()
-            .getString(SyncBusinessPartnerConfig.PARAM_PROCESS_IDENTIFIER);
+        stepExecution.getJobParameters().getString(SyncItemsLauncher.PARAM_PROCESS_IDENTIFIER);
     ProcessInfo processInfo =
         INFO.stream()
             .filter(
@@ -41,8 +43,13 @@ public class ProcessTracer {
               .group(group)
               .job(job)
               .name(stepExecution.getStepName())
-              .startTime(stepExecution.getStartTime())
-              .startTimeStr(Utils.convertDateToDefaultFormat(stepExecution.getStartTime()))
+              .startTime(
+                  Date.from(
+                      stepExecution.getStartTime().atZone(ZoneId.systemDefault()).toInstant()))
+              .startTimeStr(
+                  Utils.convertDateToDefaultFormat(
+                      Date.from(
+                          stepExecution.getStartTime().atZone(ZoneId.systemDefault()).toInstant())))
               .metrics(new HashMap<>())
               .status(ProcessInfo.ProcessStatus.RUNNING)
               .build();

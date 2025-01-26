@@ -1,6 +1,7 @@
 package com.edelflex.app.batch;
 
-import com.edelflex.app.batch.sync_items.SyncBusinessPartnerConfig;
+import com.edelflex.app.batch.sync_items.SyncItemsConfig;
+import com.edelflex.app.batch.sync_items.SyncItemsLauncher;
 import com.edelflex.app.model.BatchProcess;
 import com.edelflex.app.model.BatchProcessStatus;
 import com.edelflex.app.services.integration.ProcessService;
@@ -28,7 +29,7 @@ public class BatchExecutionListener implements JobExecutionListener {
     String jobId =
         jobExecution
             .getJobParameters()
-            .getString(SyncBusinessPartnerConfig.PARAM_PROCESS_IDENTIFIER);
+            .getString(SyncItemsLauncher.PARAM_PROCESS_IDENTIFIER);
     BatchProcess batchProcess = BatchProcess.builder().build();
     batchProcess.setDateStart(new Date());
     batchProcess.setDateStartStr(Utils.convertDateToDefaultFormat(batchProcess.getDateStart()));
@@ -45,7 +46,7 @@ public class BatchExecutionListener implements JobExecutionListener {
     String jobId =
         jobExecution
             .getJobParameters()
-            .getString(SyncBusinessPartnerConfig.PARAM_PROCESS_IDENTIFIER);
+            .getString(SyncItemsLauncher.PARAM_PROCESS_IDENTIFIER);
     BatchProcess batchProcess = processService.getByJobIdAndJob(jobId, job);
     batchProcess.setDateEnd(new Date());
     batchProcess.setDateEndStr(Utils.convertDateToDefaultFormat(batchProcess.getDateEnd()));
