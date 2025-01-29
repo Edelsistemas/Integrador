@@ -105,13 +105,6 @@ public class Product {
     request.put("Properties2", getSapBoolean(fabricado));
   }
 
-  private static String trimToLength(String value){
-    if (Utils.isEmpty(value)){
-      return null;
-    }
-    return value.length() > 30 ? value.substring(0, 30) : value;
-  }
-
   protected void populateCreateRequest(Map<String, Object> request) {
     request.put("U_SEI_Marca", marca);
     request.put("U_SEI_Tipo", tipo);
@@ -152,10 +145,10 @@ public class Product {
           if (value != null) {
             if (value instanceof String) {
               if (Utils.isNotEmpty(value.toString())) {
-                results.put(key, trimToLength(value.toString()));
+                results.put(key, value.toString());
               }
             } else {
-              results.put(key, trimToLength(value.toString()));
+              results.put(key, value.toString());
             }
           }
         });
