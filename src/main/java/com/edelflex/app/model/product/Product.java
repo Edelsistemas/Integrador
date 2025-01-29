@@ -1,13 +1,12 @@
 package com.edelflex.app.model.product;
 
 import com.edelflex.app.utils.Utils;
+import java.util.HashMap;
+import java.util.Map;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Data
 @AllArgsConstructor
@@ -75,57 +74,33 @@ public class Product {
     if (getAction().equals(Action.CREATE)) {
       request.put("ItemCode", getProduct());
       request.put("Valid", "N");
-      populateCreateRequest(request);
-    } else { // UPDATE
-      populateUpdateRequest(request);
     }
+    populateRequest(request);
     return clearEmptyValues(request);
   }
 
-  protected void populateUpdateRequest(Map<String, Object> request) {
-    request.put("U_SEI_Marca", marca);
-    request.put("U_SEI_Tipo", tipo);
-    request.put("U_SEI_Modelo", modelo);
-    request.put("U_SEI_Equipo", equipo);
-    request.put("U_SEI_Variable", variable);
-    request.put("U_SEI_Tamanho", tamanio);
-    request.put("U_SEI_ModBas", modeloBastidor);
-    request.put("U_SEI_Corruga", corrugacion);
-    request.put("U_SEI_MatPlac", materialPlacas);
-    request.put("U_SEI_MatJun", materialJuntas);
-    request.put("U_SEI_CanSec", cantidadSecciones);
-    request.put("U_SEI_Diametro", diametro);
-    request.put("U_SEI_Actuacion", actuacion);
-    request.put("U_SEI_Familia", familia);
-    request.put("U_SEI_DiamSup", diametroSuperior);
-    request.put("U_SEI_DiamInf", diametroInferior);
-    request.put("U_SEI_Cuerpo", cuerpo);
-    request.put("U_SEI_Conex", conexiones);
-    request.put("Properties1", getSapBoolean(importado));
-    request.put("Properties2", getSapBoolean(fabricado));
-  }
-
-  protected void populateCreateRequest(Map<String, Object> request) {
-    request.put("U_SEI_Marca", marca);
-    request.put("U_SEI_Tipo", tipo);
-    request.put("U_SEI_Modelo", modelo);
-    request.put("U_SEI_Equipo", equipo);
-    request.put("U_SEI_Variable", variable);
-    request.put("U_SEI_Tamanho", tamanio);
-    request.put("U_SEI_ModBas", modeloBastidor);
-    request.put("U_SEI_Corruga", corrugacion);
-    request.put("U_SEI_MatPlac", materialPlacas);
-    request.put("U_SEI_MatJun", materialJuntas);
-    request.put("U_SEI_CanSec", cantidadSecciones);
-    request.put("U_SEI_Diametro", diametro);
-    request.put("U_SEI_Actuacion", actuacion);
-    request.put("U_SEI_Familia", familia);
-    request.put("U_SEI_DiamSup", diametroSuperior);
-    request.put("U_SEI_DiamInf", diametroInferior);
-    request.put("U_SEI_Cuerpo", cuerpo);
-    request.put("U_SEI_Conex", conexiones);
-    request.put("Properties1", getSapBoolean(importado));
-    request.put("Properties2", getSapBoolean(fabricado));
+  protected void populateRequest(Map<String, Object> request) {
+    request.put("U_SEI_ITEMPROV", trimValue(proveedor, 100));
+    request.put("U_SEI_Marca", trimValue(marca, 30));
+    request.put("U_SEI_Tipo", trimValue(tipo, 50));
+    request.put("U_SEI_Modelo", trimValue(modelo, 30));
+    request.put("U_SEI_Equipo", trimValue(equipo, 50));
+    request.put("U_SEI_Variable", trimValue(variable, 30));
+    request.put("U_SEI_Tamanho", trimValue(tamanio, 30));
+    request.put("U_SEI_ModBas", trimValue(modeloBastidor, 30));
+    request.put("U_SEI_Corruga", trimValue(corrugacion, 30));
+    request.put("U_SEI_MatPlac", trimValue(materialPlacas, 30));
+    request.put("U_SEI_MatJun", trimValue(materialJuntas, 30));
+    request.put("U_SEI_CanSec", trimValue(cantidadSecciones, 30));
+    request.put("U_SEI_Diametro", trimValue(diametro, 30));
+    request.put("U_SEI_Actuacion", trimValue(actuacion, 50));
+    request.put("U_SEI_Familia", trimValue(familia, 30));
+    request.put("U_SEI_DiamSup", trimValue(diametroSuperior, 30));
+    request.put("U_SEI_DiamInf", trimValue(diametroInferior, 30));
+    request.put("U_SEI_Cuerpo", trimValue(cuerpo, 50));
+    request.put("U_SEI_Conex", trimValue(conexiones, 50));
+    request.put("Properties1", trimValue(getSapBoolean(importado), 30));
+    request.put("Properties2", trimValue(getSapBoolean(fabricado), 30));
   }
 
   private String getSapBoolean(String value) {
@@ -153,5 +128,12 @@ public class Product {
           }
         });
     return results;
+  }
+
+  private String trimValue(String value, int length) {
+    if (value != null) {
+      return value.length() > length ? value.substring(0, length) : value;
+    }
+    return null;
   }
 }
