@@ -135,6 +135,31 @@ public class SapItemService {
     throw new SapCallException("Error al obtener datos del Item: " + code);
   }
 
+
+  public Map<String, Object> getItem(String code) throws SapCallException {
+    log.info("GET");
+    try {
+      HttpHeaders headers = sapApiService.getHeaders();
+      HttpEntity<Object> request = new HttpEntity<>(headers);
+      ResponseEntity<Map> response =
+              sapApiService
+                      .getRestTemplate()
+                      .exchange(
+                              sapApiService.getBaseUrl()
+                                      + "Items?$select=ItemName,ItemsGroupCode,Properties1,Properties2&$filter=ItemCode eq '%s'".formatted(code),
+                              HttpMethod.GET,
+                              request,
+                              Map.class);
+
+      if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
+        return response.getBody();
+      }
+    } catch (Exception exc) {
+      log.error("SAP Error", exc);
+    }
+    throw new SapCallException("Error al obtener datos del Item: " + code);
+  }
+
   public String getUrl(Product.Action action, String code) {
     if (action.equals(Product.Action.CREATE)){
       return sapApiService.getBaseUrl() + "Items";

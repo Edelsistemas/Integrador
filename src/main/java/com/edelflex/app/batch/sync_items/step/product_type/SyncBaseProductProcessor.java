@@ -41,8 +41,11 @@ public class SyncBaseProductProcessor implements ItemProcessor<Product, ProductP
 
     if (sapItemService.existItem(productInfo.getProduct())) {
       productInfo.setAction(Product.Action.UPDATE);
+      Map<String, Object> itemData = sapItemService.getItem(productInfo.getProduct());
+      productInfo.evaluateInactivo(itemData);
     } else {
       productInfo.setAction(Product.Action.CREATE);
+      productInfo.setInactivo(true);
     }
 
     String url = sapItemService.getUrl(productInfo.getAction(), productInfo.getProduct());
@@ -56,8 +59,7 @@ public class SyncBaseProductProcessor implements ItemProcessor<Product, ProductP
         productInfo.getAction().getLabel());
 
     Map<String, Object> request = productInfo.createRequest();
-    ProductProcessInfo productProcessInfo =
-        ProductProcessInfo.builder().status(ProductProcessInfo.Status.OK).build();
+    ProductProcessInfo productProcessInfo;
 
     if (productInfo.getAction().equals(Product.Action.CREATE)) {
       // CREATE
