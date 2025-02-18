@@ -1,12 +1,18 @@
 spring:
   data:
     mongodb:
-      database: intercompany
+      database: edelflex
       authentication-database: admin
-      host: 172.16.213.40
+      host: 192.168.54.25
       port: 9001
       username: root
-      password: C1gr4.2o24.T3kN0s!
+      password: 24z4PmtDgC0Kjpt7cBbK
+
+sqlserver:
+  jdbcUrl: jdbc:sqlserver://192.168.54.13:1433;encrypt=true;trustServerCertificate=true;databaseName=master
+  username: 4points
+  password: ConectorSAP_24
+  driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
 team-center:
   querys:
@@ -37,13 +43,20 @@ team-center:
       subcon: 315
       tanques: 316
       val-ali-seg: 330
-      val-asiento: 154
-      val-control: 325
+      val-asiento: 325
+      val-control: 329
       val-dia: 326
       val-fuelle: 327
       val-reten: 328
       valvulas: 317
 
+sap:
+  edelflex:
+    url: https://10.250.2.10:50000/b1s/v1/
+    credentials:
+      user: interfaz
+      password: qxknQqEU2.
+      company: TST_EDELFLEX_AR
 
 bitone:
   integration:
