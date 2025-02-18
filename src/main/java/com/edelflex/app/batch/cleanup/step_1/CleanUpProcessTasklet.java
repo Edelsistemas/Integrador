@@ -45,7 +45,7 @@ public class CleanUpProcessTasklet implements Tasklet {
         mongoTemplate.bulkOps(
             BulkOperations.BulkMode.UNORDERED, Map.class, SyncItemsConfig.ITEMS_HISTORY_COLLECTION);
     Calendar calendar = Calendar.getInstance();
-    calendar.add(Calendar.DATE, -2);
+    calendar.add(Calendar.DATE, -7);
     bulkOperations.remove(Query.query(Criteria.where("date").lt(calendar.getTime()))).execute();
     return RepeatStatus.FINISHED;
   }
