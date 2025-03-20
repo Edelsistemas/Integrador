@@ -54,7 +54,7 @@ public class SendProcessDataTasklet implements Tasklet {
                 .collect(Collectors.toList()));
       }
     } catch (Exception e) {
-      log.error("Error al enviar Traza");
+      log.error("Error al enviar Traza", e);
     }
     return RepeatStatus.FINISHED;
   }
