@@ -59,11 +59,11 @@ public class Product {
 
         if (!this.name.equalsIgnoreCase(name)) {
             setInactivo(true);
-        } else if (Integer.parseInt(getGroupItem()) != group) {
+        } else if (Integer.parseInt(this.groupItem) != group) {
             setInactivo(true);
-        } else if (!getSapBoolean(importado).equalsIgnoreCase(importado)) {
+        } else if (!getSapBoolean(this.importado).equalsIgnoreCase(importado)) {
             setInactivo(true);
-        } else if (!getSapBoolean(fabricado).equalsIgnoreCase(fabricado)) {
+        } else if (!getSapBoolean(this.fabricado).equalsIgnoreCase(fabricado)) {
             setInactivo(true);
         } else if (this.status.equalsIgnoreCase(REMOVE_STATUS)) {
             setInactivo(true);
