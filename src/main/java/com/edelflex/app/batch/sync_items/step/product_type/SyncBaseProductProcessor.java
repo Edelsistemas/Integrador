@@ -70,6 +70,7 @@ public class SyncBaseProductProcessor implements ItemProcessor<Product, ProductP
       // UPDATE
       productProcessInfo =
           sapItemService.update(productInfo.getId(), productInfo.getProduct(), request);
+      productProcessInfo.setSapData(productInfo.getOrigin());
     }
     productProcessInfo.setProductType(productInfo.getProductType());
     long t2 = System.currentTimeMillis();

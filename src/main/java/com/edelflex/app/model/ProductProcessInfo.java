@@ -24,6 +24,7 @@ public class ProductProcessInfo {
 
   private String id;
   private long recordId;
+  private Map<String, Object> sapData;
   private Map<String, Object> response;
   private String productType;
   private Status status;
