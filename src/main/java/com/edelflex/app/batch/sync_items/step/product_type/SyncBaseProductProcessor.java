@@ -42,6 +42,7 @@ public class SyncBaseProductProcessor implements ItemProcessor<Product, ProductP
     if (sapItemService.existItem(productInfo.getProduct())) {
       productInfo.setAction(Product.Action.UPDATE);
       Map<String, Object> itemData = sapItemService.getItem(productInfo.getProduct());
+      productInfo.setOrigin(itemData);
       productInfo.evaluateInactivo(itemData);
     } else {
       productInfo.setAction(Product.Action.CREATE);
