@@ -3,6 +3,7 @@ package com.edelflex.app.model.product;
 import com.edelflex.app.utils.Utils;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import lombok.AllArgsConstructor;
@@ -53,10 +54,12 @@ public class Product {
     private Map<String, Object> origin;
 
     public void evaluateInactivo(Map<String, Object> itemData) {
-        String name = (String) itemData.get("ItemName");
-        Integer group = (Integer) itemData.get("ItemsGroupCode");
-        String importado = (String) itemData.get("Properties1");
-        String fabricado = (String) itemData.get("Properties2");
+        Map<String, Object> value = (Map<String, Object>) ((List) itemData.get("value")).get(0);
+        String name = (String) value.get("ItemName");
+        Integer group = (Integer) value.get("ItemsGroupCode");
+        String importado = (String) value.get("Properties1");
+        String fabricado = (String) value.get("Properties2");
+        value.remove("odata.etag");
 
         if (!this.name.equalsIgnoreCase(name)) {
             setInactivo(true);
