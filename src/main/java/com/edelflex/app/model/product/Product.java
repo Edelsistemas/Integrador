@@ -50,7 +50,7 @@ public class Product {
     private String importado;
     private String fabricado;
     private Boolean inactivo;
-    private Map<String, Object> itemData;
+    private Map<String, Object> origin;
 
     public void evaluateInactivo(Map<String, Object> itemData) {
         String name = (String) itemData.get("ItemName");
