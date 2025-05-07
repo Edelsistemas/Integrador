@@ -68,12 +68,12 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
               .count();
       SyncItemsMetrics.registerWriter(processInfo, createCount, updateCount, errorCount);
 
-//      BulkOperations bulkOperations =
-//          mongoTemplate.bulkOps(
-//              BulkOperations.BulkMode.UNORDERED,
-//              Map.class,
-//              SyncItemsConfig.ITEMS_HISTORY_COLLECTION);
-//      bulkOperations.insert(list.getItems()).execute();
+      BulkOperations bulkOperations =
+          mongoTemplate.bulkOps(
+              BulkOperations.BulkMode.UNORDERED,
+              Map.class,
+              SyncItemsConfig.ITEMS_HISTORY_COLLECTION);
+      bulkOperations.insert(list.getItems()).execute();
     } catch (Exception e) {
       log.error("WRITE ERROR", e);
       SyncItemsMetrics.registerWriterError(processInfo, e.getMessage());
@@ -86,6 +86,6 @@ public class SyncBaseProductWriter implements ItemWriter<ProductProcessInfo> {
             .map(productProcessInfo -> String.valueOf(productProcessInfo.getRecordId()))
             .collect(Collectors.joining(","));
     processInfo.addMetric("TO_UPDATE", info);
-//    sqlServerService.updateProducts(list, updateQuery, jobId);
+    sqlServerService.updateProducts(list, updateQuery, jobId);
   }
 }
