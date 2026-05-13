@@ -60,5 +60,5 @@ sap:
 
 bitone:
   integration:
-    api-key: "9342b191-90bd-4105-a60d-7b0c6b9812fc"
-    url: "https://bit-one-tools.ar/services/api/external-batch-process/register"
+    #api-key: "9342b191-90bd-4105-a60d-7b0c6b9812fc"
+    #url: "https://bit-one-tools.ar/services/api/external-batch-process/register"
