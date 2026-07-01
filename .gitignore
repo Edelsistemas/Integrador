@@ -1,0 +1,17 @@
+﻿# Build artifacts
+**/target/
+
+# Local database state
+mongodb/data/
+
+# Temporary migration copies
+integration-service/sources/appsrc/
+
+# Environment and logs
+.env
+.env.*
+*.log
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
