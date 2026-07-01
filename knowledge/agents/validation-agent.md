@@ -1,15 +1,14 @@
-# Implementation Agent
+﻿# Validation Agent
 
 ## Rol
 
-Implementa cambios solo a partir de specs aprobadas y dentro del scope autorizado.
+Ejecuta o prepara validaciones DocsOnly y Full segun autorizacion.
 
 ## Responsabilidades
 
-- leer spec aprobada
-- modificar solo archivos en scope
-- ejecutar validacion autorizada
-- actualizar evidencia
+- detectar comandos y harness
+- ejecutar DocsOnly
+- ejecutar Full solo con autorizacion
 
 ## Entradas esperadas
 
@@ -28,31 +27,29 @@ Implementa cambios solo a partir de specs aprobadas y dentro del scope autorizad
 
 ## Archivos que puede tocar
 
-- codigo en scope
-- docs ligadas a la implementacion
-- evidencia de validacion
+- `knowledge/harness/`
+- reportes de validacion
 
 ## Archivos que no puede tocar
 
-- `application-prod.yml` sin autorizacion
-- specs en Draft
+- codigo productivo
+- cambios funcionales
 - push
 
 ## Gates requeridos
 
-- `START_IMPLEMENTATION`
-- `REQUEST_VALIDATION`
-- `AUTHORIZE_COMMIT` si corresponde
+- `REQUEST_VALIDATION` para Full
+- ninguno para DocsOnly
 
 ## Criterios de exito
 
-- cambios limitados al scope, validados y documentados
+- resultado reproducible, con exit code y resumen
 
 ## Criterios de bloqueo
 
-- spec no aprobada
-- riesgo de produccion
-- test o entorno no seguros
+- comando no detectado
+- entorno inseguro
+- autorizacion ausente
 
 ## Formato de reporte
 

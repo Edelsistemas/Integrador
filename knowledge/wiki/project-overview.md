@@ -1,48 +1,61 @@
-# Project overview - Integrador Teamcenter a SAP
+﻿# Project overview - Integrador Teamcenter a SAP
 
-## Descripción
+## Descripcion
 
-El Integrador es una aplicación Java / Spring Boot que sincroniza artículos liberados en Siemens Teamcenter PLM hacia SAP Business One usando SAP Service Layer.
+El Integrador es una aplicacion Java / Spring Boot que sincroniza articulos liberados en Siemens Teamcenter PLM hacia SAP Business One usando SAP Service Layer.
 
 ## Objetivo funcional
 
-Cuando un artículo queda aprobado en Teamcenter, Teamcenter inserta un registro en una base SQL Server intermedia. El Integrador procesa esos registros y crea o actualiza el maestro de artículos de SAP B1.
+Cuando un articulo queda aprobado en Teamcenter, Teamcenter inserta un registro en una base SQL Server intermedia. El Integrador procesa esos registros y crea o actualiza el maestro de articulos de SAP B1.
 
 ## Usuarios o actores
 
-- Ingeniería / producto Edelflex: crean, modifican y aprueban artículos en Teamcenter.
-- Descar: responsable de implementación Teamcenter y escritura de base intermedia.
-- Integrador: proceso automático que lee SQL Server y escribe SAP.
-- SAP B1: sistema destino del maestro de artículos.
-- MongoDB: auditoría técnica y trazabilidad del proceso.
-- IT Edelflex: operación, revisión y futura evolución propia.
+- Ingenieria / producto Edelflex: crean, modifican y aprueban articulos en Teamcenter.
+- Descar: responsable de implementacion Teamcenter y escritura de base intermedia.
+- Integrador: proceso automatico que lee SQL Server y escribe SAP.
+- SAP B1: sistema destino del maestro de articulos.
+- MongoDB: auditoria tecnica y trazabilidad del proceso.
+- IT Edelflex: operacion, revision y futura evolucion propia.
 
 ## Alcance actual
 
 Incluye:
 
-- Lectura de múltiples tablas intermedias SQL Server.
-- Mapeo de campos por tipo de ítem.
-- Decisión CREATE vs UPDATE contra SAP.
-- Envío de payload a SAP Service Layer.
+- Lectura de multiples tablas intermedias SQL Server.
+- Mapeo de campos por tipo de item.
+- Decision CREATE vs UPDATE contra SAP.
+- Envio de payload a SAP Service Layer.
 - Registro de estado de procesamiento en SQL Server.
-- Registro histórico en MongoDB.
+- Registro historico en MongoDB.
 - Jobs batch programados por perfiles Spring.
 
 Fuera de alcance actual:
 
-- UI funcional de administración.
-- API REST de negocio para operar artículos.
-- Corrección automática de datos mal insertados por Teamcenter.
+- UI funcional de administracion.
+- API REST de negocio para operar articulos.
+- Correccion automatica de datos mal insertados por Teamcenter.
 - Reemplazo de BitOne ya implementado.
 
-## Estado de implementación
+## Estado de implementacion
 
-Productivo legacy en servicio. Se recuperó el código y se preparó una rama `main-GS` para estabilizar ejecución local, desacoplar perfiles y evitar ejecución accidental de batches.
+Productivo legacy en servicio. Se recupero el codigo y se preparo una rama `main-GS` para estabilizar ejecucion local, desacoplar perfiles y evitar ejecucion accidental de batches.
+
+## Organizacion actual del repositorio
+
+- Repositorio operativo actual: monorepo raiz `C:\Gustavo\Integrador`.
+- La app Java vive en `integration-service/sources/ede-integration-service`.
+- `knowledge/` contiene la base documental y el sistema operativo Wiki-SDD.
+- `mongodb/` e `integration-service/` conservan la infraestructura local de desarrollo.
+
+## Estado de automatizacion documental
+
+- El bootstrap Wiki-SDD debe reconciliar la estructura existente; no recrearla desde cero.
+- Durante bootstrap no se toca codigo productivo.
+- Durante bootstrap no se hace commit ni push.
 
 ## Fuentes
 
-- Código fuente Java/Spring Boot.
+- Codigo fuente Java/Spring Boot.
 - Planillas de mapeo Teamcenter/SAP.
-- Correos históricos.
+- Correos historicos.
 - Contexto aportado por Edelflex.

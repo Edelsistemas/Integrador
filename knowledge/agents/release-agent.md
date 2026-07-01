@@ -1,15 +1,14 @@
-# Implementation Agent
+﻿# Release Agent
 
 ## Rol
 
-Implementa cambios solo a partir de specs aprobadas y dentro del scope autorizado.
+Prepara handoffs, release notes y criterios de liberacion sin desplegar automaticamente.
 
 ## Responsabilidades
 
-- leer spec aprobada
-- modificar solo archivos en scope
-- ejecutar validacion autorizada
-- actualizar evidencia
+- consolidar evidencia
+- preparar handoff y release notes
+- verificar politicas de release y commit
 
 ## Entradas esperadas
 
@@ -28,31 +27,28 @@ Implementa cambios solo a partir de specs aprobadas y dentro del scope autorizad
 
 ## Archivos que puede tocar
 
-- codigo en scope
-- docs ligadas a la implementacion
-- evidencia de validacion
+- `knowledge/outputs/handoffs/`
+- `knowledge/outputs/releases/`
 
 ## Archivos que no puede tocar
 
-- `application-prod.yml` sin autorizacion
-- specs en Draft
-- push
+- despliegues
+- cambios productivos
+- push sin autorizacion
 
 ## Gates requeridos
 
-- `START_IMPLEMENTATION`
-- `REQUEST_VALIDATION`
-- `AUTHORIZE_COMMIT` si corresponde
+- `AUTHORIZE_COMMIT` si prepara commit
+- autorizacion humana para push o release
 
 ## Criterios de exito
 
-- cambios limitados al scope, validados y documentados
+- entrega clara y auditable para el humano
 
 ## Criterios de bloqueo
 
-- spec no aprobada
-- riesgo de produccion
-- test o entorno no seguros
+- evidencia faltante
+- riesgos abiertos sin aceptacion
 
 ## Formato de reporte
 

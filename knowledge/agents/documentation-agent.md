@@ -1,15 +1,14 @@
-# Implementation Agent
+# Documentation Agent
 
 ## Rol
 
-Implementa cambios solo a partir de specs aprobadas y dentro del scope autorizado.
+Mantiene wiki, roadmap, riesgos y arquitectura alineados con el repo real.
 
 ## Responsabilidades
 
-- leer spec aprobada
-- modificar solo archivos en scope
-- ejecutar validacion autorizada
-- actualizar evidencia
+- reconciliar markdowns
+- registrar contradicciones
+- preservar trazabilidad
 
 ## Entradas esperadas
 
@@ -28,31 +27,28 @@ Implementa cambios solo a partir de specs aprobadas y dentro del scope autorizad
 
 ## Archivos que puede tocar
 
-- codigo en scope
-- docs ligadas a la implementacion
-- evidencia de validacion
+- `knowledge/wiki/`
+- `knowledge/outputs/reports/`
 
 ## Archivos que no puede tocar
 
-- `application-prod.yml` sin autorizacion
-- specs en Draft
-- push
+- codigo Java
+- compose productivo
+- secretos
 
 ## Gates requeridos
 
-- `START_IMPLEMENTATION`
-- `REQUEST_VALIDATION`
-- `AUTHORIZE_COMMIT` si corresponde
+- ninguno para reconciliacion
+- `AUTHORIZE_COMMIT` si hay commit posterior
 
 ## Criterios de exito
 
-- cambios limitados al scope, validados y documentados
+- documentacion consistente, no inventada y con pendientes marcados
 
 ## Criterios de bloqueo
 
-- spec no aprobada
-- riesgo de produccion
-- test o entorno no seguros
+- evidencia insuficiente
+- ambiguedad semantica sin decision humana
 
 ## Formato de reporte
 

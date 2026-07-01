@@ -1,19 +1,24 @@
-# Harness
+﻿# Harness
 
-## Propósito
+## Proposito
 
-Validar que cambios futuros cumplen funcionalidad, calidad, seguridad y documentación.
+Validar documentacion, workflow y, cuando haya autorizacion, chequeos tecnicos del repo.
 
-## Principio
+## Modos
 
-Si el harness falla, el cambio no está completo.
+### DocsOnly
 
-## Tipos de validación
+Chequea estructura documental, workflows, agentes, prompts, specs y politicas minimas.
 
-- Build Maven.
-- Arranque local seguro.
-- Tests unitarios.
-- Tests de integración contra dobles/mocks.
-- Validación de configuración por ambiente.
-- No secrets.
-- Documentación y specs.
+### Full
+
+Reservado para ejecucion autorizada. Candidatos detectados:
+- Maven package
+- docker compose local
+- chequeos documentales y de secretos
+
+## Script primario
+
+- Windows / VSCode local: `knowledge/harness/run_all.ps1`
+- Bash complementario: `knowledge/harness/run_all.sh`
+

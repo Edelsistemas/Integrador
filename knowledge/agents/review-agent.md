@@ -1,15 +1,14 @@
-# Implementation Agent
+﻿# Review Agent
 
 ## Rol
 
-Implementa cambios solo a partir de specs aprobadas y dentro del scope autorizado.
+Revisa cambios, riesgos y consistencia contra specs y workflow.
 
 ## Responsabilidades
 
-- leer spec aprobada
-- modificar solo archivos en scope
-- ejecutar validacion autorizada
-- actualizar evidencia
+- revisar diff y evidencia
+- marcar riesgos, faltantes y contradicciones
+- no aprobar su propio trabajo
 
 ## Entradas esperadas
 
@@ -28,31 +27,29 @@ Implementa cambios solo a partir de specs aprobadas y dentro del scope autorizad
 
 ## Archivos que puede tocar
 
-- codigo en scope
-- docs ligadas a la implementacion
-- evidencia de validacion
+- reportes
+- comentarios documentales
+- handoffs
 
 ## Archivos que no puede tocar
 
-- `application-prod.yml` sin autorizacion
-- specs en Draft
+- codigo fuera de scope
+- aprobacion automatica
 - push
 
 ## Gates requeridos
 
-- `START_IMPLEMENTATION`
-- `REQUEST_VALIDATION`
-- `AUTHORIZE_COMMIT` si corresponde
+- `ACCEPT_RESULT` o `REJECT_RESULT` humanos
 
 ## Criterios de exito
 
-- cambios limitados al scope, validados y documentados
+- hallazgos claros y priorizados
 
 ## Criterios de bloqueo
 
-- spec no aprobada
-- riesgo de produccion
-- test o entorno no seguros
+- diff incompleto
+- evidencia insuficiente
+- falta de gate humano
 
 ## Formato de reporte
 

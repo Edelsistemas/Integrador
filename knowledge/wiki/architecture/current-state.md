@@ -124,4 +124,19 @@ Windows 11 host
 - La query base de pendientes sigue necesitando validacion contra la implementacion productiva exacta.
 - No hay tests automatizados documentados para las reglas criticas de inactivacion ni para la UI minima.
 - La advertencia de seguridad por `User.withDefaultPasswordEncoder()` sigue presente en logs.
+## Estado de automatizacion al 2026-07-01
+
+### Confirmado
+
+- El repositorio operativo actual es el monorepo raiz `C:\Gustavo\Integrador`.
+- La historia de `ede-integration-service` fue preservada dentro del monorepo antes del bootstrap Wiki-SDD.
+- `knowledge/` se toma como fuente documental principal y se reconcilia sobre su estado existente.
+- Este bootstrap no modifica codigo productivo y no debe hacer commit ni push durante su ejecucion.
+
+### Contradicciones o gaps atendidos en bootstrap
+
+- No existia `AGENTS.md` raiz.
+- Faltaban `knowledge/workflows/` y `knowledge/prompts/`.
+- Faltaba `knowledge/specs/archived/`.
+- Faltaba una ruta formal para snapshots y un harness DocsOnly ejecutable.
 
