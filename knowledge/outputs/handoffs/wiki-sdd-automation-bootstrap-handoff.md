@@ -42,7 +42,7 @@ Estado del bootstrap: Accepted por `HUMAN_GATE: ACCEPT_RESULT`.
 ## Riesgos
 
 - `knowledge/.obsidian/` es parte intencional del vault de Obsidian.
-- `knowledge/.obsidian/workspace.json` puede reflejar preferencias locales y debe revisarse antes de un commit futuro.
+- `knowledge/.obsidian/workspace.json` se mantiene ignorado en Git por ser un archivo vivo del vault con bajo valor estable para versionado.
 - El harness Full aun no tiene gate humano.
 - Quedan secretos versionados en YAML fuera del scope de este bootstrap.
 
@@ -60,3 +60,4 @@ Estado del bootstrap: Accepted por `HUMAN_GATE: ACCEPT_RESULT`.
 ## Siguiente gate sugerido
 
 `HUMAN_GATE: AUTHORIZE_COMMIT` o apertura/aprobacion de la primera spec real.
+

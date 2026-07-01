@@ -1,4 +1,4 @@
-﻿# Project overview - Integrador Teamcenter a SAP
+# Project overview - Integrador Teamcenter a SAP
 
 ## Descripcion
 

@@ -14,4 +14,5 @@
 | DEC-010 | 2026-07-01 | Adoptar Integrador como monorepo raiz y preservar la historia de ede-integration-service dentro del nuevo repo | Cubrir sistema completo con Git manteniendo trazabilidad historica | Confirmada | Git/GitHub + conversacion |
 | DEC-011 | 2026-07-01 | Ejecutar el bootstrap Wiki-SDD reconciliando knowledge/ existente en lugar de recrearlo desde cero | Minimizar riesgo documental y preservar contexto acumulado | Confirmada | Conversacion + estado real del repo |
 | DEC-012 | 2026-07-01 | Durante el bootstrap no tocar codigo productivo, no hacer commit ni push, y priorizar completar gaps sobre renombrar carpetas | Reducir riesgo operativo y evitar churn innecesario | Confirmada | Conversacion + workflow bootstrap |
+| DEC-013 | 2026-07-01 | Mantener knowledge/.obsidian/workspace.json ignorado en Git | Es un archivo vivo del vault de Obsidian y no aporta valor estable suficiente para versionarlo en el flujo operativo | Confirmada | Conversacion operativa |
 

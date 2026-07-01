@@ -99,7 +99,7 @@ Scope: `knowledge/`, `AGENTS.md`, workflows, prompts, harness DocsOnly, reportes
 ## Riesgos
 
 - `knowledge/.obsidian/` es parte intencional del vault de Obsidian para administrar la base de conocimiento.
-- `knowledge/.obsidian/workspace.json` puede reflejar preferencias locales del entorno y debe evaluarse por separado antes de un futuro commit.
+- `knowledge/.obsidian/workspace.json` se mantiene ignorado en Git por ser un archivo vivo del vault con bajo valor estable para versionado.
 - Persisten secretos versionados en YAML de la app; no fueron replicados en markdowns.
 - Harness Full sigue pendiente de gate humano y de politica tecnica final.
 
@@ -114,3 +114,12 @@ Scope: `knowledge/`, `AGENTS.md`, workflows, prompts, harness DocsOnly, reportes
 1. Definir estrategia para `knowledge/.obsidian/workspace.json` antes de cualquier commit futuro.
 2. Abrir o aprobar la primera spec real a implementar bajo el nuevo workflow.
 3. Solicitar `HUMAN_GATE: AUTHORIZE_COMMIT` solo cuando se quiera cerrar formalmente este bootstrap en Git.
+## Decision posterior registrada
+
+- Spec aprobada: `knowledge/specs/approved/2026-06-30-status-ui-empty-state/`
+- Gate aplicado: `HUMAN_GATE: APPROVE_SPEC`
+- Estado resultante: `Approved`
+- Implementacion: pendiente de `HUMAN_GATE: START_IMPLEMENTATION`
+- Commit/push sobre esa spec: no autorizados en esta pasada
+
+

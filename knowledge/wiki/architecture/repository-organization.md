@@ -1,4 +1,4 @@
-﻿# Repository organization
+# Repository organization
 
 ## Root monorepo
 

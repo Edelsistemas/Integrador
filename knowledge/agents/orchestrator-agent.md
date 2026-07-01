@@ -1,4 +1,4 @@
-﻿# Orchestrator Agent
+# Orchestrator Agent
 
 ## Rol
 

@@ -1,4 +1,4 @@
-﻿# Gates
+# Gates
 
 ## Gates humanos obligatorios
 

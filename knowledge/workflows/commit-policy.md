@@ -1,4 +1,4 @@
-﻿# Commit policy
+# Commit policy
 
 - Ningun commit sin `HUMAN_GATE: AUTHORIZE_COMMIT`.
 - Ningun push sin autorizacion explicita.

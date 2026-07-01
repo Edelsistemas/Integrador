@@ -1,4 +1,4 @@
-﻿# Workflows
+# Workflows
 
 Esta carpeta define el flujo operativo Wiki-SDD del monorepo `Integrador`.
 
