@@ -16,7 +16,7 @@
                 <div class="col"><h5 class="card-title">Procesos</h5>
                 </div>
                 <div class="col-auto">
-                    <form th:action="@{/process/status}" method="get">
+                    <form th:action="@{/}" method="get">
                         <input type="submit" class="btn btn-sm btn-primary" value="Refrescar"/>
                     </form>
                 </div>
@@ -35,17 +35,18 @@
             <tbody>
             <tr>
                 <td>Items</td>
-                <td th:text="${batchItems.dateStartStr}"/>
-                <td th:text="${batchItems.dateEndStr}"/>
-                <td th:text="${batchItems.status}"/>
+                <td th:text="${hasBatchItems ? batchItems.dateStartStr : '-'}"/>
+                <td th:text="${hasBatchItems ? batchItems.dateEndStr : '-'}"/>
+                <td th:text="${hasBatchItems ? batchItems.status : 'SIN EJECUCIONES'}"/>
                 <td class="text-center">
                     <button type="button" class="btn btn-link" style="text-decoration: none !important;"
-                            th:if="${resultsItems.size()} > 0"
+                            th:if="${hasResultsItems}"
                             data-bs-toggle="modal"
                             data-bs-target="#erroresModal">
                         Ver
                     </button>
-                    Errores <label th:text="${errorCount}"/>
+                    <span th:if="${hasResultsItems}">Errores <label th:text="${errorCount}"/></span>
+                    <span th:unless="${hasResultsItems}">Sin detalle disponible</span>
                 </td>
             </tr>
             </tbody>

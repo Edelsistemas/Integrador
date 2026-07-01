@@ -1,7 +1,7 @@
-# Spec: Tolerancia de pantalla de estado sin ejecuciones previas
+﻿# Spec: Tolerancia de pantalla de estado sin ejecuciones previas
 
 ## Estado
-Draft
+Completed
 
 ## Objetivo
 
@@ -29,3 +29,5 @@ En una instalacion limpia o una base Mongo nueva, la UI minima de estado intenta
 - Codigo fuente actual (`InfoController.java`, `status.html`).
 - Prueba local del 2026-06-30 con Mongo limpio.
 - Logs del contenedor `integration-service`.
+
+

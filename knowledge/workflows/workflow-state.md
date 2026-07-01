@@ -1,4 +1,4 @@
-﻿# Workflow state
+# Workflow state
 
 ## Bootstrap actual
 
@@ -57,8 +57,19 @@
 ## Consideraciones sobre Obsidian
 
 - La carpeta `knowledge/.obsidian/` es parte intencional del vault y no debe tratarse como estructura espuria.
-- El archivo `knowledge/.obsidian/workspace.json` sigue siendo sensible a preferencias locales del entorno y debe evaluarse aparte antes de cualquier commit futuro.
+- El archivo `knowledge/.obsidian/workspace.json` se mantiene ignorado en Git por ser un archivo vivo del vault con bajo valor estable para versionado.
 
 ## Bloqueantes conocidos
 
 - Ninguno para cerrar el bootstrap como aceptado.
+
+## Registro de specs
+
+- `2026-06-30-status-ui-empty-state`
+  - `APPROVE_SPEC`: 2026-07-01
+  - `REQUEST_VALIDATION`: 2026-07-01
+  - `ACCEPT_RESULT`: 2026-07-01
+  - `COMPLETE_SPEC`: 2026-07-01
+  - Estado actual: `Completed`
+  - Ubicacion final: `knowledge/specs/completed/2026-06-30-status-ui-empty-state/`
+  - Commit/push: no autorizados en esta pasada
