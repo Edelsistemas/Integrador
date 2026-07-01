@@ -1,0 +1,900 @@
+table,field_key,source_column_or_value
+AcceInline,ID,id
+AcceInline,NAME,Name
+AcceInline,PRODUCT,Product
+AcceInline,REVISION,Revision
+AcceInline,EDELFLEX,Codigo Edelflex
+AcceInline,STATUS,Estado_TC
+AcceInline,FIXED_GROUP_ITEM,${team-center.querys.item-groups.acce-inline}
+AcceInline,FIXED_UOM,UN
+AcceInline,PROVEEDOR,Codigo Proveedor
+AcceInline,MARCA,Item_Marca
+AcceInline,TIPO,Item_Tipo
+AcceInline,MODELO,
+AcceInline,EQUIPO,Item_Equipo
+AcceInline,VARIABLE,
+AcceInline,TAMANIO,
+AcceInline,MODELO_BASTIDOR,
+AcceInline,CORRUGACION,
+AcceInline,MATERIAL_JUNTAS,
+AcceInline,MATERIAL_PLACAS,
+AcceInline,CANTIDAD_SECCIONES,
+AcceInline,DIAMETRO,Item_Diametro
+AcceInline,ACTUACION,
+AcceInline,FAMILIA,
+AcceInline,DIAMETRO_SUPERIOR,
+AcceInline,DIAMETRO_INFERIOR,
+AcceInline,CUERPO,
+AcceInline,CONEXIONES,
+AcceInline,IMPORTADO,Es importado
+AcceInline,FABRICADO,Es fabricado
+BomDesPos,ID,id
+BomDesPos,NAME,Name
+BomDesPos,PRODUCT,Product
+BomDesPos,REVISION,Revision
+BomDesPos,EDELFLEX,Codigo Edelflex
+BomDesPos,STATUS,Estado_TC
+BomDesPos,FIXED_GROUP_ITEM,${team-center.querys.item-groups.bom-des-pos}
+BomDesPos,FIXED_UOM,UN
+BomDesPos,PROVEEDOR,Codigo Proveedor
+BomDesPos,MARCA,Item_Marca
+BomDesPos,TIPO,
+BomDesPos,MODELO,Item_Modelo
+BomDesPos,EQUIPO,
+BomDesPos,VARIABLE,
+BomDesPos,TAMANIO,
+BomDesPos,MODELO_BASTIDOR,
+BomDesPos,CORRUGACION,
+BomDesPos,MATERIAL_JUNTAS,
+BomDesPos,MATERIAL_PLACAS,
+BomDesPos,CANTIDAD_SECCIONES,
+BomDesPos,DIAMETRO,
+BomDesPos,ACTUACION,
+BomDesPos,FAMILIA,
+BomDesPos,DIAMETRO_SUPERIOR,
+BomDesPos,DIAMETRO_INFERIOR,
+BomDesPos,CUERPO,
+BomDesPos,CONEXIONES,
+BomDesPos,IMPORTADO,Es importado
+BomDesPos,FABRICADO,Es fabricado
+BombaCen,ID,id
+BombaCen,NAME,Name
+BombaCen,PRODUCT,Product
+BombaCen,REVISION,Revision
+BombaCen,EDELFLEX,Codigo Edelflex
+BombaCen,STATUS,Estado_TC
+BombaCen,FIXED_GROUP_ITEM,${team-center.querys.item-groups.bomba-cen}
+BombaCen,FIXED_UOM,UN
+BombaCen,PROVEEDOR,Codigo Proveedor
+BombaCen,MARCA,Item_Marca
+BombaCen,TIPO,
+BombaCen,MODELO,Item_Modelo
+BombaCen,EQUIPO,
+BombaCen,VARIABLE,
+BombaCen,TAMANIO,
+BombaCen,MODELO_BASTIDOR,
+BombaCen,CORRUGACION,
+BombaCen,MATERIAL_PLACAS,
+BombaCen,MATERIAL_JUNTAS,
+BombaCen,CANTIDAD_SECCIONES,
+BombaCen,DIAMETRO,
+BombaCen,ACTUACION,
+BombaCen,FAMILIA,
+BombaCen,DIAMETRO_SUPERIOR,
+BombaCen,DIAMETRO_INFERIOR,
+BombaCen,CUERPO,
+BombaCen,CONEXIONES,
+BombaCen,IMPORTADO,Es importado
+BombaCen,FABRICADO,Es fabricado
+DispLimpi,ID,id
+DispLimpi,NAME,Name
+DispLimpi,PRODUCT,Product
+DispLimpi,REVISION,Revision
+DispLimpi,EDELFLEX,Codigo Edelflex
+DispLimpi,STATUS,Estado_TC
+DispLimpi,FIXED_GROUP_ITEM,${team-center.querys.item-groups.disp-limpi}
+DispLimpi,FIXED_UOM,UN
+DispLimpi,PROVEEDOR,Codigo Proveedor
+DispLimpi,MARCA,Item_Marca
+DispLimpi,TIPO,Item_Tipo
+DispLimpi,MODELO,Item_Modelo
+DispLimpi,EQUIPO,
+DispLimpi,VARIABLE,
+DispLimpi,TAMANIO,
+DispLimpi,MODELO_BASTIDOR,
+DispLimpi,CORRUGACION,
+DispLimpi,MATERIAL_PLACAS,
+DispLimpi,MATERIAL_JUNTAS,
+DispLimpi,CANTIDAD_SECCIONES,
+DispLimpi,DIAMETRO,
+DispLimpi,ACTUACION,
+DispLimpi,FAMILIA,
+DispLimpi,DIAMETRO_SUPERIOR,
+DispLimpi,DIAMETRO_INFERIOR,
+DispLimpi,CUERPO,
+DispLimpi,CONEXIONES,
+DispLimpi,IMPORTADO,Es importado
+DispLimpi,FABRICADO,Es fabricado
+ENA,ID,id
+ENA,NAME,Name
+ENA,PRODUCT,Product
+ENA,REVISION,Revision
+ENA,EDELFLEX,Codigo Edelflex
+ENA,STATUS,Estado_TC
+ENA,FIXED_GROUP_ITEM,${team-center.querys.item-groups.ena}
+ENA,FIXED_UOM,UN
+ENA,PROVEEDOR,Item_Codigo Proveedor
+ENA,MARCA,
+ENA,TIPO,
+ENA,MODELO,
+ENA,EQUIPO,
+ENA,VARIABLE,
+ENA,TAMANIO,
+ENA,MODELO_BASTIDOR,
+ENA,CORRUGACION,
+ENA,MATERIAL_JUNTAS,
+ENA,MATERIAL_PLACAS,
+ENA,CANTIDAD_SECCIONES,
+ENA,DIAMETRO,
+ENA,ACTUACION,
+ENA,FAMILIA,
+ENA,DIAMETRO_SUPERIOR,
+ENA,DIAMETRO_INFERIOR,
+ENA,CUERPO,
+ENA,CONEXIONES,
+ENA,IMPORTADO,Es importado
+ENA,FABRICADO,Es fabricado
+Homogen,ID,id
+Homogen,NAME,Name
+Homogen,PRODUCT,Product
+Homogen,REVISION,Revision
+Homogen,EDELFLEX,efx4_CodEdelflex
+Homogen,STATUS,Estado_TC
+Homogen,FIXED_GROUP_ITEM,${team-center.querys.item-groups.homogen}
+Homogen,FIXED_UOM,UN
+Homogen,PROVEEDOR,Item_Codigo Proveedor
+Homogen,MARCA,Item_Marca
+Homogen,TIPO,Item_Tipo
+Homogen,MODELO,Item_Codigo Proveedor
+Homogen,EQUIPO,
+Homogen,VARIABLE,
+Homogen,TAMANIO,
+Homogen,MODELO_BASTIDOR,
+Homogen,CORRUGACION,
+Homogen,MATERIAL_JUNTAS,
+Homogen,MATERIAL_PLACAS,
+Homogen,CANTIDAD_SECCIONES,
+Homogen,DIAMETRO,
+Homogen,ACTUACION,
+Homogen,FAMILIA,
+Homogen,DIAMETRO_SUPERIOR,
+Homogen,DIAMETRO_INFERIOR,
+Homogen,CUERPO,
+Homogen,CONEXIONES,
+Homogen,IMPORTADO,Es importado
+Homogen,FABRICADO,Es fabricado
+InstrInd,ID,id
+InstrInd,NAME,Name
+InstrInd,PRODUCT,Product
+InstrInd,REVISION,Revision
+InstrInd,EDELFLEX,Codigo Edelflex
+InstrInd,STATUS,Estado_TC
+InstrInd,FIXED_GROUP_ITEM,${team-center.querys.item-groups.instr-ind}
+InstrInd,FIXED_UOM,
+InstrInd,PROVEEDOR,Codigo Proveedor
+InstrInd,MARCA,Item_Marca
+InstrInd,TIPO,Item_Tipo
+InstrInd,MODELO,Item_Modelo
+InstrInd,EQUIPO,
+InstrInd,VARIABLE,Item_Variable
+InstrInd,TAMANIO,
+InstrInd,MODELO_BASTIDOR,
+InstrInd,CORRUGACION,
+InstrInd,MATERIAL_PLACAS,
+InstrInd,MATERIAL_JUNTAS,
+InstrInd,CANTIDAD_SECCIONES,
+InstrInd,DIAMETRO,
+InstrInd,ACTUACION,
+InstrInd,FAMILIA,
+InstrInd,DIAMETRO_SUPERIOR,
+InstrInd,DIAMETRO_INFERIOR,
+InstrInd,CUERPO,
+InstrInd,CONEXIONES,
+InstrInd,IMPORTADO,Es importado
+InstrInd,FABRICADO,Es fabricado
+Instrumen,ID,id
+Instrumen,NAME,Name
+Instrumen,PRODUCT,Product
+Instrumen,REVISION,Revision
+Instrumen,EDELFLEX,Codigo Edelflex
+Instrumen,STATUS,Estado_TC
+Instrumen,FIXED_GROUP_ITEM,${team-center.querys.item-groups.instrumen}
+Instrumen,FIXED_UOM,UN
+Instrumen,PROVEEDOR,Codigo
+Instrumen,MARCA,Item_Marca
+Instrumen,TIPO,Item_Tipo
+Instrumen,MODELO,Item_Modelo
+Instrumen,EQUIPO,
+Instrumen,VARIABLE,Item_Variable
+Instrumen,TAMANIO,
+Instrumen,MODELO_BASTIDOR,
+Instrumen,CORRUGACION,
+Instrumen,MATERIAL_PLACAS,
+Instrumen,MATERIAL_JUNTAS,
+Instrumen,CANTIDAD_SECCIONES,
+Instrumen,DIAMETRO,
+Instrumen,ACTUACION,
+Instrumen,FAMILIA,
+Instrumen,DIAMETRO_SUPERIOR,
+Instrumen,DIAMETRO_INFERIOR,
+Instrumen,CUERPO,
+Instrumen,CONEXIONES,
+Instrumen,IMPORTADO,Es importado
+Instrumen,FABRICADO,Es fabricado
+Inter_Calor,ID,id
+Inter_Calor,NAME,Name
+Inter_Calor,PRODUCT,Product
+Inter_Calor,REVISION,Revision
+Inter_Calor,EDELFLEX,Codigo Edelflex
+Inter_Calor,STATUS,Estado_TC
+Inter_Calor,CLAUSE_GROUP_ITEM,(CASE WHEN Item_Marca like '%KELVION%' THEN ${team-center.querys.item-groups.inter-calor-kvn} ELSE ${team-center.querys.item-groups.inter-calor-arax} END)
+Inter_Calor,FIXED_UOM,UN
+Inter_Calor,PROVEEDOR,Codigo Proveedor
+Inter_Calor,MARCA,Item_Marca
+Inter_Calor,TIPO,
+Inter_Calor,MODELO,
+Inter_Calor,EQUIPO,
+Inter_Calor,VARIABLE,
+Inter_Calor,TAMANIO,Item_Tamano
+Inter_Calor,MODELO_BASTIDOR,Modelo Bastidor
+Inter_Calor,CORRUGACION,Corrugacion
+Inter_Calor,MATERIAL_PLACAS,Material Placas
+Inter_Calor,MATERIAL_JUNTAS,Material juntas
+Inter_Calor,CANTIDAD_SECCIONES,Cantidad Secciones
+Inter_Calor,DIAMETRO,
+Inter_Calor,ACTUACION,
+Inter_Calor,FAMILIA,
+Inter_Calor,DIAMETRO_SUPERIOR,
+Inter_Calor,DIAMETRO_INFERIOR,
+Inter_Calor,CUERPO,
+Inter_Calor,CONEXIONES,
+Inter_Calor,IMPORTADO,Es importado
+Inter_Calor,FABRICADO,Es fabricado
+MatPri,ID,id
+MatPri,NAME,Name
+MatPri,PRODUCT,Product
+MatPri,REVISION,Revision
+MatPri,EDELFLEX,efx4_CodEdelflex
+MatPri,STATUS,Estado_TC
+MatPri,FIXED_GROUP_ITEM,${team-center.querys.item-groups.mat-pri}
+MatPri,FIXED_UOM,
+MatPri,PROVEEDOR,
+MatPri,MARCA,
+MatPri,TIPO,
+MatPri,MODELO,
+MatPri,EQUIPO,
+MatPri,VARIABLE,
+MatPri,TAMANIO,
+MatPri,MODELO_BASTIDOR,
+MatPri,CORRUGACION,
+MatPri,MATERIAL_PLACAS,
+MatPri,MATERIAL_JUNTAS,
+MatPri,CANTIDAD_SECCIONES,
+MatPri,DIAMETRO,
+MatPri,ACTUACION,
+MatPri,FAMILIA,
+MatPri,DIAMETRO_SUPERIOR,
+MatPri,DIAMETRO_INFERIOR,
+MatPri,CUERPO,
+MatPri,CONEXIONES,
+MatPri,IMPORTADO,Es importado
+MatPri,FABRICADO,Es fabricado
+OtrasBom,ID,id
+OtrasBom,NAME,Name
+OtrasBom,PRODUCT,Product
+OtrasBom,REVISION,Revision
+OtrasBom,EDELFLEX,Codigo Edelflex
+OtrasBom,STATUS,Estado_TC
+OtrasBom,FIXED_GROUP_ITEM,${team-center.querys.item-groups.otras-bom}
+OtrasBom,FIXED_UOM,UN
+OtrasBom,PROVEEDOR,Codigo Proveedor
+OtrasBom,MARCA,Item_Marca
+OtrasBom,TIPO,Item_Tipo de bomba
+OtrasBom,MODELO,Item_Modelo
+OtrasBom,EQUIPO,
+OtrasBom,VARIABLE,
+OtrasBom,TAMANIO,
+OtrasBom,MODELO_BASTIDOR,
+OtrasBom,CORRUGACION,
+OtrasBom,MATERIAL_PLACAS,
+OtrasBom,MATERIAL_JUNTAS,
+OtrasBom,CANTIDAD_SECCIONES,
+OtrasBom,DIAMETRO,
+OtrasBom,ACTUACION,
+OtrasBom,FAMILIA,
+OtrasBom,DIAMETRO_SUPERIOR,
+OtrasBom,DIAMETRO_INFERIOR,
+OtrasBom,CUERPO,
+OtrasBom,CONEXIONES,
+OtrasBom,IMPORTADO,Es importado
+OtrasBom,FABRICADO,Es fabricado
+OtrasVal,ID,id
+OtrasVal,NAME,Name
+OtrasVal,PRODUCT,Product
+OtrasVal,REVISION,Revision
+OtrasVal,EDELFLEX,Codigo Edelflex
+OtrasVal,STATUS,Estado_TC
+OtrasVal,FIXED_GROUP_ITEM,${team-center.querys.item-groups.otras-val}
+OtrasVal,FIXED_UOM,UN
+OtrasVal,PROVEEDOR,Codigo Proveedor
+OtrasVal,MARCA,Item_Marca
+OtrasVal,TIPO,Item_Tipo de valvula
+OtrasVal,MODELO,Item_Modelo
+OtrasVal,EQUIPO,
+OtrasVal,VARIABLE,
+OtrasVal,TAMANIO,
+OtrasVal,MODELO_BASTIDOR,
+OtrasVal,CORRUGACION,
+OtrasVal,MATERIAL_PLACAS,
+OtrasVal,MATERIAL_JUNTAS,Material sellos
+OtrasVal,CANTIDAD_SECCIONES,
+OtrasVal,DIAMETRO,Item_Diametro
+OtrasVal,ACTUACION,Item_Actuacion
+OtrasVal,FAMILIA,
+OtrasVal,DIAMETRO_SUPERIOR,
+OtrasVal,DIAMETRO_INFERIOR,
+OtrasVal,CUERPO,
+OtrasVal,CONEXIONES,
+OtrasVal,IMPORTADO,Es importado
+OtrasVal,FABRICADO,Es fabricado
+OtrosComp,ID,id
+OtrosComp,NAME,Name
+OtrosComp,PRODUCT,Product
+OtrosComp,REVISION,Revision
+OtrosComp,EDELFLEX,Codigo Edelflex
+OtrosComp,STATUS,Estado_TC
+OtrosComp,FIXED_GROUP_ITEM,${team-center.querys.item-groups.otros-comp}
+OtrosComp,FIXED_UOM,UN
+OtrosComp,PROVEEDOR,Codigo Proveedor
+OtrosComp,MARCA,Item_Marca
+OtrosComp,TIPO,Item_Tipo
+OtrosComp,MODELO,
+OtrosComp,EQUIPO,Item_Equipo
+OtrosComp,VARIABLE,
+OtrosComp,TAMANIO,
+OtrosComp,MODELO_BASTIDOR,
+OtrosComp,CORRUGACION,
+OtrosComp,MATERIAL_PLACAS,
+OtrosComp,MATERIAL_JUNTAS,
+OtrosComp,CANTIDAD_SECCIONES,
+OtrosComp,DIAMETRO,
+OtrosComp,ACTUACION,
+OtrosComp,FAMILIA,
+OtrosComp,DIAMETRO_SUPERIOR,
+OtrosComp,DIAMETRO_INFERIOR,
+OtrosComp,CUERPO,
+OtrosComp,CONEXIONES,
+OtrosComp,IMPORTADO,Es importado
+OtrosComp,FABRICADO,Es fabricado
+Pieza,ID,id
+Pieza,NAME,Name
+Pieza,PRODUCT,Product
+Pieza,REVISION,Revision
+Pieza,EDELFLEX,Codigo Edelflex
+Pieza,STATUS,Estado_TC
+Pieza,FIXED_GROUP_ITEM,${team-center.querys.item-groups.pieza}
+Pieza,FIXED_UOM,
+Pieza,PROVEEDOR,Codigo Proveedor
+Pieza,MARCA,
+Pieza,TIPO,
+Pieza,MODELO,
+Pieza,EQUIPO,
+Pieza,VARIABLE,
+Pieza,TAMANIO,
+Pieza,MODELO_BASTIDOR,
+Pieza,CORRUGACION,
+Pieza,MATERIAL_PLACAS,
+Pieza,MATERIAL_JUNTAS,
+Pieza,CANTIDAD_SECCIONES,
+Pieza,DIAMETRO,
+Pieza,ACTUACION,
+Pieza,FAMILIA,
+Pieza,DIAMETRO_SUPERIOR,
+Pieza,DIAMETRO_INFERIOR,
+Pieza,CUERPO,
+Pieza,CONEXIONES,
+Pieza,IMPORTADO,Es importado
+Pieza,FABRICADO,Es fabricado
+Repuestos,ID,id
+Repuestos,NAME,Name
+Repuestos,PRODUCT,Product
+Repuestos,REVISION,Revision
+Repuestos,EDELFLEX,Item_Codigo Edelflex
+Repuestos,STATUS,Estado_TC
+Repuestos,FIXED_GROUP_ITEM,${team-center.querys.item-groups.repuestos}
+Repuestos,FIXED_UOM,UN
+Repuestos,PROVEEDOR,Item_Codigo Proveedor
+Repuestos,MARCA,Item_Marca
+Repuestos,TIPO,
+Repuestos,MODELO,
+Repuestos,EQUIPO,
+Repuestos,VARIABLE,
+Repuestos,TAMANIO,
+Repuestos,MODELO_BASTIDOR,
+Repuestos,CORRUGACION,
+Repuestos,MATERIAL_PLACAS,
+Repuestos,MATERIAL_JUNTAS,
+Repuestos,CANTIDAD_SECCIONES,
+Repuestos,DIAMETRO,
+Repuestos,ACTUACION,
+Repuestos,FAMILIA,
+Repuestos,DIAMETRO_SUPERIOR,
+Repuestos,DIAMETRO_INFERIOR,
+Repuestos,CUERPO,
+Repuestos,CONEXIONES,
+Repuestos,IMPORTADO,Es importado
+Repuestos,FABRICADO,Es fabricado
+RestoInter,ID,id
+RestoInter,NAME,Name
+RestoInter,PRODUCT,Product
+RestoInter,REVISION,Revision
+RestoInter,EDELFLEX,Codigo Edelflex
+RestoInter,STATUS,Estado_TC
+RestoInter,FIXED_GROUP_ITEM,${team-center.querys.item-groups.resto-inter}
+RestoInter,FIXED_UOM,UN
+RestoInter,PROVEEDOR,Codigo Proveedor
+RestoInter,MARCA,Item_Marca
+RestoInter,TIPO,Item_Tipo
+RestoInter,MODELO,Item_Modelo
+RestoInter,EQUIPO,
+RestoInter,VARIABLE,
+RestoInter,TAMANIO,
+RestoInter,MODELO_BASTIDOR,
+RestoInter,CORRUGACION,
+RestoInter,MATERIAL_PLACAS,
+RestoInter,MATERIAL_JUNTAS,
+RestoInter,CANTIDAD_SECCIONES,
+RestoInter,DIAMETRO,
+RestoInter,ACTUACION,
+RestoInter,FAMILIA,
+RestoInter,DIAMETRO_SUPERIOR,
+RestoInter,DIAMETRO_INFERIOR,
+RestoInter,CUERPO,
+RestoInter,CONEXIONES,
+RestoInter,IMPORTADO,Es importado
+RestoInter,FABRICADO,Es fabricado
+Semielabo,ID,id
+Semielabo,NAME,Name
+Semielabo,PRODUCT,Product
+Semielabo,REVISION,Revision
+Semielabo,EDELFLEX,Codigo Edelflex
+Semielabo,STATUS,Estado_TC
+Semielabo,FIXED_GROUP_ITEM,${team-center.querys.item-groups.semielabo}
+Semielabo,FIXED_UOM,
+Semielabo,PROVEEDOR,Codigo Proveedor
+Semielabo,MARCA,
+Semielabo,TIPO,
+Semielabo,MODELO,
+Semielabo,EQUIPO,
+Semielabo,VARIABLE,
+Semielabo,TAMANIO,
+Semielabo,MODELO_BASTIDOR,
+Semielabo,CORRUGACION,
+Semielabo,MATERIAL_PLACAS,
+Semielabo,MATERIAL_JUNTAS,
+Semielabo,CANTIDAD_SECCIONES,
+Semielabo,DIAMETRO,
+Semielabo,ACTUACION,
+Semielabo,FAMILIA,
+Semielabo,DIAMETRO_SUPERIOR,
+Semielabo,DIAMETRO_INFERIOR,
+Semielabo,CUERPO,
+Semielabo,CONEXIONES,
+Semielabo,IMPORTADO,Es importado
+Semielabo,FABRICADO,Es fabricado
+SisCalEH,ID,id
+SisCalEH,NAME,Name
+SisCalEH,PRODUCT,Product
+SisCalEH,REVISION,Revision
+SisCalEH,EDELFLEX,Codigo Edelflex
+SisCalEH,STATUS,Estado_TC
+SisCalEH,FIXED_GROUP_ITEM,${team-center.querys.item-groups.sis-cal-eh}
+SisCalEH,FIXED_UOM,UN
+SisCalEH,PROVEEDOR,
+SisCalEH,MARCA,Item_Marca
+SisCalEH,TIPO,Item_Tipo
+SisCalEH,MODELO,Item_Modelo
+SisCalEH,EQUIPO,
+SisCalEH,VARIABLE,
+SisCalEH,TAMANIO,
+SisCalEH,MODELO_BASTIDOR,
+SisCalEH,CORRUGACION,
+SisCalEH,MATERIAL_PLACAS,
+SisCalEH,MATERIAL_JUNTAS,
+SisCalEH,CANTIDAD_SECCIONES,
+SisCalEH,DIAMETRO,
+SisCalEH,ACTUACION,
+SisCalEH,FAMILIA,
+SisCalEH,DIAMETRO_SUPERIOR,
+SisCalEH,DIAMETRO_INFERIOR,
+SisCalEH,CUERPO,
+SisCalEH,CONEXIONES,
+SisCalEH,IMPORTADO,Es importado
+SisCalEH,FABRICADO,Es fabricado
+SisLimEC,ID,id
+SisLimEC,NAME,Name
+SisLimEC,PRODUCT,Product
+SisLimEC,REVISION,Revision
+SisLimEC,EDELFLEX,Codigo Edelflex
+SisLimEC,STATUS,Estado_TC
+SisLimEC,FIXED_GROUP_ITEM,${team-center.querys.item-groups.sis-lim-ec}
+SisLimEC,FIXED_UOM,UN
+SisLimEC,PROVEEDOR,
+SisLimEC,MARCA,Item_Marca
+SisLimEC,TIPO,
+SisLimEC,MODELO,Item_Modelo
+SisLimEC,EQUIPO,
+SisLimEC,VARIABLE,
+SisLimEC,TAMANIO,
+SisLimEC,MODELO_BASTIDOR,
+SisLimEC,CORRUGACION,
+SisLimEC,MATERIAL_PLACAS,
+SisLimEC,MATERIAL_JUNTAS,
+SisLimEC,CANTIDAD_SECCIONES,
+SisLimEC,DIAMETRO,
+SisLimEC,ACTUACION,
+SisLimEC,FAMILIA,
+SisLimEC,DIAMETRO_SUPERIOR,
+SisLimEC,DIAMETRO_INFERIOR,
+SisLimEC,CUERPO,
+SisLimEC,CONEXIONES,
+SisLimEC,IMPORTADO,Es importado
+SisLimEC,FABRICADO,Es fabricado
+SisMezEM,ID,id
+SisMezEM,NAME,Name
+SisMezEM,PRODUCT,Product
+SisMezEM,REVISION,Revision
+SisMezEM,EDELFLEX,Codigo Edelflex
+SisMezEM,STATUS,Estado_TC
+SisMezEM,FIXED_GROUP_ITEM,${team-center.querys.item-groups.sis-mez-em}
+SisMezEM,FIXED_UOM,UN
+SisMezEM,PROVEEDOR,
+SisMezEM,MARCA,Item_Marca
+SisMezEM,TIPO,
+SisMezEM,MODELO,Item_Modelo
+SisMezEM,EQUIPO,
+SisMezEM,VARIABLE,
+SisMezEM,TAMANIO,
+SisMezEM,MODELO_BASTIDOR,
+SisMezEM,CORRUGACION,
+SisMezEM,MATERIAL_PLACAS,
+SisMezEM,MATERIAL_JUNTAS,
+SisMezEM,CANTIDAD_SECCIONES,
+SisMezEM,DIAMETRO,
+SisMezEM,ACTUACION,
+SisMezEM,FAMILIA,
+SisMezEM,DIAMETRO_SUPERIOR,
+SisMezEM,DIAMETRO_INFERIOR,
+SisMezEM,CUERPO,
+SisMezEM,CONEXIONES,
+SisMezEM,IMPORTADO,Es importado
+SisMezEM,FABRICADO,Es fabricado
+SisRecProd,ID,id
+SisRecProd,NAME,Name
+SisRecProd,PRODUCT,Product
+SisRecProd,REVISION,Revision
+SisRecProd,EDELFLEX,Codigo Edelflex
+SisRecProd,STATUS,Estado_TC
+SisRecProd,FIXED_GROUP_ITEM,${team-center.querys.item-groups.sis-rec-prod}
+SisRecProd,FIXED_UOM,UN
+SisRecProd,PROVEEDOR,
+SisRecProd,MARCA,Item_Marca
+SisRecProd,TIPO,
+SisRecProd,MODELO,Item_Modelo
+SisRecProd,EQUIPO,
+SisRecProd,VARIABLE,
+SisRecProd,TAMANIO,
+SisRecProd,MODELO_BASTIDOR,
+SisRecProd,CORRUGACION,
+SisRecProd,MATERIAL_PLACAS,
+SisRecProd,MATERIAL_JUNTAS,
+SisRecProd,CANTIDAD_SECCIONES,
+SisRecProd,DIAMETRO,
+SisRecProd,ACTUACION,
+SisRecProd,FAMILIA,
+SisRecProd,DIAMETRO_SUPERIOR,
+SisRecProd,DIAMETRO_INFERIOR,
+SisRecProd,CUERPO,
+SisRecProd,CONEXIONES,
+SisRecProd,IMPORTADO,Es importado
+SisRecProd,FABRICADO,Es fabricado
+Sistemas,ID,id
+Sistemas,NAME,Name
+Sistemas,PRODUCT,Product
+Sistemas,REVISION,Revision
+Sistemas,EDELFLEX,efx4_CodigoEdelflex
+Sistemas,STATUS,Estado_TC
+Sistemas,FIXED_GROUP_ITEM,${team-center.querys.item-groups.sistemas}
+Sistemas,FIXED_UOM,UN
+Sistemas,PROVEEDOR,
+Sistemas,MARCA,
+Sistemas,TIPO,Item_Sistema
+Sistemas,MODELO,
+Sistemas,EQUIPO,
+Sistemas,VARIABLE,
+Sistemas,TAMANIO,
+Sistemas,MODELO_BASTIDOR,
+Sistemas,CORRUGACION,
+Sistemas,MATERIAL_PLACAS,
+Sistemas,MATERIAL_JUNTAS,
+Sistemas,CANTIDAD_SECCIONES,
+Sistemas,DIAMETRO,
+Sistemas,ACTUACION,
+Sistemas,FAMILIA,
+Sistemas,DIAMETRO_SUPERIOR,
+Sistemas,DIAMETRO_INFERIOR,
+Sistemas,CUERPO,
+Sistemas,CONEXIONES,
+Sistemas,IMPORTADO,Es importado
+Sistemas,FABRICADO,Es fabricado
+Subcon,ID,id
+Subcon,NAME,Name
+Subcon,PRODUCT,Product
+Subcon,REVISION,Revision
+Subcon,EDELFLEX,Codigo Edelflex
+Subcon,STATUS,Estado_TC
+Subcon,FIXED_GROUP_ITEM,${team-center.querys.item-groups.subcon}
+Subcon,FIXED_UOM,
+Subcon,PROVEEDOR,
+Subcon,MARCA,
+Subcon,TIPO,
+Subcon,MODELO,
+Subcon,EQUIPO,
+Subcon,VARIABLE,
+Subcon,TAMANIO,
+Subcon,MODELO_BASTIDOR,
+Subcon,CORRUGACION,
+Subcon,MATERIAL_PLACAS,
+Subcon,MATERIAL_JUNTAS,
+Subcon,CANTIDAD_SECCIONES,
+Subcon,DIAMETRO,
+Subcon,ACTUACION,
+Subcon,FAMILIA,
+Subcon,DIAMETRO_SUPERIOR,
+Subcon,DIAMETRO_INFERIOR,
+Subcon,CUERPO,
+Subcon,CONEXIONES,
+Subcon,IMPORTADO,Es importado
+Subcon,FABRICADO,Es fabricado
+Tanques,ID,id
+Tanques,NAME,Name
+Tanques,PRODUCT,Product
+Tanques,REVISION,Revision
+Tanques,EDELFLEX,Codigo Edelflex
+Tanques,STATUS,Estado_TC
+Tanques,FIXED_GROUP_ITEM,${team-center.querys.item-groups.tanques}
+Tanques,FIXED_UOM,UN
+Tanques,PROVEEDOR,
+Tanques,MARCA,
+Tanques,TIPO,
+Tanques,MODELO,
+Tanques,EQUIPO,
+Tanques,VARIABLE,
+Tanques,TAMANIO,
+Tanques,MODELO_BASTIDOR,
+Tanques,CORRUGACION,
+Tanques,MATERIAL_PLACAS,
+Tanques,MATERIAL_JUNTAS,
+Tanques,CANTIDAD_SECCIONES,
+Tanques,DIAMETRO,
+Tanques,ACTUACION,
+Tanques,FAMILIA,
+Tanques,DIAMETRO_SUPERIOR,
+Tanques,DIAMETRO_INFERIOR,
+Tanques,CUERPO,
+Tanques,CONEXIONES,
+Tanques,IMPORTADO,Es importado
+Tanques,FABRICADO,Es fabricado
+ValAliSeg,ID,id
+ValAliSeg,NAME,Name
+ValAliSeg,PRODUCT,Product
+ValAliSeg,REVISION,Revision
+ValAliSeg,EDELFLEX,Codigo Edelflex
+ValAliSeg,STATUS,Estado_TC
+ValAliSeg,FIXED_GROUP_ITEM,${team-center.querys.item-groups.val-ali-seg}
+ValAliSeg,FIXED_UOM,UN
+ValAliSeg,PROVEEDOR,Codigo Proveedor
+ValAliSeg,MARCA,Item_Marca
+ValAliSeg,TIPO,Item_Tipo
+ValAliSeg,MODELO,Item_Modelo
+ValAliSeg,EQUIPO,
+ValAliSeg,VARIABLE,
+ValAliSeg,TAMANIO,
+ValAliSeg,MODELO_BASTIDOR,
+ValAliSeg,CORRUGACION,
+ValAliSeg,MATERIAL_PLACAS,
+ValAliSeg,MATERIAL_JUNTAS,Material sellos
+ValAliSeg,CANTIDAD_SECCIONES,
+ValAliSeg,DIAMETRO,
+ValAliSeg,ACTUACION,Item_Actuacion
+ValAliSeg,FAMILIA,
+ValAliSeg,DIAMETRO_SUPERIOR,Item_Diametro cuerpo sup_medio
+ValAliSeg,DIAMETRO_INFERIOR,Item_Diametro cuerpo inferior
+ValAliSeg,CUERPO,Cuerpo
+ValAliSeg,CONEXIONES,
+ValAliSeg,IMPORTADO,Es importado
+ValAliSeg,FABRICADO,Es fabricado
+ValAsiento,ID,id
+ValAsiento,NAME,Name
+ValAsiento,PRODUCT,Product
+ValAsiento,REVISION,Revision
+ValAsiento,EDELFLEX,Codigo Edelflex
+ValAsiento,STATUS,Estado_TC
+ValAsiento,FIXED_GROUP_ITEM,${team-center.querys.item-groups.val-asiento}
+ValAsiento,FIXED_UOM,UN
+ValAsiento,PROVEEDOR,Codigo Proveedor
+ValAsiento,MARCA,Item_Marca
+ValAsiento,TIPO,Item_Tipo
+ValAsiento,MODELO,Item_Modelo
+ValAsiento,EQUIPO,
+ValAsiento,VARIABLE,
+ValAsiento,TAMANIO,
+ValAsiento,MODELO_BASTIDOR,
+ValAsiento,CORRUGACION,
+ValAsiento,MATERIAL_PLACAS,
+ValAsiento,MATERIAL_JUNTAS,Material sellos
+ValAsiento,CANTIDAD_SECCIONES,
+ValAsiento,DIAMETRO,
+ValAsiento,ACTUACION,Item_Actuacion
+ValAsiento,FAMILIA,Item_Familia
+ValAsiento,DIAMETRO_SUPERIOR,Item_Diametro cuerpo sup_medio
+ValAsiento,DIAMETRO_INFERIOR,Item_Diametro cuerpo inferior
+ValAsiento,CUERPO,
+ValAsiento,CONEXIONES,
+ValAsiento,IMPORTADO,Es importado
+ValAsiento,FABRICADO,Es fabricado
+ValControl,ID,id
+ValControl,NAME,Name
+ValControl,PRODUCT,Product
+ValControl,REVISION,Revision
+ValControl,EDELFLEX,Codigo Edelflex
+ValControl,STATUS,Estado_TC
+ValControl,FIXED_GROUP_ITEM,${team-center.querys.item-groups.val-control}
+ValControl,FIXED_UOM,UN
+ValControl,PROVEEDOR,Codigo Proveedor
+ValControl,MARCA,Item_Marca
+ValControl,TIPO,
+ValControl,MODELO,Item_Modelo
+ValControl,EQUIPO,
+ValControl,VARIABLE,
+ValControl,TAMANIO,
+ValControl,MODELO_BASTIDOR,
+ValControl,CORRUGACION,
+ValControl,MATERIAL_PLACAS,
+ValControl,MATERIAL_JUNTAS,Material sellos
+ValControl,CANTIDAD_SECCIONES,
+ValControl,DIAMETRO,
+ValControl,ACTUACION,Item_Actuacion
+ValControl,FAMILIA,
+ValControl,DIAMETRO_SUPERIOR,Item_Diametro cuerpo sup_medio
+ValControl,DIAMETRO_INFERIOR,Item_Diametro cuerpo inferior
+ValControl,CUERPO,Cuerpo
+ValControl,CONEXIONES,
+ValControl,IMPORTADO,Es importado
+ValControl,FABRICADO,Es fabricado
+ValDia,ID,id
+ValDia,NAME,Name
+ValDia,PRODUCT,Product
+ValDia,REVISION,Revision
+ValDia,EDELFLEX,Codigo Edelflex
+ValDia,STATUS,Estado_TC
+ValDia,FIXED_GROUP_ITEM,${team-center.querys.item-groups.val-dia}
+ValDia,FIXED_UOM,UN
+ValDia,PROVEEDOR,Codigo Proveedor
+ValDia,MARCA,Item_Marca
+ValDia,TIPO,
+ValDia,MODELO,Modelo
+ValDia,EQUIPO,
+ValDia,VARIABLE,
+ValDia,TAMANIO,
+ValDia,MODELO_BASTIDOR,
+ValDia,CORRUGACION,
+ValDia,MATERIAL_PLACAS,
+ValDia,MATERIAL_JUNTAS,Material diafragma
+ValDia,CANTIDAD_SECCIONES,
+ValDia,DIAMETRO,Item_Diametro
+ValDia,ACTUACION,Item_Actuacion
+ValDia,FAMILIA,
+ValDia,DIAMETRO_SUPERIOR,
+ValDia,DIAMETRO_INFERIOR,
+ValDia,CUERPO,
+ValDia,CONEXIONES,
+ValDia,IMPORTADO,Es importado
+ValDia,FABRICADO,Es fabricado
+ValFuelle,ID,id
+ValFuelle,NAME,Name
+ValFuelle,PRODUCT,Product
+ValFuelle,REVISION,Revision
+ValFuelle,EDELFLEX,Codigo Edelflex
+ValFuelle,STATUS,Estado_TC
+ValFuelle,FIXED_GROUP_ITEM,${team-center.querys.item-groups.val-fuelle}
+ValFuelle,FIXED_UOM,UN
+ValFuelle,PROVEEDOR,Codigo Proveedor
+ValFuelle,MARCA,Item_Marca
+ValFuelle,TIPO,
+ValFuelle,MODELO,
+ValFuelle,EQUIPO,
+ValFuelle,VARIABLE,
+ValFuelle,TAMANIO,
+ValFuelle,MODELO_BASTIDOR,
+ValFuelle,CORRUGACION,
+ValFuelle,MATERIAL_PLACAS,
+ValFuelle,MATERIAL_JUNTAS,Material fuelle
+ValFuelle,CANTIDAD_SECCIONES,
+ValFuelle,DIAMETRO,
+ValFuelle,ACTUACION,Item_Actuacion
+ValFuelle,FAMILIA,Item_Familia
+ValFuelle,DIAMETRO_SUPERIOR,Item_Diametro cuerpo superior
+ValFuelle,DIAMETRO_INFERIOR,Item_Diametro cuerpo inferior
+ValFuelle,CUERPO,Cuerpo
+ValFuelle,CONEXIONES,
+ValFuelle,IMPORTADO,Es importado
+ValFuelle,FABRICADO,Es fabricado
+ValReten,ID,id
+ValReten,NAME,Name
+ValReten,PRODUCT,Product
+ValReten,REVISION,Revision
+ValReten,EDELFLEX,Codigo Edelflex
+ValReten,STATUS,Estado_TC
+ValReten,FIXED_GROUP_ITEM,${team-center.querys.item-groups.val-reten}
+ValReten,FIXED_UOM,UN
+ValReten,PROVEEDOR,Codigo Proveedor
+ValReten,MARCA,Item_Marca
+ValReten,TIPO,
+ValReten,MODELO,
+ValReten,EQUIPO,
+ValReten,VARIABLE,
+ValReten,TAMANIO,
+ValReten,MODELO_BASTIDOR,
+ValReten,CORRUGACION,
+ValReten,MATERIAL_PLACAS,
+ValReten,MATERIAL_JUNTAS,Material sellos
+ValReten,CANTIDAD_SECCIONES,
+ValReten,DIAMETRO,Item_Diametro
+ValReten,ACTUACION,
+ValReten,FAMILIA,
+ValReten,DIAMETRO_SUPERIOR,
+ValReten,DIAMETRO_INFERIOR,
+ValReten,CUERPO,Cuerpo
+ValReten,CONEXIONES,Item_Conexiones
+ValReten,IMPORTADO,Es importado
+ValReten,FABRICADO,Es fabricado
+Valvulas,ID,id
+Valvulas,NAME,Name
+Valvulas,PRODUCT,Product
+Valvulas,REVISION,Revision
+Valvulas,EDELFLEX,Codigo Edelflex
+Valvulas,STATUS,Estado_TC
+Valvulas,FIXED_GROUP_ITEM,${team-center.querys.item-groups.valvulas}
+Valvulas,FIXED_UOM,UN
+Valvulas,PROVEEDOR,Codigo Proveedor
+Valvulas,MARCA,Item_Marca
+Valvulas,TIPO,
+Valvulas,MODELO,Item_Modelo
+Valvulas,EQUIPO,
+Valvulas,VARIABLE,
+Valvulas,TAMANIO,
+Valvulas,MODELO_BASTIDOR,
+Valvulas,CORRUGACION,
+Valvulas,MATERIAL_PLACAS,
+Valvulas,MATERIAL_JUNTAS,Material sellos
+Valvulas,CANTIDAD_SECCIONES,
+Valvulas,DIAMETRO,Item_Diametro
+Valvulas,ACTUACION,Item_Actuacion
+Valvulas,FAMILIA,
+Valvulas,DIAMETRO_SUPERIOR,
+Valvulas,DIAMETRO_INFERIOR,
+Valvulas,CUERPO,
+Valvulas,CONEXIONES,
+Valvulas,IMPORTADO,Es importado
+Valvulas,FABRICADO,Es fabricado

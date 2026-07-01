@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo:4.4.15
+    restart: always
+    command: mongod
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "9001:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 24z4PmtDgC0Kjpt7cBbK
+    networks:
+      localdocker:
+        ipv4_address: 10.15.0.3
+networks:
+  localdocker:
+    external: true

@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  integration-service:
+    restart: always
+    build:
+      context: ./sources/ede-integration-service
+    container_name: integration-service
+    environment:
+      #sync-items-batch	sincroniza Teamcenter → SAP
+      #send-process-data-batch	manda info a BitOne
+      #clean-up-process-batch	borra historial Mongo viejo
+      #prod	activa logs/config prod
+      #- SPRING_PROFILES_ACTIVE=prod,sync-items-batch,send-process-data-batch,clean-up-process-batch
+      - SPRING_PROFILES_ACTIVE=local
+      - SPRING_CONFIG_ADDITIONAL_LOCATION=file:/config/
+    ports:
+      - 8080:8095
+    volumes:
+      - ./logs:/tmp
+      - ./sources/ede-integration-service/src/main/resources:/config:ro
+    working_dir: /home/docker/integration-service/working_dir
+    networks:
+      localdocker:
+        ipv4_address: 10.15.0.2
+networks:
+  localdocker:
+    external: true

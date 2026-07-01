@@ -1,0 +1,25 @@
+ El volumen de la unidad C no tiene etiqueta.
+ El n£mero de serie del volumen es: DEC4-98FF
+
+ Directorio de C:\Gustavo\Integrador
+
+30/06/2026  15:02    <DIR>          .
+30/06/2026  14:54    <DIR>          ..
+30/06/2026  15:02                 0 integrador.txt
+30/06/2026  14:52    <DIR>          integration-service
+30/06/2026  10:58    <DIR>          knowledge
+30/06/2026  11:24    <DIR>          mongodb
+               1 archivos              0 bytes
+               5 dirs  92.671.574.016 bytes libres
+
+
+
+diff --git a/C:\Gustavo\Integrador\integration-service\sources\ede-integration-service\src\main\resources\application-dev.yml b/C:\Gustavo\Integrador\integration-service\sources\ede-integration-service\src\main\resources\application-dev.yml
+--- a/C:\Gustavo\Integrador\integration-service\sources\ede-integration-service\src\main\resources\application-dev.yml
++++ b/C:\Gustavo\Integrador\integration-service\sources\ede-integration-service\src\main\resources\application-dev.yml
+@@ -8,3 +8,3 @@
+       username: root
+-      password: Erq29Y8gVZunZJ7
++      password: 24z4PmtDgC0Kjpt7cBbK
+ 
+
